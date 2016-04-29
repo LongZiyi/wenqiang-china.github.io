@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://wenqiang-china.github.io/2016/04/29/youkutudou-intern-coding/</loc>
+        <lastmod>2016-04-29T13:21:02.060Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://wenqiang-china.github.io/2016/04/28/adb-note-1/</loc>
         <lastmod>2016-04-29T12:49:25.791Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +33,6 @@
     <url>
         <loc>http://wenqiang-china.github.io/2016/04/28/mysqldb-install/</loc>
         <lastmod>2016-04-29T12:48:22.685Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://wenqiang-china.github.io/2016/04/29/youkutudou-intern-coding/</loc>
-        <lastmod>2016-04-29T12:46:31.553Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

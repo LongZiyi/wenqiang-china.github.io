@@ -2,20 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://wenqiang-china.github.io/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/</loc>
-        <lastmod>2016-04-29T12:46:31.553Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://wenqiang-china.github.io/tags/Python/</loc>
-        <lastmod>2016-04-29T12:48:22.685Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://wenqiang-china.github.io/tags/MySQLdb/</loc>
         <lastmod>2016-04-29T12:48:22.685Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -46,6 +32,20 @@
     <url>
         <loc>http://wenqiang-china.github.io/tags/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
         <lastmod>2016-04-29T12:49:25.791Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/Python/</loc>
+        <lastmod>2016-04-29T13:21:02.060Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/</loc>
+        <lastmod>2016-04-29T13:21:02.060Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
