@@ -37,15 +37,22 @@
     </url>
 
     <url>
-        <loc>http://wenqiang-china.github.io/tags/Python/</loc>
+        <loc>http://wenqiang-china.github.io/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/</loc>
         <lastmod>2016-04-29T13:47:28.954Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://wenqiang-china.github.io/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/</loc>
-        <lastmod>2016-04-29T13:47:28.954Z</lastmod>
+        <loc>http://wenqiang-china.github.io/tags/Python/</loc>
+        <lastmod>2016-04-29T13:55:32.007Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</loc>
+        <lastmod>2016-04-29T13:55:32.007Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
