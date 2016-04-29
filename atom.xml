@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2016-04-29T04:52:42.394Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://wenqiang-china.github.io/"/>
+  <updated>2016-04-29T11:31:21.546Z</updated>
+  <id>http://wenqiang-china.github.io/</id>
   
   <author>
     <name>wenqiang</name>
@@ -16,9 +16,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>你工作的时候该听什么音乐？</title>
+    <link href="http://wenqiang-china.github.io/2016/04/29/music-during-work/"/>
+    <id>http://wenqiang-china.github.io/2016/04/29/music-during-work/</id>
+    <published>2016-04-29T11:25:58.679Z</published>
+    <updated>2016-04-29T11:31:21.546Z</updated>
+    
+    <content type="html">&lt;p&gt;&amp;#x5728;&amp;#x7F51;&amp;#x4E0A;&amp;#x89C1;&amp;#x5230;&amp;#x8FD9;&amp;#x6837;&amp;#x4E00;&amp;#x5E45;&amp;#x56FE;&amp;#xFF0C;&amp;#x611F;&amp;#x89C9;&amp;#x633A;&amp;#x6709;&amp;#x610F;&amp;#x601D;&amp;#x3002;&amp;#x5FEB;&amp;#x770B;&amp;#x770B;&amp;#x81EA;&amp;#x5DF1;&amp;#x5DE5;&amp;#x4F5C;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#x9002;&amp;#x5408;&amp;#x542C;&amp;#x4EC0;&amp;#x4E48;&amp;#x6837;&amp;#x7684;&amp;#x97F3;&amp;#x4E50;:-)&lt;br&gt;!(/music-during-work/&amp;#x97F3;&amp;#x4E50;.jpg)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#x5728;&amp;#x7F51;&amp;#x4E0A;&amp;#x89C1;&amp;#x5230;&amp;#x8FD9;&amp;#x6837;&amp;#x4E00;&amp;#x5E45;&amp;#x56FE;&amp;#xFF0C;&amp;#x611F;&amp;#x89C9;&amp;#x633A;&amp;#x6709;&amp;#x610F;&amp;#x601D;&amp;
+    
+    </summary>
+    
+      <category term="休闲" scheme="http://wenqiang-china.github.io/categories/%E4%BC%91%E9%97%B2/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>MySQLdb安装记录</title>
-    <link href="http://yoursite.com/2016/04/28/mysqldb-install/"/>
-    <id>http://yoursite.com/2016/04/28/mysqldb-install/</id>
+    <link href="http://wenqiang-china.github.io/2016/04/28/mysqldb-install/"/>
+    <id>http://wenqiang-china.github.io/2016/04/28/mysqldb-install/</id>
     <published>2016-04-28T12:33:00.399Z</published>
     <updated>2016-04-29T04:52:42.394Z</updated>
     
@@ -40,15 +61,15 @@
     
     </summary>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://wenqiang-china.github.io/categories/Python/"/>
     
     
   </entry>
   
   <entry>
     <title>《高级数据库技术》笔记—— 一、简介</title>
-    <link href="http://yoursite.com/2016/04/28/adb-note-1/"/>
-    <id>http://yoursite.com/2016/04/28/adb-note-1/</id>
+    <link href="http://wenqiang-china.github.io/2016/04/28/adb-note-1/"/>
+    <id>http://wenqiang-china.github.io/2016/04/28/adb-note-1/</id>
     <published>2016-04-28T11:45:02.829Z</published>
     <updated>2016-04-29T00:06:27.282Z</updated>
     
@@ -62,15 +83,15 @@
     
     </summary>
     
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2016/04/28/hello-world/"/>
-    <id>http://yoursite.com/2016/04/28/hello-world/</id>
+    <link href="http://wenqiang-china.github.io/2016/04/28/hello-world/"/>
+    <id>http://wenqiang-china.github.io/2016/04/28/hello-world/</id>
     <published>2016-04-28T09:08:18.137Z</published>
     <updated>2016-04-28T11:43:13.413Z</updated>
     
