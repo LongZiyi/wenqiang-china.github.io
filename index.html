@@ -345,6 +345,62 @@
 </ul>
 </li>
 </ul>
+<h4 id="&#x4E8B;&#x52A1;&#x793A;&#x4F8B;"><a href="#&#x4E8B;&#x52A1;&#x793A;&#x4F8B;" class="headerlink" title="&#x4E8B;&#x52A1;&#x793A;&#x4F8B;"></a>&#x4E8B;&#x52A1;&#x793A;&#x4F8B;</h4><p>&#x94F6;&#x884C;&#x8F6C;&#x5E10;&#xFF1A;&#x4E8B;&#x52A1;T&#x4ECE;A&#x5E10;&#x6237;&#x8FC7;&#x6237;50&#xFFE5;&#x5230;B&#x5E10;&#x6237;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T&#xFF1A;<span class="built_in">read</span>(A);</span><br><span class="line">   A := A &#x2013; 50;</span><br><span class="line">   write(A);</span><br><span class="line">   <span class="built_in">read</span>(B);</span><br><span class="line">   B := B + 50;</span><br><span class="line">   write(B);</span><br></pre></td></tr></table></figure></p>
+<p>&#x5176;&#x4E2D;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span>(X)&#xFF1A;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4F20;&#x9001;&#x6570;&#x636E;&#x9879;X&#x5230;&#x4E8B;&#x52A1;&#x7684;&#x5DE5;&#x4F5C;&#x533A;&#x4E2D;</span><br><span class="line">write(X)&#xFF1A;&#x4ECE;&#x4E8B;&#x52A1;&#x7684;&#x5DE5;&#x4F5C;&#x533A;&#x4E2D;&#x5C06;&#x6570;&#x636E;&#x9879;X&#x5199;&#x56DE;&#x6570;&#x636E;&#x5E93;</span><br></pre></td></tr></table></figure>
+<h4 id="&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;"><a href="#&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;"></a>&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;</h4><p><img src="/2016/05/01/adb-note-chapter8/dataaccess.png" alt="&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;"></p>
+<h4 id="&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;"><a href="#&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;" class="headerlink" title="&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;"></a>&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;</h4><p>&#x6545;&#x969C;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x9519;&#x8BEF;&#x6570;&#x636E;&#x8F93;&#x5165;&#xFF1A;&#x5F15;&#x5165;&#x7EA6;&#x675F;&#x673A;&#x5236;<ul>
+<li>&#x4F46;&#x6709;&#x4E9B;&#x9519;&#x8BEF;&#x662F;&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x8F93;&#x9519;&#x67D0;&#x4E00;&#x4F4D;&#x3002;</li>
+</ul>
+</li>
+<li>&#x4ECB;&#x8D28;&#x6545;&#x969C;<ul>
+<li>&#x78C1;&#x76D8;&#x5C40;&#x90E8;&#x6545;&#x969C;&#xFF1A;&#x53EF;&#x901A;&#x8FC7;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x68C0;&#x6D4B;</li>
+<li>&#x78C1;&#x76D8;&#x91CD;&#x5927;&#x6545;&#x969C;&#xFF1A;&#x5229;&#x7528;RAID</li>
+</ul>
+</li>
+<li>&#x707E;&#x96BE;&#x6027;&#x6545;&#x969C;<ul>
+<li>RAID&#x5931;&#x6548;&#xFF0C;&#x56E0;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x6709;&#x78C1;&#x76D8;&#x5747;&#x88AB;&#x7834;&#x574F;</li>
+<li>&#x53EF;&#x7528;&#x5907;&#x4EFD;&#x6216;&#x5197;&#x4F59;&#x5206;&#x5E03;&#x5F0F;&#x62F7;&#x8D1D;&#x6062;&#x590D;</li>
+</ul>
+</li>
+<li>&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#xFF1A;&#x662F;&#x5BFC;&#x81F4;&#x4E8B;&#x52A1;&#x72B6;&#x6001;&#x4E22;&#x5931;&#x7684;&#x95EE;&#x9898;<ul>
+<li>&#x6389;&#x7535;&#x6216;&#x8F6F;&#x4EF6;&#x9519;&#x8BEF;</li>
+<li>&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x4E8B;&#x52A1;&#x7684;&#x54EA;&#x4E9B;&#x90E8;&#x5206;(&#x5305;&#x62EC;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4FEE;&#x6539;)&#x5DF2;&#x7ECF;&#x8FDB;&#x884C;</li>
+</ul>
+</li>
+</ul>
+<p>&#x4E8B;&#x52A1;&#xFF1A;</p>
+<ul>
+<li>&#x4E8B;&#x52A1;&#x662F;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x7684;&#x6267;&#x884C;&#x5355;&#x4F4D;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x67E5;&#x8BE2;&#x6216;&#x6570;&#x636E;&#x5E93;&#x66F4;&#x65B0;&#x8BED;&#x53E5;&#x5C31;&#x662F;&#x2014;&#x4E2A;&#x4E8B;&#x52A1;</li>
+<li>&#x5728;&#x5D4C;&#x5165;&#x5F0F;SQL&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x4E00;&#x65E6;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#xFF0C;&#x4E8B;&#x52A1;&#x5C31;&#x5F00;&#x59CB;&#xFF0C;&#x800C;&#x4E8B;&#x52A1;&#x7684;&#x7ED3;&#x675F;&#x4F7F;&#x7528;&#x663E;&#x5F0F;&#x7684;commit&#x6216;rollback&#x7ED3;&#x675F;</li>
+<li>SQL&#x4E2D;&#x4E8B;&#x52A1;&#x7684;&#x5B9A;&#x4E49;<ul>
+<li>&#x4E8B;&#x52A1;&#x4EE5;Begin transaction&#x5F00;&#x59CB;&#xFF0C;&#x4EE5;Commit work&#x6216; Rollback work&#x7ED3;&#x675F;    </li>
+<li>Commit work&#x8868;&#x793A;&#x63D0;&#x4EA4;&#xFF0C;&#x4E8B;&#x52A1;&#x6B63;&#x5E38;&#x7ED3;&#x675F;</li>
+<li>Rollback work&#x8868;&#x793A;&#x4E8B;&#x52A1;&#x975E;&#x6B63;&#x5E38;&#x7ED3;&#x675F;&#xFF0C;&#x64A4;&#x6D88;&#x4E8B;&#x52A1;&#x5DF2;&#x505A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x56DE;&#x6EDA;&#x5230;&#x4E8B;&#x52A1;&#x5F00;&#x59CB;&#x65F6;&#x7684;&#x72B6;&#x6001;</li>
+</ul>
+</li>
+</ul>
+<h4 id="&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;"><a href="#&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;"></a>&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;</h4><p>A&#xFF1A;&#x8868;&#x793A;&#x4E8B;&#x52A1;&#x7684;&#x539F;&#x5B50;&#x6027;(Atomicity)&#xFF0C;&#x5373;&#x4E8B;&#x52A1;&#x5B8C;&#x5168;&#x6267;&#x884C;&#x6216;&#x5B8C;&#x5168;&#x4E0D;&#x6267;&#x884C;</p>
+<ul>
+<li>&#x4E8B;&#x52A1;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x8981;&#x4E48;&#x5168;&#x505A;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x4E0D;&#x505A;&#x539F;&#x5B50;&#x6027;&#x7531;&#x6062;&#x590D;&#x673A;&#x5236;&#x5B9E;&#x73B0;</li>
+</ul>
+<p>C&#xFF1A;&#x8868;&#x793A;&#x4E00;&#x81F4;&#x6027;(Consistency)&#xFF0C;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x90FD;&#x6709;&#x4E00;&#x81F4;&#x6027;&#x7EA6;&#x675F;&#xFF0C;&#x6216;&#x5173;&#x4E8E;&#x6570;&#x636E;&#x4E4B;&#x95F4;&#x8054;&#x7CFB;&#x7684;&#x9884;&#x671F;&#x72B6;&#x6001;</p>
+<ul>
+<li>&#x4E8B;&#x52A1;&#x7684;&#x9694;&#x79BB;&#x6267;&#x884C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x4E8B;&#x52A1;&#x5F00;&#x59CB;&#x524D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x5904;&#x4E8E;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x72B6;&#x6001;&#xFF1B;&#x4E8B;&#x52A1;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x5FC5;&#x987B;&#x4ECD;&#x5904;&#x4E8E;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x3002;</li>
+<li>&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x7531;&#x7528;&#x6237;&#x6765;&#x8D1F;&#x8D23;&#xFF0C;&#x7531;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x3002;&#x5982;&#x94F6;&#x884C;&#x8F6C;&#x5E10;&#xFF0C;&#x8F6C;&#x5E10;&#x524D;&#x540E;&#x4E24;&#x4E2A;&#x5E10;&#x6237;&#x91D1;&#x989D;&#x4E4B;&#x548C;&#x5E94;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;</li>
+</ul>
+<p>I&#xFF1A;&#x8868;&#x793A;&#x9694;&#x79BB;(Isolation)&#xFF0C;&#x5373;&#x8868;&#x9762;&#x770B;&#x8D77;&#x6765;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x52A1;&#x90FD;&#x662F;&#x5728;&#x6CA1;&#x6709;&#x5176;&#x5B83;&#x4E8B;&#x52A1;&#x540C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x7684;</p>
+<ul>
+<li>&#x7CFB;&#x7EDF;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x4E8B;&#x52A1;&#x4E0D;&#x53D7;&#x5176;&#x5B83;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x4E8B;&#x52A1;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x5BF9;&#x4EFB;&#x4F55;&#x4E00;&#x5BF9;&#x4E8B;&#x52A1;T1&#xFF0C;T2&#xFF0C;&#x5728;T1&#x770B;&#x6765;&#xFF0C;T2&#x8981;&#x4E48;&#x5728;T1&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#xFF0C;&#x8981;&#x4E48;&#x5728;T1&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x518D;&#x5F00;&#x59CB;&#x6267;&#x884C;</li>
+<li>&#x9694;&#x79BB;&#x6027;&#x901A;&#x8FC7;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x673A;&#x5236;&#x5B9E;&#x73B0;</li>
+</ul>
+<p>D&#xFF1A;&#x8868;&#x793A;&#x6301;&#x4E45;&#x6027;(Durability)&#xFF0C;&#x5373;&#x4E00;&#x65E6;&#x4E8B;&#x52A1;&#x5B8C;&#x6210;&#x4E86;&#xFF0C; &#x4E8B;&#x52A1;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5F71;&#x54CD;&#x5C31;&#x4E0D;&#x4F1A;&#x4E22;&#x5931;</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x4E00;&#x65E6;&#x63D0;&#x4EA4;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5F71;&#x54CD;&#x5FC5;&#x987B;&#x662F;&#x6C38;&#x4E45;&#x7684;</li>
+<li>&#x7CFB;&#x7EDF;&#x53D1;&#x751F;&#x6545;&#x969C;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x4E8B;&#x52A1;&#x7684;&#x6301;&#x4E45;&#x6027;&#x3002;&#x6301;&#x4E45;&#x6027;&#x901A;&#x8FC7;&#x6062;&#x590D;&#x673A;&#x5236;&#x5B9E;&#x73B0;</li>
+</ul>
 <h3 id="&#x4E0B;&#x4E00;&#x7AE0;-&#x5E76;&#x53D1;&#x63A7;&#x5236;"><a href="#&#x4E0B;&#x4E00;&#x7AE0;-&#x5E76;&#x53D1;&#x63A7;&#x5236;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7AE0; &#x5E76;&#x53D1;&#x63A7;&#x5236;"></a>&#x4E0B;&#x4E00;&#x7AE0; <a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/">&#x5E76;&#x53D1;&#x63A7;&#x5236;</a></h3>
       
     </div>
