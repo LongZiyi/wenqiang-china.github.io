@@ -6,32 +6,29 @@
   
   <title>《高级数据库系统》笔记——  第二章 数据存储 | 文强的个人空间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x8BFE;&amp;#x7A0B;&amp;#x5185;&amp;#x5BB9;
+  <meta name="description" content="&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&amp;#x8BFE;&amp;#x7A0B;&amp;#x5185;&amp;#x5BB9;
 &amp;#x5B58;&amp;#x50A8;&amp;#x5668;&amp;#x5C42;&amp;#x6B21;
 &amp;#x78C1;&amp;#x76D8;&amp;#x5B58;&amp;#x50A8;&amp;#x65B9;&amp;#x5F0F;
 
-&amp;#x4E0B;&amp;#x9762;&amp;#x5177;&amp;#x4F53;&amp;#x4ECB;&amp;#x7ECD;
-&amp;#x4E09;&amp;#x7EA7;&amp;#x5B58;&amp;#x">
+&amp;#x4E0B;&amp;#x9762;&amp;#x5177;&amp;#x4F53;&amp;#x4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《高级数据库系统》笔记——  第二章 数据存储">
 <meta property="og:url" content="http://wenqiang-china.github.io/2016/04/30/adb-note-chapter2/index.html">
 <meta property="og:site_name" content="文强的个人空间">
-<meta property="og:description" content="&amp;#x8BFE;&amp;#x7A0B;&amp;#x5185;&amp;#x5BB9;
+<meta property="og:description" content="&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&amp;#x8BFE;&amp;#x7A0B;&amp;#x5185;&amp;#x5BB9;
 &amp;#x5B58;&amp;#x50A8;&amp;#x5668;&amp;#x5C42;&amp;#x6B21;
 &amp;#x78C1;&amp;#x76D8;&amp;#x5B58;&amp;#x50A8;&amp;#x65B9;&amp;#x5F0F;
 
-&amp;#x4E0B;&amp;#x9762;&amp;#x5177;&amp;#x4F53;&amp;#x4ECB;&amp;#x7ECD;
-&amp;#x4E09;&amp;#x7EA7;&amp;#x5B58;&amp;#x">
+&amp;#x4E0B;&amp;#x9762;&amp;#x5177;&amp;#x4F53;&amp;#x4">
 <meta property="og:image" content="http://wenqiang-china.github.io/2016/04/30/adb-note-chapter2/disk.png">
-<meta property="og:updated_time" content="2016-04-30T13:04:59.738Z">
+<meta property="og:updated_time" content="2016-05-01T03:58:48.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高级数据库系统》笔记——  第二章 数据存储">
-<meta name="twitter:description" content="&amp;#x8BFE;&amp;#x7A0B;&amp;#x5185;&amp;#x5BB9;
+<meta name="twitter:description" content="&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&amp;#x8BFE;&amp;#x7A0B;&amp;#x5185;&amp;#x5BB9;
 &amp;#x5B58;&amp;#x50A8;&amp;#x5668;&amp;#x5C42;&amp;#x6B21;
 &amp;#x78C1;&amp;#x76D8;&amp;#x5B58;&amp;#x50A8;&amp;#x65B9;&amp;#x5F0F;
 
-&amp;#x4E0B;&amp;#x9762;&amp;#x5177;&amp;#x4F53;&amp;#x4ECB;&amp;#x7ECD;
-&amp;#x4E09;&amp;#x7EA7;&amp;#x5B58;&amp;#x">
+&amp;#x4E0B;&amp;#x9762;&amp;#x5177;&amp;#x4F53;&amp;#x4">
 <meta name="twitter:image" content="http://wenqiang-china.github.io/2016/04/30/adb-note-chapter2/disk.png">
   
     <link rel="alternative" href="/atom.xml" title="文强的个人空间" type="application/atom+xml">
@@ -299,7 +296,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;"><a href="#&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;" class="headerlink" title="&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;"></a>&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;</h3><ul>
+        <h4 id="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"><a href="#&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;" class="headerlink" title="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"></a><a href="http://wenqiang-china.github.io/2016/04/28/adb-note-1/">&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;</a></h4><h3 id="&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;"><a href="#&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;" class="headerlink" title="&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;"></a>&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;</h3><ul>
 <li>&#x5B58;&#x50A8;&#x5668;&#x5C42;&#x6B21;</li>
 <li>&#x78C1;&#x76D8;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;</li>
 </ul>
@@ -395,7 +392,7 @@
         <p><span>本文标题:</span><a href="/2016/04/30/adb-note-chapter2/">《高级数据库系统》笔记——  第二章 数据存储</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">wenqiang</a></p>
         <p><span>发布时间:</span>2016-04-30, 17:05:23</p>
-        <p><span>最后更新:</span>2016-04-30, 21:04:59</p>
+        <p><span>最后更新:</span>2016-05-01, 11:58:48</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/04/30/adb-note-chapter2/" title="《高级数据库系统》笔记——  第二章 数据存储">http://wenqiang-china.github.io/2016/04/30/adb-note-chapter2/</a>
             <span class="copy-path" data-clipboard-text="原文: http://wenqiang-china.github.io/2016/04/30/adb-note-chapter2/　　作者: wenqiang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -430,7 +427,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#课程内容"><span class="toc-number">1.</span> <span class="toc-text">课程内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三级存储结构"><span class="toc-number">2.</span> <span class="toc-text">三级存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘"><span class="toc-number">3.</span> <span class="toc-text">磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘控制器的功能"><span class="toc-number">3.1.</span> <span class="toc-text">磁盘控制器的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘存储特性"><span class="toc-number">3.2.</span> <span class="toc-text">磁盘存储特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘访问特性"><span class="toc-number">3.3.</span> <span class="toc-text">磁盘访问特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序读取所用时间分析"><span class="toc-number">3.4.</span> <span class="toc-text">顺序读取所用时间分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块的写操作和修改"><span class="toc-number">3.5.</span> <span class="toc-text">块的写操作和修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#I-O代价"><span class="toc-number">3.6.</span> <span class="toc-text">I/O代价</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下一章-数据元素和表示"><span class="toc-number">4.</span> <span class="toc-text">下一章 数据元素和表示</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#回到上一章"><span class="toc-number">1.</span> <span class="toc-text">回到上一章</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#课程内容"><span class="toc-number"></span> <span class="toc-text">课程内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三级存储结构"><span class="toc-number"></span> <span class="toc-text">三级存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘"><span class="toc-number"></span> <span class="toc-text">磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘控制器的功能"><span class="toc-number">1.</span> <span class="toc-text">磁盘控制器的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘存储特性"><span class="toc-number">2.</span> <span class="toc-text">磁盘存储特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#磁盘访问特性"><span class="toc-number">3.</span> <span class="toc-text">磁盘访问特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序读取所用时间分析"><span class="toc-number">4.</span> <span class="toc-text">顺序读取所用时间分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块的写操作和修改"><span class="toc-number">5.</span> <span class="toc-text">块的写操作和修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#I-O代价"><span class="toc-number">6.</span> <span class="toc-text">I/O代价</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下一章-数据元素和表示"><span class="toc-number"></span> <span class="toc-text">下一章 数据元素和表示</span></a>
 </div>
 <style>
     .left-col .switch-btn {
@@ -543,7 +540,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/access-by-proxy/">通过在线代理获取网站的最新域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter3/">《高级数据库系统》笔记——  第三章 数据元素和表示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter2/">《高级数据库系统》笔记——  第二章 数据存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter1/">《高级数据库系统》笔记——  第一章 数据库系统简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/python-rumen-chart/">Python入门神图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/youkutudou-intern-coding/">优酷土豆2016实习生笔试 Python编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/music-during-work/">你工作的时候该听什么音乐？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/mysqldb-install/">MySQLdb安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/adb-note-1/">《高级数据库系统》笔记—— 一、简介</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter4/">《高级数据库系统》笔记——  第四章 索引结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/access-by-proxy/">通过在线代理获取网站的最新域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter3/">《高级数据库系统》笔记——  第三章 数据元素和表示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter2/">《高级数据库系统》笔记——  第二章 数据存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter1/">《高级数据库系统》笔记——  第一章 数据库系统简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/python-rumen-chart/">Python入门神图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/youkutudou-intern-coding/">优酷土豆2016实习生笔试 Python编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/music-during-work/">你工作的时候该听什么音乐？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/mysqldb-install/">MySQLdb安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/adb-note-1/">《高级数据库系统》笔记—— 一、简介</a></li></ul>
 
 
 
