@@ -151,12 +151,12 @@
     <link href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter5/"/>
     <id>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter5/</id>
     <published>2016-05-01T04:07:28.146Z</published>
-    <updated>2016-05-01T04:24:41.768Z</updated>
+    <updated>2016-05-01T04:28:33.205Z</updated>
     
     <content type="html">&lt;h4 id=&quot;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot;&gt;&lt;a href=&quot;#&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wenqiang-china.github.io/2016/05/01/adb-note-chapter4/&quot;&gt;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&lt;/a&gt;&lt;/h4&gt;&lt;h3 id=&quot;&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&quot;&gt;&lt;a href=&quot;#&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&quot;&gt;&lt;/a&gt;&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&amp;#x67E5;&amp;#x627E;&amp;#x7ED9;&amp;#x5B9A;&amp;#x952E;&amp;#x503C;&amp;#x7684;&amp;#x5143;&amp;#x7EC4;&amp;#xFF0C;&amp;#x5982;&amp;#xFF1A;&lt;pre&gt;&lt;code&gt;Select    * 
 From   Employee
-Where Dept=&amp;#x2018;Toy&amp;#x2019; and Salary&amp;#xF0B3;50K
+Where Dept=&amp;#x2018;Toy&amp;#x2019; and Salary&amp;gt;=50K
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Where&amp;#x6761;&amp;#x4EF6;&amp;#x4E2D;&amp;#x6D89;&amp;#x53CA;&amp;#x4E86;&amp;#x591A;&amp;#x4E2A;&amp;#x5C5E;&amp;#x6027;&lt;/li&gt;
 &lt;/ul&gt;
