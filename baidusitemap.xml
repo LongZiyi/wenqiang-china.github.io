@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/</loc>
+    <lastmod>2016-05-01T14:43:14.058Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第九章 并发控制</title>
+        <pubTime>2016-05-01T04:13:10.086Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter8/</loc>
-    <lastmod>2016-05-01T14:29:41.851Z</lastmod>
+    <lastmod>2016-05-01T14:31:14.992Z</lastmod>
     <data>
         <display>
         <title>《高级数据库系统》笔记——  第八章 日志与故障恢复</title>
@@ -98,28 +120,6 @@
         <display>
         <title>《高级数据库系统》笔记——  第四章 索引结构</title>
         <pubTime>2016-05-01T04:00:01.469Z</pubTime>
-        
-        <tag>学习笔记</tag>
-         
-        <tag>高级数据库</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/</loc>
-    <lastmod>2016-05-01T04:16:34.084Z</lastmod>
-    <data>
-        <display>
-        <title>《高级数据库系统》笔记——  第九章 并发控制</title>
-        <pubTime>2016-05-01T04:13:10.086Z</pubTime>
         
         <tag>学习笔记</tag>
          
