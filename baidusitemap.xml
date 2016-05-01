@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter8/</loc>
+    <lastmod>2016-05-01T10:55:27.352Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第八章 日志与故障恢复</title>
+        <pubTime>2016-05-01T04:11:18.777Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter5/</loc>
+    <lastmod>2016-05-01T04:28:33.205Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第五章 多维索引</title>
+        <pubTime>2016-05-01T04:07:28.146Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter7/</loc>
+    <lastmod>2016-05-01T04:25:01.978Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第七章 查询编译器</title>
+        <pubTime>2016-05-01T04:10:38.782Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter6/</loc>
+    <lastmod>2016-05-01T04:24:53.241Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第六章 查询执行</title>
+        <pubTime>2016-05-01T04:09:28.974Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter4/</loc>
+    <lastmod>2016-05-01T04:24:33.597Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第四章 索引结构</title>
+        <pubTime>2016-05-01T04:00:01.469Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/</loc>
+    <lastmod>2016-05-01T04:16:34.084Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第九章 并发控制</title>
+        <pubTime>2016-05-01T04:13:10.086Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/30/adb-note-chapter3/</loc>
+    <lastmod>2016-05-01T04:04:05.813Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第三章 数据元素和表示</title>
+        <pubTime>2016-04-30T11:16:17.610Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/30/adb-note-chapter2/</loc>
+    <lastmod>2016-05-01T03:58:48.708Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第二章 数据存储</title>
+        <pubTime>2016-04-30T09:05:23.025Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/30/adb-note-chapter1/</loc>
+    <lastmod>2016-05-01T03:58:21.365Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记——  第一章 数据库系统简介</title>
+        <pubTime>2016-04-30T07:28:49.598Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/28/adb-note-1/</loc>
+    <lastmod>2016-05-01T03:33:32.195Z</lastmod>
+    <data>
+        <display>
+        <title>《高级数据库系统》笔记—— 一、简介</title>
+        <pubTime>2016-04-28T11:45:02.829Z</pubTime>
+        
+        <tag>学习笔记</tag>
+         
+        <tag>高级数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/01/access-by-proxy/</loc>
+    <lastmod>2016-05-01T01:48:16.812Z</lastmod>
+    <data>
+        <display>
+        <title>通过在线代理获取网站的最新域名</title>
+        <pubTime>2016-05-01T00:59:14.257Z</pubTime>
+        
+        <tag>代理</tag>
+         
+        <tag>互联网</tag>
+         
+         
+           
+             
+              <breadCrumb title="互联网" url="http://wenqiang-china.github.io/categories/%E4%BA%92%E8%81%94%E7%BD%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/29/python-rumen-chart/</loc>
+    <lastmod>2016-04-29T13:55:32.007Z</lastmod>
+    <data>
+        <display>
+        <title>Python入门神图</title>
+        <pubTime>2016-04-29T13:51:58.377Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>入门教程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/29/youkutudou-intern-coding/</loc>
+    <lastmod>2016-04-29T13:47:28.954Z</lastmod>
+    <data>
+        <display>
+        <title>优酷土豆2016实习生笔试 Python编程题</title>
+        <pubTime>2016-04-29T12:14:22.287Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>编程题</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/29/music-during-work/</loc>
+    <lastmod>2016-04-29T12:48:45.992Z</lastmod>
+    <data>
+        <display>
+        <title>你工作的时候该听什么音乐？</title>
+        <pubTime>2016-04-29T11:25:58.679Z</pubTime>
+        
+        <tag>音乐</tag>
+         
+        <tag>休闲</tag>
+         
+         
+           
+             
+              <breadCrumb title="休闲" url="http://wenqiang-china.github.io/categories/%E4%BC%91%E9%97%B2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/04/28/mysqldb-install/</loc>
+    <lastmod>2016-04-29T12:48:22.685Z</lastmod>
+    <data>
+        <display>
+        <title>MySQLdb安装记录</title>
+        <pubTime>2016-04-28T12:33:00.399Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>MySQLdb</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>
