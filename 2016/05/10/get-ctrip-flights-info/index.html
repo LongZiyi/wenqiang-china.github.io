@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta name="google-site-verification" content="ry13_BVXDaPDqyJQjRf98wAnsMCsQp4QF69QGbEXA74" />
+  <meta name="baidu-site-verification" content="ENWm6ay4ug" />
+  <meta name="msvalidate.01" content="69587B143623DA93DFA18F587EACF888" />
+  <meta charset="utf-8">
+  
+  <title>用Python抓取携程网机票信息 过程纪实（上篇） | 文强的个人空间</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x73B0;&amp;#x5728;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x9700;&amp;#x6C42;&amp;#xFF0C;&amp;#x60F3;&amp;#x67E5;&amp;#x8BE2;&amp;#x4E00;&amp;#x4E0B;&amp;#x7ED9;&amp;#x5B9A;&amp;#x51FA;&amp;#x53D1;&amp;#x5730;&amp;#x548C;&amp;#x76EE;&amp;#x7684;&amp;#x5730;&amp;#x7684;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Python抓取携程网机票信息 过程纪实（上篇）">
+<meta property="og:url" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/index.html">
+<meta property="og:site_name" content="文强的个人空间">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x73B0;&amp;#x5728;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x9700;&amp;#x6C42;&amp;#xFF0C;&amp;#x60F3;&amp;#x67E5;&amp;#x8BE2;&amp;#x4E00;&amp;#x4E0B;&amp;#x7ED9;&amp;#x5B9A;&amp;#x51FA;&amp;#x53D1;&amp;#x5730;&amp;#x548C;&amp;#x76EE;&amp;#x7684;&amp;#x5730;&amp;#x7684;">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/flights_search_result.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/search_ctrip.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/携程网机票信息显示页面.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/F12工具截图.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/包含航班信息的js文件.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/响应选项卡.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/fis截图.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/object查看.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/object航班信息.png">
+<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/object航班信息（二）.png">
+<meta property="og:updated_time" content="2016-05-10T11:14:37.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Python抓取携程网机票信息 过程纪实（上篇）">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x73B0;&amp;#x5728;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x9700;&amp;#x6C42;&amp;#xFF0C;&amp;#x60F3;&amp;#x67E5;&amp;#x8BE2;&amp;#x4E00;&amp;#x4E0B;&amp;#x7ED9;&amp;#x5B9A;&amp;#x51FA;&amp;#x53D1;&amp;#x5730;&amp;#x548C;&amp;#x76EE;&amp;#x7684;&amp;#x5730;&amp;#x7684;">
+<meta name="twitter:image" content="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/flights_search_result.png">
+  
+    <link rel="alternative" href="/atom.xml" title="文强的个人空间" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.9/clipboard.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+          fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+          scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.0.9/scrollreveal.min.js"
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">wenqiang</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:wenqiang_china@126.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2631742593/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/wenqiang-china/" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/wen-qiang-83-85" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/休闲/">休闲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入门教程/">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/wenqiang-china/">Wenqiang</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Python党，立志成为全栈工程师的菜鸟一枚。爱大数据，更爱美女。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">wenqiang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">wenqiang</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:wenqiang_china@126.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2631742593/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/wenqiang-china/" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/wen-qiang-83-85" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-get-ctrip-flights-info" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/10/get-ctrip-flights-info/" class="article-date">
+      <time datetime="2016-05-10T08:40:37.542Z" itemprop="datePublished">2016-05-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用Python抓取携程网机票信息 过程纪实（上篇）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x60F3;&#x67E5;&#x8BE2;&#x4E00;&#x4E0B;&#x7ED9;&#x5B9A;&#x51FA;&#x53D1;&#x5730;&#x548C;&#x76EE;&#x7684;&#x5730;&#x7684;&#x673A;&#x7968;&#x6570;&#x76EE;&#xFF0C;&#x7136;&#x540E;&#x5F97;&#x5230;&#x6240;&#x9700;&#x8981;&#x7684;&#x822A;&#x73ED;&#x4FE1;&#x606F;&#x3002;&#x4E0D;&#x77E5;&#x9053;&#x54EA;&#x4E2A;&#x7F51;&#x7AD9;&#x6BD4;&#x8F83;&#x597D;&#xFF0C;&#x4E8E;&#x662F;&#x7528;bing&#x67E5;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x643A;&#x7A0B;&#x5728;bing&#x6253;&#x7684;&#x5E7F;&#x544A;&#x3002;<img src="/2016/05/10/get-ctrip-flights-info/flights_search_result.png" alt="bing&#x641C;&#x7D22;&#x622A;&#x56FE;"><br>&#x79C9;&#x627F;&#x7740;&#x5BF9;bing&#x641C;&#x7D22;&#x4E00;&#x8D2F;&#x7684;&#x4FE1;&#x4EFB;(<em>^__^</em>)&#xFF0C;&#x6211;&#x70B9;&#x5F00;&#x4E86;&#x643A;&#x7A0B;&#x673A;&#x7968;&#x67E5;&#x8BE2;&#x7684;&#x94FE;&#x63A5;&#x3002;<br><img src="/2016/05/10/get-ctrip-flights-info/search_ctrip.png" alt="ctrip&#x673A;&#x7968;&#x67E5;&#x8BE2;"><br>&#x5728;&#x4E0A;&#x56FE;&#x7684;&#x5DE6;&#x4FA7;&#x67E5;&#x8BE2;&#x7248;&#x5757;&#x9009;&#x62E9;&#x51FA;&#x53D1;&#x57CE;&#x5E02;&#x548C;&#x76EE;&#x7684;&#x57CE;&#x5E02;&#x540E;&#x70B9;&#x51FB;&#x641C;&#x7D22;&#x6309;&#x94AE;&#xFF0C;&#x4F1A;&#x8DF3;&#x8F6C;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x9875;&#x9762;,&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;<br><img src="/2016/05/10/get-ctrip-flights-info/&#x643A;&#x7A0B;&#x7F51;&#x673A;&#x7968;&#x4FE1;&#x606F;&#x663E;&#x793A;&#x9875;&#x9762;.png" alt="&#x643A;&#x7A0B;&#x7F51;&#x673A;&#x7968;&#x4FE1;&#x606F;"><br>&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x663E;&#x793A;&#x7ED3;&#x679C;&#x6B63;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x8981;&#x7684;&#xFF0C;&#x4E0A;&#x9762;&#x6709;&#x822A;&#x73ED;&#x7684;&#x6570;&#x76EE;&#x548C;&#x76F8;&#x5E94;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x83B7;&#x53D6;&#x5462;&#xFF1F;</p>
+<h3 id="&#x9875;&#x9762;&#x5206;&#x6790;"><a href="#&#x9875;&#x9762;&#x5206;&#x6790;" class="headerlink" title="&#x9875;&#x9762;&#x5206;&#x6790;"></a>&#x9875;&#x9762;&#x5206;&#x6790;</h3><h4 id="&#x76F4;&#x63A5;&#x8BFB;&#x53D6;html&#x6587;&#x6863;&#x5417;&#xFF1F;"><a href="#&#x76F4;&#x63A5;&#x8BFB;&#x53D6;html&#x6587;&#x6863;&#x5417;&#xFF1F;" class="headerlink" title="&#x76F4;&#x63A5;&#x8BFB;&#x53D6;html&#x6587;&#x6863;&#x5417;&#xFF1F;"></a>&#x76F4;&#x63A5;&#x8BFB;&#x53D6;html&#x6587;&#x6863;&#x5417;&#xFF1F;</h4><p>&#x663E;&#x7136;&#x4E0D;&#x884C;&#xFF0C;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x663E;&#x793A;&#x7528;&#x5230;&#x4E86;Ajax&#x7684;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#xFF0C;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;html&#x6587;&#x6863;&#x662F;&#x83B7;&#x53D6;&#x4E0D;&#x5230;&#x6570;&#x636E;&#x7684;&#x3002;&#x8BDD;&#x8BF4;&#x56DE;&#x6765;&#x8981;&#x662F;&#x8FD9;&#x4E48;&#x5BB9;&#x6613;&#x5C31;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x8FD8;&#x72AF;&#x5F97;&#x7740;&#x5199;&#x4E2A;&#x535A;&#x5BA2;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x5417;:-D</p>
+<h4 id="&#x89E3;&#x6790;JavaScript&#x4EE3;&#x7801;&#xFF1F;"><a href="#&#x89E3;&#x6790;JavaScript&#x4EE3;&#x7801;&#xFF1F;" class="headerlink" title="&#x89E3;&#x6790;JavaScript&#x4EE3;&#x7801;&#xFF1F;"></a>&#x89E3;&#x6790;JavaScript&#x4EE3;&#x7801;&#xFF1F;</h4><p>&#x6CA1;&#x9519;&#xFF0C;JavaScript&#x4EE3;&#x7801;&#x662F;&#x8FDF;&#x65E9;&#x8981;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0D;&#x662F;&#x73B0;&#x5728;&#xFF08;&#x4E8B;&#x5B9E;&#x4E0A;&#x8981;&#x7559;&#x5230;&#x4E0B;&#x7BC7;&#x535A;&#x5BA2;&#xFF09;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8981;&#x505A;&#x7684;&#x662F;&#x5BF9;&#x540E;&#x53F0;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x6709;&#x4E2A;&#x5927;&#x4F53;&#x7684;&#x8BA4;&#x8BC6;&#xFF0C;&#x4F8B;&#x5982;&#x6570;&#x636E;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x4FE1;&#x606F;&#x8BBF;&#x95EE;&#xFF0C;&#x800C;&#x4E14;&#x6807;&#x9898;&#x8BF4;&#x4E86;&#x7528;Python&#xFF0C;&#x90A3;&#x4E48;&#x8FD8;&#x8981;&#x8003;&#x8651;&#x5230;&#x600E;&#x6837;&#x7528;Python&#x5904;&#x7406;&#x5F97;&#x5230;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x4E0A;&#x8FD9;&#x4E9B;&#x662F;&#x672C;&#x535A;&#x5BA2;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x505A;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x81F3;&#x4E8E;&#x5176;&#x4ED6;&#x5185;&#x5BB9;&#x5C06;&#x5728;&#x4E0B;&#x7BC7;&#x535A;&#x5BA2;&#x4E2D;&#x8BB2;&#x5230;&#x3002;<br>&#x6211;&#x7528;&#x7684;PC&#x673A;&#xFF0C;firefox&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x76F4;&#x63A5;F12&#x6253;&#x5F00;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF0C;&#x5207;&#x6362;&#x5230;&#x7F51;&#x7EDC;&#x9009;&#x9879;&#x5361;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x65B0;&#x8F7D;&#x5165;&#x9875;&#x9762;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x7684;&#x7ED3;&#x679C;<br><img src="/2016/05/10/get-ctrip-flights-info/F12&#x5DE5;&#x5177;&#x622A;&#x56FE;.png" alt="F12&#x622A;&#x56FE;"><br>&#x4E0A;&#x9762;&#x7684;&#x56FE;&#x4E0D;&#x7528;&#x591A;&#x4ECB;&#x7ECD;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x5DE6;&#x4FA7;&#x663E;&#x793A;&#x7684;&#x662F;&#x7F51;&#x9875;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x4E2D;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x53F3;&#x8FB9;&#x662F;&#x76F8;&#x5E94;&#x7684;&#x5185;&#x5BB9;&#x4FE1;&#x606F;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x56FE;&#x4E2D;&#x9009;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x663E;&#x793A;&#x7684;&#x4E3B;&#x9875;&#x9762;&#xFF0C;&#x7136;&#x800C;&#x8FD9;&#x4E2A;&#x4E3B;&#x9875;&#x9762;&#x9664;&#x4E86;&#x663E;&#x793A;&#x6807;&#x9898;&#x680F;&#x3001;&#x83DC;&#x5355;&#x680F;&#x3001;&#x9875;&#x811A;&#x4E4B;&#x5916;&#x4EC0;&#x4E48;&#x4E5F;&#x6CA1;&#x6709;&#xFF0C;&#x663E;&#x7136;&#x54B1;&#x4EEC;&#x8981;&#x7684;&#x4FE1;&#x606F;&#x4E0D;&#x5728;&#x8FD9;&#xFF08;&#x60F3;&#x67E5;&#x770B;&#x6BCF;&#x4E2A;&#x9875;&#x9762;&#x663E;&#x793A;&#x6548;&#x679C;&#xFF0C;&#x5728;&#x4E0A;&#x56FE;&#x4E2D;&#x5148;&#x9009;&#x4E2D;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x53F3;&#x4FA7;&#x9009;&#x62E9;&#x201C;&#x9884;&#x89C8;&#x201D;&#x9009;&#x9879;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x9875;&#x9762;&#x7684;&#x9884;&#x89C8;&#x6548;&#x679C;&#xFF0C;&#x4E0A;&#x56FE;&#x53F3;&#x4FA7;&#x5C31;&#x662F;&#x4E3B;&#x9875;&#x9762;&#x7684;&#x9884;&#x89C8;&#x6548;&#x679C;&#xFF09;&#x3002;&#x77E5;&#x9053;&#x4E0A;&#x9762;&#x7684;&#x6280;&#x5DE7;&#x4EE5;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E00;&#x8FB9;&#x9009;&#x62E9;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x8FB9;&#x9884;&#x89C8;&#x9875;&#x9762;&#xFF0C;&#x8FD9;&#x6837;&#x5F88;&#x5FEB;&#x5C31;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x5230;&#x6240;&#x9700;&#x7684;js&#x6587;&#x4EF6;&#x3002;&#x4E0B;&#x56FE;&#x5C31;&#x662F;&#x5305;&#x542B;&#x822A;&#x73ED;&#x4FE1;&#x606F;&#x7684;js&#x6587;&#x4EF6;<br><img src="/2016/05/10/get-ctrip-flights-info/&#x5305;&#x542B;&#x822A;&#x73ED;&#x4FE1;&#x606F;&#x7684;js&#x6587;&#x4EF6;.png" alt="&#x5305;&#x542B;&#x822A;&#x73ED;&#x4FE1;&#x606F;&#x7684;js&#x6587;&#x4EF6;"><br>&#x5728;&#x53F3;&#x4FA7;&#x7684;&#x9884;&#x89C8;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x822A;&#x73ED;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x8FC7;&#x683C;&#x5F0F;&#x4E0D;&#x591F;&#x76F4;&#x89C2;&#xFF0C;&#x5C06;&#x5176;&#x5207;&#x6362;&#x5230;&#x201C;&#x54CD;&#x5E94;&#x201D;&#x9009;&#x9879;&#x5361;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x662F;json&#x683C;&#x5F0F;&#x3002;<br><img src="/2016/05/10/get-ctrip-flights-info/&#x54CD;&#x5E94;&#x9009;&#x9879;&#x5361;.png" alt="&#x54CD;&#x5E94;&#x9009;&#x9879;&#x5361;&#x67E5;&#x770B;"><br>&#x5728;json&#x6570;&#x636E;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x201D;fis&#x201D;&#x5BF9;&#x5E94;0~38&#x5171;39&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x5E94;&#x7F51;&#x9875;&#x4E2D;&#x663E;&#x793A;&#x7684;39&#x4E2A;&#x822A;&#x73ED;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;<br><img src="/2016/05/10/get-ctrip-flights-info/fis&#x622A;&#x56FE;.png" alt=""><br>&#x6BCF;&#x4E2A;object&#x91CC;&#x9762;&#x5305;&#x542B;&#x8BE5;&#x822A;&#x73ED;&#x7684;&#x5177;&#x4F53;&#x4FE1;&#x606F;&#xFF0C;&#x4E0B;&#x56FE;&#x662F;&#x6253;&#x5F00;&#x7B2C;&#x4E00;&#x4E2A;object&#x770B;&#x5230;&#x7684;&#x5185;&#x5BB9;<br><img src="/2016/05/10/get-ctrip-flights-info/object&#x67E5;&#x770B;.png" alt=""><br>&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;&#x9875;&#x9762;&#x5C55;&#x793A;&#x6240;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x5168;&#x90E8;&#x6570;&#x636E;&#x4FE1;&#x606F;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;<br><img src="/2016/05/10/get-ctrip-flights-info/object&#x822A;&#x73ED;&#x4FE1;&#x606F;.png" alt=""><br><img src="/2016/05/10/get-ctrip-flights-info/object&#x822A;&#x73ED;&#x4FE1;&#x606F;&#xFF08;&#x4E8C;&#xFF09;.png" alt=""></p>
+<h3 id="&#x7F16;&#x5199;&#x722C;&#x866B;"><a href="#&#x7F16;&#x5199;&#x722C;&#x866B;" class="headerlink" title="&#x7F16;&#x5199;&#x722C;&#x866B;"></a>&#x7F16;&#x5199;&#x722C;&#x866B;</h3><p>&#x4E0A;&#x9762;&#x5DF2;&#x7ECF;&#x627E;&#x5230;&#x4E86;&#x5305;&#x542B;&#x6570;&#x636E;&#x7684;js&#x4EE3;&#x7801;&#xFF0C;&#x5047;&#x5982;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x83B7;&#x53D6;&#x822A;&#x73ED;&#x7684;&#x6570;&#x91CF;&#x4FE1;&#x606F;&#xFF08;&#x7C7B;&#x4F3C;&#x4E8E;&#x4E0A;&#x6587;&#x7684;39&#xFF09;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5728;Python&#x4E2D;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x8BE5;url&#x83B7;&#x53D6;&#x8D44;&#x6E90;&#x5C82;&#x4E0D;&#x7F8E;&#x54C9;&#xFF01;&#x7136;&#x5E76;&#x5375;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x662F;&#x4E0D;&#x884C;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5B8C;&#x6210;&#x5BF9;js&#x5BF9;&#x5E94;url&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x5E76;&#x5BF9;response&#x9875;&#x9762;&#x8FDB;&#x884C;&#x4E86;&#x663E;&#x793A;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_that</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    url=<span class="string">&apos;http://flights.ctrip.com/domesticsearch/search/SearchFirstRouteFlights?DCity1=HRB&amp;ACity1=SHA&amp;SearchType=S&amp;DDate1=2016-05-13&amp;IsNearAirportRecommond=0&amp;rk=5.189667156909168071745&amp;CK=89D3A4A3A5F8A7F7E48ACDD1F451127A&amp;r=0.1440474125154478474718&apos;</span></span><br><span class="line"></span><br><span class="line">    response=urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">print</span> response</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    get_that()</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{<span class="string">&quot;lps&quot;</span>:{},<span class="string">&quot;fis&quot;</span>:[],<span class="string">&quot;islpc&quot;</span>:true,<span class="string">&quot;tf&quot;</span>:null,<span class="string">&quot;sf&quot;</span>:null,<span class="string">&quot;rflag&quot;</span>:{<span class="string">&quot;rn&quot;</span>:false,<span class="string">&quot;rt&quot;</span>:false,<span class="string">&quot;rht&quot;</span>:false,<span class="string">&quot;rtp&quot;</span>:false,<span class="string">&quot;fquery&quot;</span>:true},<span class="string">&quot;lp&quot;</span>:<span class="number">0</span>,<span class="string">&quot;lcfp&quot;</span>:<span class="number">0</span>,<span class="string">&quot;lr&quot;</span>:<span class="number">0</span>,<span class="string">&quot;rpl&quot;</span>:null,<span class="string">&quot;icfnf&quot;</span>:false,<span class="string">&quot;al&quot;</span>:[],<span class="string">&quot;iaw&quot;</span>:false,<span class="string">&quot;atc&quot;</span>:<span class="number">0</span>,<span class="string">&quot;abc&quot;</span>:<span class="number">0</span>,<span class="string">&quot;hmat&quot;</span>:false,<span class="string">&quot;hmab&quot;</span>:false,<span class="string">&quot;pc&quot;</span>:<span class="number">0</span>,<span class="string">&quot;latp&quot;</span>:<span class="number">0</span>,<span class="string">&quot;latdt&quot;</span>:<span class="string">&quot;0001-01-01 00:00:00&quot;</span>,<span class="string">&quot;gpl&quot;</span>:null,<span class="string">&quot;rlp&quot;</span>:null,<span class="string">&quot;rrc&quot;</span>:<span class="number">0</span>,<span class="string">&quot;rtgt&quot;</span>:null,<span class="string">&quot;nnrr&quot;</span>:<span class="number">0</span>,<span class="string">&quot;airfreq&quot;</span>:null,<span class="string">&quot;apb&quot;</span>:{},<span class="string">&quot;als&quot;</span>:{},<span class="string">&quot;fcts&quot;</span>:[],<span class="string">&quot;ibc&quot;</span>:{},<span class="string">&quot;TraceLog&quot;</span>:null,<span class="string">&quot;Error&quot;</span>:{<span class="string">&quot;Code&quot;</span>:<span class="number">104</span>,<span class="string">&quot;Message&quot;</span>:<span class="string">&quot;&quot;</span>,<span class="string">&quot;Data&quot;</span>:<span class="string">&quot;&quot;</span>}}</span><br></pre></td></tr></table></figure></p>
+<p>&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x6570;&#x636E;&#x3002;error&#x4FE1;&#x606F;&#x4E2D;&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x4E3A;104&#xFF0C;&#x4E0B;&#x7BC7;&#x535A;&#x5BA2;&#x4F1A;&#x8C08;&#x5230;&#x8FD9;&#x4E2A;104&#x662F;&#x600E;&#x4E48;&#x6765;&#x7684;&#x3002;&#x4ECE;&#x7ED3;&#x679C;&#x770B;&#x643A;&#x7A0B;&#x7684;&#x670D;&#x52A1;&#x5668;&#x5BF9;request&#x7684;&#x6D88;&#x606F;&#x5934;&#x8FDB;&#x884C;&#x4E86;&#x9A8C;&#x8BC1;&#xFF0C;&#x8D38;&#x7136;&#x8BBF;&#x95EE;&#x4E0D;&#x884C;&#xFF0C;&#x90A3;&#x5C31;&#x9700;&#x8981;&#x4F2A;&#x88C5;&#x4E00;&#x4E0B;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x6F14;&#x793A;&#x4E86;&#x7528;&#x8BBE;&#x7F6E;&#x4E86;&#x8BF7;&#x6C42;&#x5934;&#x7684;request&#x8BBF;&#x95EE;&#x521A;&#x624D;&#x7684;&#x7F51;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x5C06;json&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#x6210;Python&#x4E2D;&#x7684;dict&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x5176;&#x4E2D;&#x201D;fis&#x201D;&#x5173;&#x952E;&#x5B57;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x7684;&#x6570;&#x76EE;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_json</span><span class="params">()</span>:</span></span><br><span class="line">    url=<span class="string">&apos;http://flights.ctrip.com/domesticsearch/search/SearchFirstRouteFlights?DCity1=HRB&amp;ACity1=SHA&amp;SearchType=S&amp;DDate1=2016-05-13&amp;IsNearAirportRecommond=0&amp;rk=5.189667156909168071745&amp;CK=89D3A4A3A5F8A7F7E48ACDD1F451127A&amp;r=0.1440474125154478474718&apos;</span></span><br><span class="line">    headers={<span class="string">&apos;Host&apos;</span>:<span class="string">&quot;flights.ctrip.com&quot;</span>,<span class="string">&apos;User-Agent&apos;</span>:<span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0&quot;</span>,<span class="string">&apos;Referer&apos;</span>:<span class="string">&quot;http://flights.ctrip.com/booking/hrb-sha-day-1.html?ddate1=2016-05-13&quot;</span>}</span><br><span class="line">    req=urllib2.Request(url,headers=headers)</span><br><span class="line">    res=urllib2.urlopen(req)</span><br><span class="line">    content=res.read()</span><br><span class="line">    dict_content=json.loads(content,encoding=<span class="string">&quot;gb2312&quot;</span>)</span><br><span class="line">    <span class="keyword">print</span> len(dict_content[<span class="string">&apos;fis&apos;</span>])</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    get_json()</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#x7528;&#x5230;&#x4E86;urllib2&#x6A21;&#x5757;&#x548C;json&#x6A21;&#x5757;&#xFF0C;&#x524D;&#x8005;&#x7528;&#x4E8E;&#x7F51;&#x7EDC;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x540E;&#x8005;&#x7528;&#x4E8E;&#x89E3;&#x6790;json&#x683C;&#x5F0F;&#x3002;&#x7531;&#x4E8E;&#x643A;&#x7A0B;&#x7F51;&#x7F51;&#x9875;&#x7684;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#x683C;&#x5F0F;&#x4E3A;gb-2312&#xFF0C;&#x6240;&#x4EE5;&#x6389;&#x7528;json&#x7684;loads&#x65B9;&#x6CD5;&#x65F6;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x96C6;&#x4E3A;gb-2312&#x3002;&#x4E0B;&#x9762;&#x662F;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">39</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x7EC8;&#x4E8E;&#x5F97;&#x5230;&#x4E86;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x5BF9;&#x822A;&#x73ED;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x63D0;&#x53D6;&#x4E86;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x63D0;&#x53D6;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x901A;&#x8FC7;&#x5C06;json&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;dict&#xFF0C;&#x8BBF;&#x95EE;&#x5176;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x952E;&#x503C;&#x5C31;&#x53D8;&#x5F97;&#x5F88;&#x8F7B;&#x677E;&#x4E86;&#x3002;</p>
+<h3 id="&#x5C0F;&#x7ED3;"><a href="#&#x5C0F;&#x7ED3;" class="headerlink" title="&#x5C0F;&#x7ED3;"></a>&#x5C0F;&#x7ED3;</h3><p>&#x81F3;&#x6B64;&#xFF0C;&#x672C;&#x6587;&#x5C31;&#x544A;&#x4E00;&#x6BB5;&#x843D;&#x4E86;&#xFF0C;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x8C08;&#x5230;&#x4E86;&#x5982;&#x4F55;&#x5FEB;&#x901F;&#x5B9A;&#x4F4D;&#x5230;&#x6240;&#x9700;&#x7684;js&#x6587;&#x4EF6;&#xFF0C;&#x4EE5;&#x53CA;&#x6784;&#x9020;headers&#xFF0C;&#x6700;&#x540E;&#x5C06;json&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;dict&#x683C;&#x5F0F;&#x65B9;&#x4FBF;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x4F46;&#x95EE;&#x9898;&#x5230;&#x8FD9;&#x91CC;&#x8FD8;&#x6CA1;&#x6709;&#x7ED3;&#x675F;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x662F;&#x7ED9;&#x5B9A;&#x51FA;&#x53D1;&#x5730;&#x3001;&#x5230;&#x8FBE;&#x5730;&#x548C;&#x51FA;&#x53D1;&#x65F6;&#x95F4;&#xFF0C;&#x5F97;&#x5230;&#x822A;&#x73ED;&#x6570;&#x91CF;&#xFF0C;&#x7136;&#x800C;&#x73B0;&#x5728;&#x5305;&#x542B;&#x6570;&#x636E;&#x7684;js&#x6587;&#x4EF6;&#x662F;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x722C;&#x866B;&#xFF0C;&#x663E;&#x7136;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x3002;&#x89C2;&#x5BDF;url&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x91CC;&#x9762;&#x9664;&#x4E86;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684;&#x51FA;&#x53D1;&#x57CE;&#x5E02;(DCity)&#x3001;&#x76EE;&#x7684;&#x57CE;&#x5E02;(ACity)&#x3001;&#x5355;&#x7A0B;(SearchType=S)&#x3001;&#x65E5;&#x671F;(DDate)&#x548C;IsNearAirportRecommond&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E09;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x6570;(rk&#x3001;CK&#x3001;r)&#xFF0C;&#x60F3;&#x8981;&#x6784;&#x9020;&#x51FA;&#x8FD9;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x770B;js&#x4EE3;&#x7801;&#x4E86;&#xFF0C;&#x4E0B;&#x7BC7;&#x535A;&#x5BA2;&#x4F1A;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;js&#x4EE3;&#x7801;&#x4E2D;&#x8FD9;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x201C;&#x524D;&#x4E16;&#x4ECA;&#x751F;&#x201D;&#xFF0C;&#x656C;&#x8BF7;&#x671F;&#x5F85;&#xFF01;</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/10/get-ctrip-flights-info/">用Python抓取携程网机票信息 过程纪实（上篇）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">wenqiang</a></p>
+        <p><span>发布时间:</span>2016-05-10, 16:40:37</p>
+        <p><span>最后更新:</span>2016-05-10, 19:14:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/10/get-ctrip-flights-info/" title="用Python抓取携程网机票信息 过程纪实（上篇）">http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/　　作者: wenqiang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/02/python-functions/">
+                    Python函数
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面分析"><span class="toc-number">2.</span> <span class="toc-text">页面分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#直接读取html文档吗？"><span class="toc-number">2.1.</span> <span class="toc-text">直接读取html文档吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析JavaScript代码？"><span class="toc-number">2.2.</span> <span class="toc-text">解析JavaScript代码？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写爬虫"><span class="toc-number">3.</span> <span class="toc-text">编写爬虫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"用Python抓取携程网机票信息 过程纪实（上篇）　| 文强的个人空间　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/10/get-ctrip-flights-info/" data-title="用Python抓取携程网机票信息 过程纪实（上篇）" data-url="http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wenqiangchina"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://wenqiang-china.github.io/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/02/python-functions/" title="下一篇: Python函数">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/get-ctrip-flights-info/">用Python抓取携程网机票信息 过程纪实（上篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/python-functions/">Python函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter9/">《高级数据库系统》笔记——  第九章 并发控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter8/">《高级数据库系统》笔记——  第八章 日志与故障恢复</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter7/">《高级数据库系统》笔记——  第七章 查询编译器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter6/">《高级数据库系统》笔记——  第六章 查询执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter5/">《高级数据库系统》笔记——  第五章 多维索引</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter4/">《高级数据库系统》笔记——  第四章 索引结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/access-by-proxy/">通过在线代理获取网站的最新域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter3/">《高级数据库系统》笔记——  第三章 数据元素和表示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter2/">《高级数据库系统》笔记——  第二章 数据存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter1/">《高级数据库系统》笔记——  第一章 数据库系统简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/python-rumen-chart/">Python入门神图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/youkutudou-intern-coding/">优酷土豆2016实习生笔试 Python编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/music-during-work/">你工作的时候该听什么音乐？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/mysqldb-install/">MySQLdb安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/adb-note-1/">《高级数据库系统》笔记—— 一、简介</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 wenqiang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </div>
+</body>
+</html>
+
