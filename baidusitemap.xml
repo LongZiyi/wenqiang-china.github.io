@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://wenqiang-china.github.io/2016/05/11/get-ctrip-flights-info-2/</loc>
+    <lastmod>2016-05-11T14:12:32.845Z</lastmod>
+    <data>
+        <display>
+        <title>用Python抓取携程网机票信息 过程纪实（下篇）</title>
+        <pubTime>2016-05-10T23:47:11.016Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/</loc>
-    <lastmod>2016-05-10T11:22:46.037Z</lastmod>
+    <lastmod>2016-05-10T11:26:04.289Z</lastmod>
     <data>
         <display>
         <title>用Python抓取携程网机票信息 过程纪实（上篇）</title>

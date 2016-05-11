@@ -7,8 +7,40 @@
     </url>
 
     <url>
+        <loc>http://wenqiang-china.github.io/2016/05/11/get-ctrip-flights-info-2/</loc>
+        <lastmod>2016-05-11T14:12:32.845Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/</loc>
+        <lastmod>2016-05-10T11:26:04.289Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/2016/05/02/python-functions/</loc>
+        <lastmod>2016-05-03T15:26:14.800Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/</loc>
+        <lastmod>2016-05-01T14:43:14.058Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter8/</loc>
-        <lastmod>2016-05-01T14:21:45.805Z</lastmod>
+        <lastmod>2016-05-01T14:31:14.992Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -41,14 +73,6 @@
     <url>
         <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter4/</loc>
         <lastmod>2016-05-01T04:24:33.597Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/</loc>
-        <lastmod>2016-05-01T04:16:34.084Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
