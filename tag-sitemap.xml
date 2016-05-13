@@ -72,15 +72,43 @@
     </url>
 
     <url>
-        <loc>http://wenqiang-china.github.io/tags/Python/</loc>
-        <lastmod>2016-05-11T14:12:32.845Z</lastmod>
+        <loc>http://wenqiang-china.github.io/tags/%E7%88%AC%E8%99%AB/</loc>
+        <lastmod>2016-05-11T14:18:28.177Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://wenqiang-china.github.io/tags/%E7%88%AC%E8%99%AB/</loc>
-        <lastmod>2016-05-11T14:12:32.845Z</lastmod>
+        <loc>http://wenqiang-china.github.io/tags/Python/</loc>
+        <lastmod>2016-05-13T13:29:30.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/Excel/</loc>
+        <lastmod>2016-05-13T13:29:30.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/xlrd/</loc>
+        <lastmod>2016-05-13T13:29:30.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/xlwt/</loc>
+        <lastmod>2016-05-13T13:29:30.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://wenqiang-china.github.io/tags/openpyxl/</loc>
+        <lastmod>2016-05-13T13:29:30.539Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
