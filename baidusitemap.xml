@@ -3,6 +3,136 @@
 
 
     
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/15/python-multi-programming-4/</loc>
+    <lastmod>2016-05-15T11:38:46.946Z</lastmod>
+    <data>
+        <display>
+        <title>Python 并发编程系列--4、多进程编程方法</title>
+        <pubTime>2016-05-15T04:44:44.815Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>并发</tag>
+         
+        <tag>多进程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/15/python-multi-programming-3/</loc>
+    <lastmod>2016-05-15T08:36:48.729Z</lastmod>
+    <data>
+        <display>
+        <title>Python 并发编程系列--3、多线程编程方法</title>
+        <pubTime>2016-05-15T04:39:13.550Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>多线程</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/15/python-queue/</loc>
+    <lastmod>2016-05-15T05:59:21.561Z</lastmod>
+    <data>
+        <display>
+        <title>Python Queue介绍</title>
+        <pubTime>2016-05-15T05:29:24.341Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Queue</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/15/python-multi-programming-2/</loc>
+    <lastmod>2016-05-15T04:43:29.091Z</lastmod>
+    <data>
+        <display>
+        <title>Python 并发编程系列--2、并发方式的选择</title>
+        <pubTime>2016-05-15T02:32:22.078Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>多线程</tag>
+         
+        <tag>并发</tag>
+         
+        <tag>多进程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/15/python-multi-programming/</loc>
+    <lastmod>2016-05-15T04:36:34.415Z</lastmod>
+    <data>
+        <display>
+        <title>Python 并发编程系列--1、浅谈GIL历史及对多线程的影响</title>
+        <pubTime>2016-05-15T01:08:07.230Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>GIL</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>多线程</tag>
+         
+        <tag>并发</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://wenqiang-china.github.io/2016/05/13/python-opetating-excel/</loc>

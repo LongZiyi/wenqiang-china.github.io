@@ -166,7 +166,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openpyxl/">openpyxl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlrd/">xlrd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlwt/">xlwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/休闲/">休闲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入门教程/">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIL/">GIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openpyxl/">openpyxl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlrd/">xlrd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlwt/">xlwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/休闲/">休闲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入门教程/">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多进程/">多进程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
                     </div>
                 </section>
                 
@@ -248,6 +248,369 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-python-queue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-queue/" class="article-date">
+      <time datetime="2016-05-15T05:29:24.341Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/python-queue/">Python Queue介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>Python&#x4E2D;&#x7684;Queue&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x961F;&#x5217;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86;&#x6240;&#x6709;&#x9700;&#x8981;&#x7684;&#x9501;&#x539F;&#x8BED;&#x3002;Queue&#x5B9E;&#x73B0;&#x4E86;&#x4E09;&#x79CD;&#x961F;&#x5217;&#xFF1A;&#x666E;&#x901A;&#x7684;FIFO&#x961F;&#x5217;&#xFF08;Queue&#xFF09;&#x3001;LIFO&#x961F;&#x5217;&#xFF08;LifoQueue&#xFF09;&#x3001;&#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;&#xFF08;PriorityQueue&#xFF09;&#x3002;&#x5176;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0B;&#x9762;&#x4EE5;&#x666E;&#x901A;&#x7684;&#x5148;&#x8FDB;&#x5148;&#x51FA;&#x961F;&#x5217;Queue&#x4E3A;&#x4F8B;&#x8C08;&#x4E00;&#x4E0B;Queue&#x4E2D;&#x7684;&#x4E3B;&#x8981;&#x65B9;&#x6CD5;</p>
+<h4 id="Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;"><a href="#Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;" class="headerlink" title="Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;"></a>Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;</h4><p>&#x4F7F;&#x7528;Queue<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&#x5F15;&#x5165;Queue&#x7C7B;</span></span><br><span class="line"><span class="keyword">from</span> Queue <span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5F97;&#x5230;&#x961F;&#x5217;&#x7684;&#x5927;&#x5C0F;</span></span><br><span class="line">Queue.qsize()</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5224;&#x65AD;&#x961F;&#x5217;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</span></span><br><span class="line">Queue.empty()</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5224;&#x65AD;&#x961F;&#x5217;&#x662F;&#x5426;&#x5DF2;&#x6EE1;</span></span><br><span class="line">Queue.full()</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x4ECE;&#x961F;&#x5217;&#x5934;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x963B;&#x585E;</span></span><br><span class="line">Queue.get([block[,timeout]])</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x4ECE;&#x961F;&#x5217;&#x5934;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x975E;&#x963B;&#x585E;&#x65B9;&#x5F0F;</span></span><br><span class="line">Queue.get_nowait()</span><br><span class="line"><span class="comment">#&#x6216;&#x8005;</span></span><br><span class="line">Queue.get(block=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x963B;&#x585E;&#x5199;&#x5165;&#x961F;&#x5217;</span></span><br><span class="line">Queue.put(item)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x975E;&#x963B;&#x585E;&#x5199;&#x5165;&#x961F;&#x5217;</span></span><br><span class="line">Queue.put_nowait(item)</span><br><span class="line"><span class="comment">#&#x6216;&#x8005;</span></span><br><span class="line">Queue.put(item,block=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5411;&#x961F;&#x5217;&#x4E2D;&#x5DF2;&#x5B8C;&#x6210;&#x7684;&#x5143;&#x7D20;&#x53D1;&#x9001;join&#x4FE1;&#x53F7;</span></span><br><span class="line">Queue.task_done()</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0A;&#x9762;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x548C;&#x5411;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x90FD;&#x6709;&#x963B;&#x585E;&#x548C;&#x975E;&#x963B;&#x585E;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x91C7;&#x7528;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x5143;&#x7D20;&#x800C;&#x5143;&#x7D20;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x7EBF;&#x7A0B;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#x7B49;&#x5F85;&#x77E5;&#x9053;&#x961F;&#x5217;&#x4E2D;&#x6709;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x53D6;&#x51FA;&#xFF1B;&#x5982;&#x679C;&#x5411;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x800C;&#x6B64;&#x65F6;&#x961F;&#x5217;&#x5DF2;&#x6EE1;&#xFF0C;&#x5219;&#x540C;&#x6837;&#x7EBF;&#x7A0B;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#x76F4;&#x5230;&#x505C;&#x6B62;&#x3002;&#x5982;&#x679C;&#x91C7;&#x7528;&#x975E;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#xFF0C;&#x53D6;&#x5143;&#x7D20;&#x65F6;&#x4E00;&#x65E6;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x4F1A;&#x5F15;&#x53D1;Empty&#x5F02;&#x5E38;&#xFF0C;&#x653E;&#x5143;&#x7D20;&#x65F6;&#x4E00;&#x65E6;&#x961F;&#x5217;&#x5DF2;&#x6EE1;&#xFF0C;&#x5C31;&#x4F1A;&#x5F15;&#x53D1;Full&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x91C7;&#x7528;Queue&#x5B9E;&#x73B0;&#x7684;&#x7ECF;&#x5178;&#x751F;&#x4EA7;&#x8005;&#x6D88;&#x8D39;&#x8005;&#x95EE;&#x9898;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6765;&#x6E90;&#xFF1A;<a href="http://blog.itpub.net/22664653/viewspace-764044/" target="_blank" rel="external">Python&#x6A21;&#x5757;&#x4E4B;Queue</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Queue <span class="keyword">import</span> Queue</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment">#Producer thread</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, t_name, queue)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self, name=t_name)</span><br><span class="line">        self.data=queue</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">print</span> <span class="string">&quot;%s: %s is producing %d to the queue!&quot;</span> %(time.ctime(), self.getName(), i)</span><br><span class="line">            self.data.put(i)</span><br><span class="line">            time.sleep(random.randrange(<span class="number">10</span>)/<span class="number">5</span>)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;%s: %s finished!&quot;</span> %(time.ctime(), self.getName())</span><br><span class="line"></span><br><span class="line"><span class="comment">#Consumer thread</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, t_name, queue)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self, name=t_name)</span><br><span class="line">        self.data=queue</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            val = self.data.get()</span><br><span class="line">            <span class="keyword">print</span> <span class="string">&quot;%s: %s is consuming. %d in the queue is consumed!&quot;</span> %(time.ctime(), self.getName(), val)</span><br><span class="line">            time.sleep(random.randrange(<span class="number">10</span>))</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;%s: %s finished!&quot;</span> %(time.ctime(), self.getName())</span><br><span class="line"></span><br><span class="line"><span class="comment">#Main thread</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    queue = Queue()</span><br><span class="line">    producer = Producer(<span class="string">&apos;Pro.&apos;</span>, queue)</span><br><span class="line">    consumer = Consumer(<span class="string">&apos;Con.&apos;</span>, queue)</span><br><span class="line">    producer.start()</span><br><span class="line">    consumer.start()</span><br><span class="line">    producer.join()</span><br><span class="line">    consumer.join()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;All threads terminate!&apos;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<p>&#x6700;&#x540E;&#x9644;&#x4E0A;Queue&#x6A21;&#x5757;&#x7684;&#x6E90;&#x7801;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;A multi-producer, multi-consumer queue.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time <span class="keyword">as</span> _time</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> threading <span class="keyword">as</span> _threading          <span class="comment"># &#x5BFC;&#x5165;threading&#x6A21;&#x5757;</span></span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> dummy_threading <span class="keyword">as</span> _threading    <span class="comment"># &#x8BE5;&#x6A21;&#x5757;&#x7684;&#x63A5;&#x53E3;&#x548C;thread&#x76F8;&#x540C;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;thread&#x6A21;&#x5757;&#x7684;&#x5E73;&#x53F0;&#x4E0A;&#x63D0;&#x4F9B;thread&#x6A21;&#x5757;&#x7684;&#x529F;&#x80FD;&#x3002;</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque               <span class="comment"># https://github.com/BeginMan/pythonStdlib/blob/master/collections.md</span></span><br><span class="line"><span class="keyword">import</span> heapq                                <span class="comment"># &#x5806;&#x6392;&#x5E8F; https://github.com/qiwsir/algorithm/blob/master/heapq.md</span></span><br><span class="line"></span><br><span class="line">__all__ = [<span class="string">&apos;Empty&apos;</span>, <span class="string">&apos;Full&apos;</span>, <span class="string">&apos;Queue&apos;</span>, <span class="string">&apos;PriorityQueue&apos;</span>, <span class="string">&apos;LifoQueue&apos;</span>]  <span class="comment"># &#x6A21;&#x5757;&#x7EA7;&#x522B;&#x66B4;&#x9732;&#x63A5;&#x53E3;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Empty</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;&#x5F53;&#x8C03;&#x7528;Queue.get(block=0)/get_nowait()&#x65F6;&#x89E6;&#x53D1;Empty&#x5F02;&#x5E38;</span><br><span class="line"></span><br><span class="line">    &#x8C03;&#x7528;&#x961F;&#x5217;&#x5BF9;&#x8C61;&#x7684;get()&#x65B9;&#x6CD5;&#x4ECE;&#x961F;&#x5934;&#x5220;&#x9664;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x3002;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x4E3A;block&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;True&#x3002;</span><br><span class="line">    &#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#x4E14;block&#x4E3A;True&#xFF0C;get()&#x5C31;&#x4F7F;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;&#x6682;&#x505C;&#xFF0C;&#x76F4;&#x81F3;&#x6709;&#x9879;&#x76EE;&#x53EF;&#x7528;&#x3002;</span><br><span class="line">    &#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#x4E14;block&#x4E3A;False&#xFF0C;&#x961F;&#x5217;&#x5C06;&#x5F15;&#x53D1;Empty&#x5F02;&#x5E38;</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Full</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;&#x5F53;&#x8C03;&#x7528;Queue.put(block=0)/put_nowait()&#x65F6;&#x89E6;&#x53D1;Full&#x5F02;&#x5E38;</span><br><span class="line"></span><br><span class="line">    &#x5982;&#x679C;&#x961F;&#x5217;&#x5F53;&#x524D;&#x4E3A;&#x7A7A;&#x4E14;block&#x4E3A;1&#xFF0C;put()&#x65B9;&#x6CD5;&#x5C31;&#x4F7F;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;&#x6682;&#x505C;,&#x76F4;&#x5230;&#x7A7A;&#x51FA;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5355;&#x5143;&#x3002;</span><br><span class="line">    &#x5982;&#x679C;block&#x4E3A;0&#xFF0C;put&#x65B9;&#x6CD5;&#x5C06;&#x5F15;&#x53D1;Full&#x5F02;&#x5E38;&#x3002;</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x6700;&#x5927;&#x5927;&#x5C0F;&#x7684;&#x961F;&#x5217;&#x5BF9;&#x8C61;.</span><br><span class="line"></span><br><span class="line">    FIFO(&#x5148;&#x8FDB;&#x5148;&#x51FA;)&#x961F;&#x5217;, &#x7B2C;&#x4E00;&#x52A0;&#x5165;&#x961F;&#x5217;&#x7684;&#x4EFB;&#x52A1;, &#x88AB;&#x7B2C;&#x4E00;&#x4E2A;&#x53D6;&#x51FA;</span><br><span class="line">    If maxsize is &lt;= 0, the queue size is &#x65E0;&#x9650;&#x5927;&#x5C0F;.</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, maxsize=<span class="number">0</span>)</span>:</span></span><br><span class="line">        self.maxsize = maxsize</span><br><span class="line">        self._init(maxsize)             <span class="comment"># &#x521D;&#x59CB;&#x5316;queue&#x4E3A;&#x7A7A;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x6240;&#x6709;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x5148;&#x91CA;&#x653E;&#xFF0C;&#x4E92;&#x65A5;&#x9501;&#x5728;&#x4E0B;&#x9762;&#x4E09;&#x4E2A;Condition&#x6761;&#x4EF6;&#x5171;&#x4EAB;</span></span><br><span class="line">        <span class="comment"># &#x4ECE;&#x800C;&#x83B7;&#x53D6;&#x548C;&#x91CA;&#x653E;&#x7684;&#x6761;&#x4EF6;&#x4E0B;&#x4E5F;&#x83B7;&#x5F97;&#x548C;&#x91CA;&#x653E;&#x4E92;&#x65A5;&#x9501;&#x3002;</span></span><br><span class="line">        self.mutex = _threading.Lock()  <span class="comment"># Lock&#x9501;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x5F53;&#x6DFB;&#x52A0;queue&#x5143;&#x7D20;&#x65F6;&#x901A;&#x77E5;`not_empty`,&#x4E4B;&#x540E;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;get</span></span><br><span class="line">        self.not_empty = _threading.Condition(self.mutex)       <span class="comment"># not_empty Condition&#x5B9E;&#x4F8B;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x5F53;&#x79FB;&#x9664;queue&#x5143;&#x7D20;&#x65F6;&#x901A;&#x77E5;`not_full`,&#x4E4B;&#x540E;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;put.</span></span><br><span class="line">        self.not_full = _threading.Condition(self.mutex)        <span class="comment"># not_full Condition&#x5B9E;&#x4F8B;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x5F53;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x4EFB;&#x52A1;&#x6570;&#x4E3A;0&#x65F6;&#xFF0C;&#x901A;&#x77E5;`all_tasks_done`,&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;join()</span></span><br><span class="line">        self.all_tasks_done = _threading.Condition(self.mutex)  <span class="comment"># all_tasks_done Condition&#x5B9E;&#x4F8B;</span></span><br><span class="line">        self.unfinished_tasks = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">task_done</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x8868;&#x660E;&#xFF0C;&#x4EE5;&#x524D;&#x6392;&#x961F;&#x7684;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x4E86;</span><br><span class="line"></span><br><span class="line">        &#x88AB;&#x6D88;&#x8D39;&#x8005;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;. &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;get()&#xFF0C;&#x968F;&#x540E;&#x8C03;&#x7528;task_done()&#x544A;&#x77E5;queue&#x8FD9;&#x4E2A;task&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.all_tasks_done.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># unfinished_tasks &#x7D2F;&#x51CF;</span></span><br><span class="line">            unfinished = self.unfinished_tasks - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> unfinished &lt;= <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># &#x8C03;&#x7528;&#x591A;&#x6B21;task_done&#x5219;&#x89E6;&#x53D1;&#x5F02;&#x5E38;</span></span><br><span class="line">                <span class="keyword">if</span> unfinished &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">raise</span> ValueError(<span class="string">&apos;task_done() called too many times&apos;</span>)</span><br><span class="line">                self.all_tasks_done.notify_all()    <span class="comment"># &#x91CA;&#x653E;&#x6240;&#x6709;&#x7B49;&#x5F85;&#x8BE5;&#x6761;&#x4EF6;&#x7684;&#x7EBF;&#x7A0B;</span></span><br><span class="line">            self.unfinished_tasks = unfinished</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.all_tasks_done.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">join</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x963B;&#x585E;&#x76F4;&#x5230;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x90FD;&#x5904;&#x7406;&#x5B8C;&#x6210;</span><br><span class="line">        &#x672A;&#x5B8C;&#x6210;&#x7684;task&#x4F1A;&#x5728;put()&#x7D2F;&#x52A0;&#xFF0C;&#x5728;task_done()&#x7D2F;&#x51CF;, &#x4E3A;0&#x65F6;&#xFF0C;join()&#x975E;&#x963B;&#x585E;.</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.all_tasks_done.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># &#x4E00;&#x76F4;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x672A;&#x5B8C;&#x6210;&#x6570;</span></span><br><span class="line">            <span class="keyword">while</span> self.unfinished_tasks:</span><br><span class="line">                self.all_tasks_done.wait()</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.all_tasks_done.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">qsize</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x8FD4;&#x56DE;&#x961F;&#x5217;&#x7684;&#x8FD1;&#x4F3C;&#x5927;&#x5C0F;&#xFF08;&#x4E0D;&#x53EF;&#x9760;&#xFF01;&#xFF09;&quot;&quot;&quot;</span></span><br><span class="line">        self.mutex.acquire()</span><br><span class="line">        n = self._qsize()       <span class="comment"># len(queue)</span></span><br><span class="line">        self.mutex.release()</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x961F;&#x5217;&#x662F;&#x5426;&#x4E3A;&#x7A7A;(&#x4E0D;&#x53EF;&#x9760;).&quot;&quot;&quot;</span></span><br><span class="line">        self.mutex.acquire()</span><br><span class="line">        n = <span class="keyword">not</span> self._qsize()</span><br><span class="line">        self.mutex.release()</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">full</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x961F;&#x5217;&#x662F;&#x5426;&#x5DF2;&#x6EE1;(&#x4E0D;&#x53EF;&#x9760;!).&quot;&quot;&quot;</span></span><br><span class="line">        self.mutex.acquire()</span><br><span class="line">        n = <span class="number">0</span> &lt; self.maxsize == self._qsize()</span><br><span class="line">        self.mutex.release()</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, item, block=True, timeout=None)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x6DFB;&#x52A0;&#x5143;&#x7D20;.</span><br><span class="line"></span><br><span class="line">        &#x5982;&#x679C;&#x53EF;&#x9009;&#x53C2;&#x6570;block&#x4E3A;True&#x5E76;&#x4E14;timeout&#x53C2;&#x6570;&#x4E3A;None(&#x9ED8;&#x8BA4;), &#x4E3A;&#x963B;&#x585E;&#x578B;put().</span><br><span class="line">        &#x5982;&#x679C;timeout&#x662F;&#x6B63;&#x6570;, &#x4F1A;&#x963B;&#x585E;timeout&#x65F6;&#x95F4;&#x5E76;&#x5F15;&#x53D1;Queue.Full&#x5F02;&#x5E38;.</span><br><span class="line">        &#x5982;&#x679C;block&#x4E3A;False&#x4E3A;&#x975E;&#x963B;&#x585E;put</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.not_full.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> self.maxsize &gt; <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> block:</span><br><span class="line">                    <span class="keyword">if</span> self._qsize() == self.maxsize:</span><br><span class="line">                        <span class="keyword">raise</span> Full</span><br><span class="line">                <span class="keyword">elif</span> timeout <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                    <span class="keyword">while</span> self._qsize() == self.maxsize:</span><br><span class="line">                        self.not_full.wait()</span><br><span class="line">                <span class="keyword">elif</span> timeout &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">raise</span> ValueError(<span class="string">&quot;&apos;timeout&apos; must be a non-negative number&quot;</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    endtime = _time() + timeout</span><br><span class="line">                    <span class="keyword">while</span> self._qsize() == self.maxsize:</span><br><span class="line">                        remaining = endtime - _time()</span><br><span class="line">                        <span class="keyword">if</span> remaining &lt;= <span class="number">0.0</span>:</span><br><span class="line">                            <span class="keyword">raise</span> Full</span><br><span class="line">                        self.not_full.wait(remaining)</span><br><span class="line"></span><br><span class="line">            self._put(item)</span><br><span class="line">            self.unfinished_tasks += <span class="number">1</span></span><br><span class="line">            self.not_empty.notify()</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.not_full.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put_nowait</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span><br><span class="line">        &#x975E;&#x963B;&#x585E;put</span><br><span class="line">        &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5C06;put&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;block&#x8BBE;&#x4E3A;False</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.put(item, <span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, block=True, timeout=None)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x79FB;&#x9664;&#x5217;&#x961F;&#x5143;&#x7D20;&#x5E76;&#x5C06;&#x5143;&#x7D20;&#x8FD4;&#x56DE;.</span><br><span class="line"></span><br><span class="line">        block = True&#x4E3A;&#x963B;&#x585E;&#x51FD;&#x6570;, block = False&#x4E3A;&#x975E;&#x963B;&#x585E;&#x51FD;&#x6570;. &#x53EF;&#x80FD;&#x8FD4;&#x56DE;Queue.Empty&#x5F02;&#x5E38;</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.not_empty.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> block:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> self._qsize():</span><br><span class="line">                    <span class="keyword">raise</span> Empty</span><br><span class="line">            <span class="keyword">elif</span> timeout <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">while</span> <span class="keyword">not</span> self._qsize():</span><br><span class="line">                    self.not_empty.wait()</span><br><span class="line">            <span class="keyword">elif</span> timeout &lt; <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">raise</span> ValueError(<span class="string">&quot;&apos;timeout&apos; must be a non-negative number&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                endtime = _time() + timeout</span><br><span class="line">                <span class="keyword">while</span> <span class="keyword">not</span> self._qsize():</span><br><span class="line">                    remaining = endtime - _time()</span><br><span class="line">                    <span class="keyword">if</span> remaining &lt;= <span class="number">0.0</span>:</span><br><span class="line">                        <span class="keyword">raise</span> Empty</span><br><span class="line">                    self.not_empty.wait(remaining)</span><br><span class="line">            item = self._get()</span><br><span class="line">            self.not_full.notify()</span><br><span class="line">            <span class="keyword">return</span> item</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.not_empty.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_nowait</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span><br><span class="line">        &#x975E;&#x963B;&#x585E;get()</span><br><span class="line">        &#x4E5F;&#x5373;&#x662F;get()&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;False</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.get(<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Override these methods to implement other queue organizations</span></span><br><span class="line">    <span class="comment"># (e.g. stack or priority queue).</span></span><br><span class="line">    <span class="comment"># These will only be called with appropriate locks held</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># &#x521D;&#x59CB;&#x5316;&#x961F;&#x5217;&#x8868;&#x793A;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init</span><span class="params">(self, maxsize)</span>:</span></span><br><span class="line">        self.queue = deque()        <span class="comment"># &#x5C06;queue&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;deque&#x5BF9;&#x8C61;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_qsize</span><span class="params">(self, len=len)</span>:</span>      <span class="comment"># &#x961F;&#x5217;&#x957F;&#x5EA6;</span></span><br><span class="line">        <span class="keyword">return</span> len(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Put a new item in the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_put</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        self.queue.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get an item from the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.queue.popleft()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span><span class="params">(Queue)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span><br><span class="line">    &#x7EE7;&#x627F;Queue</span><br><span class="line">    &#x6784;&#x9020;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;</span><br><span class="line">    maxsize&#x8BBE;&#x7F6E;&#x961F;&#x5217;&#x5927;&#x5C0F;&#x7684;&#x4E0A;&#x754C;, &#x5982;&#x679C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x65F6;, &#x8FBE;&#x5230;&#x4E0A;&#x754C;&#x4F1A;&#x53D1;&#x751F;&#x963B;&#x585E;, &#x76F4;&#x5230;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x6570;&#x636E;.</span><br><span class="line">    &#x5F53;maxsize&#x5C0F;&#x4E8E;&#x6216;&#x8005;&#x7B49;&#x4E8E;0, &#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;&#x961F;&#x5217;&#x7684;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;).</span><br><span class="line">    &#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;&#x4E2D;, &#x6700;&#x5C0F;&#x503C;&#x88AB;&#x6700;&#x5148;&#x53D6;&#x51FA;</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init</span><span class="params">(self, maxsize)</span>:</span></span><br><span class="line">        self.queue = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_qsize</span><span class="params">(self, len=len)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_put</span><span class="params">(self, item, heappush=heapq.heappush)</span>:</span></span><br><span class="line">        heappush(self.queue, item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self, heappop=heapq.heappop)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> heappop(self.queue)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LifoQueue</span><span class="params">(Queue)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span><br><span class="line">    &#x6784;&#x9020;&#x4E00;LIFO(&#x5148;&#x8FDB;&#x540E;&#x51FA;)&#x961F;&#x5217;</span><br><span class="line">    maxsize&#x8BBE;&#x7F6E;&#x961F;&#x5217;&#x5927;&#x5C0F;&#x7684;&#x4E0A;&#x754C;, &#x5982;&#x679C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x65F6;, &#x8FBE;&#x5230;&#x4E0A;&#x754C;&#x4F1A;&#x53D1;&#x751F;&#x963B;&#x585E;, &#x76F4;&#x5230;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x6570;&#x636E;.</span><br><span class="line">    &#x5F53;maxsize&#x5C0F;&#x4E8E;&#x6216;&#x8005;&#x7B49;&#x4E8E;0, &#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;&#x961F;&#x5217;&#x7684;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;)</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init</span><span class="params">(self, maxsize)</span>:</span></span><br><span class="line">        self.queue = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_qsize</span><span class="params">(self, len=len)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_put</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        self.queue.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.queue.pop()     <span class="comment"># &#x4E0E;Queue&#x76F8;&#x6BD4;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F; &#x5C06;popleft()&#x6539;&#x6210;&#x4E86;pop()</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Queue/">Queue</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python-multi-programming-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-multi-programming-4/" class="article-date">
+      <time datetime="2016-05-15T04:44:44.815Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/python-multi-programming-4/">Python 并发编程系列--4、多进程编程方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;"><a href="#&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;"></a>&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming-3/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;</a></h4><h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x4E0A;&#x4E00;&#x7BC7;&#x4ECB;&#x7ECD;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E00;&#x7BC7;&#x4ECB;&#x7ECD;&#x591A;&#x8FDB;&#x7A0B;&#x7F16;&#x7A0B;&#xFF0C;&#x5F53;&#x7136;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;CPU&#x5BC6;&#x96C6;&#x578B;&#x4EFB;&#x52A1;&#x3002;</p>
+<h3 id="&#x5206;&#x7C7B;"><a href="#&#x5206;&#x7C7B;" class="headerlink" title="&#x5206;&#x7C7B;"></a>&#x5206;&#x7C7B;</h3><p>&#x90FD;&#x662F;&#x91C7;&#x7528;multiprocessing&#x6A21;&#x5757;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5E94;&#x7528;&#x7684;&#x7C7B;&#x548C;&#x65B9;&#x6CD5;&#x4E0D;&#x540C;</p>
+<ul>
+<li>&#x4F7F;&#x7528;Pool&#x5BF9;&#x8C61;&#x7684;map&#x65B9;&#x6CD5;</li>
+<li>&#x4F7F;&#x7528;Pool&#x5BF9;&#x8C61;&#x7684;apply_async&#x65B9;&#x6CD5;</li>
+<li>&#x4F7F;&#x7528;Process&#x7C7B;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x5206;&#x522B;&#x4ECB;&#x7ECD;</p>
+<h4 id="&#x4F7F;&#x7528;Pool&#x5BF9;&#x8C61;&#x7684;map&#x65B9;&#x6CD5;"><a href="#&#x4F7F;&#x7528;Pool&#x5BF9;&#x8C61;&#x7684;map&#x65B9;&#x6CD5;" class="headerlink" title="&#x4F7F;&#x7528;Pool&#x5BF9;&#x8C61;&#x7684;map&#x65B9;&#x6CD5;"></a>&#x4F7F;&#x7528;Pool&#x5BF9;&#x8C61;&#x7684;map&#x65B9;&#x6CD5;</h4><p>&#x4E0E;<a href="../python-multi-programming-3/">&#x4E0A;&#x4E00;&#x7BC7;</a>&#x7C7B;&#x4F3C;&#xFF0C;multiprocessing&#x6A21;&#x5757;&#x7684;Pool&#x5BF9;&#x8C61;&#x5177;&#x6709;map&#x65B9;&#x6CD5;&#xFF0C;&#x5E94;&#x7528;map&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5F88;&#x4FBF;&#x6377;&#x5730;&#x5B9E;&#x73B0;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x3002;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x4E24;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5206;&#x522B;&#x6765;&#x81EA;<a href="http://www.cnblogs.com/fengjian2016/p/5261246.html" target="_blank" rel="external">python&#x591A;&#x8FDB;&#x7A0B;(&#x4E09;&#x79CD;&#x65B9;&#x6CD5;)</a>&#x548C;<a href="https://segmentfault.com/a/1190000000414339" target="_blank" rel="external">&#x4E00;&#x884C;Python&#x5B9E;&#x73B0;&#x5E76;&#x884C;&#x5316;</a>&#x3002;<br>&#x9996;&#x5148;&#x770B;&#x7B2C;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4F7F;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#x8BA1;&#x7B97;0&#x5230;9&#x7684;&#x5E73;&#x65B9;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> x</span><br><span class="line">    <span class="keyword">return</span> x*x</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    p=Pool(<span class="number">5</span>)</span><br><span class="line">    <span class="keyword">print</span> (p.map(f,range(<span class="number">10</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x7ED3;&#x679C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5217;&#x8868;&#x662F;&#x6309;&#x7167;&#x987A;&#x5E8F;&#x6253;&#x5370;&#x7684;&#xFF0C;&#x8FD9;&#x6B63;&#x662F;&#x91C7;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x7684;&#x597D;&#x5904;&#xFF1A;&#x65E2;&#x5B9E;&#x73B0;&#x4E86;&#x591A;&#x8FDB;&#x7A0B;&#xFF0C;&#x53C8;&#x4FDD;&#x8BC1;&#x4E86;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x662F;&#x751F;&#x6210;&#x4E0A;&#x5343;&#x5F20;&#x56FE;&#x7247;&#x7684;&#x7F29;&#x7565;&#x56FE;&#xFF0C;&#x5355;&#x7EBF;&#x7A0B;&#x7248;&#x672C;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> PIL </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool </span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">SIZE = (<span class="number">75</span>,<span class="number">75</span>)</span><br><span class="line">SAVE_DIRECTORY = <span class="string">&apos;thumbs&apos;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image_paths</span><span class="params">(folder)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (os.path.join(folder, f) </span><br><span class="line">            <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(folder) </span><br><span class="line">            <span class="keyword">if</span> <span class="string">&apos;jpeg&apos;</span> <span class="keyword">in</span> f)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_thumbnail</span><span class="params">(filename)</span>:</span> </span><br><span class="line">    im = Image.open(filename)</span><br><span class="line">    im.thumbnail(SIZE, Image.ANTIALIAS)</span><br><span class="line">    base, fname = os.path.split(filename) </span><br><span class="line">    save_path = os.path.join(base, SAVE_DIRECTORY, fname)</span><br><span class="line">    im.save(save_path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    folder = os.path.abspath(</span><br><span class="line">        <span class="string">&apos;11_18_2013_R000_IQM_Big_Sur_Mon__e10d1958e7b766c3e840&apos;</span>)</span><br><span class="line">    os.mkdir(os.path.join(folder, SAVE_DIRECTORY))</span><br><span class="line"></span><br><span class="line">    images = get_image_paths(folder)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> image <span class="keyword">in</span> images:</span><br><span class="line">        create_thumbnail(Image)</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x539F;&#x6587;&#x4F5C;&#x8005;&#x7684;&#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x5904;&#x7406;6000&#x7AE0;&#x56FE;&#x7247;&#x9700;&#x8981;27.9&#x79D2;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4F7F;&#x7528;map&#x65B9;&#x6CD5;&#x540E;&#x7684;&#x591A;&#x8FDB;&#x7A0B;&#x7248;&#x672C;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> PIL </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool </span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">SIZE = (<span class="number">75</span>,<span class="number">75</span>)</span><br><span class="line">SAVE_DIRECTORY = <span class="string">&apos;thumbs&apos;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image_paths</span><span class="params">(folder)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (os.path.join(folder, f) </span><br><span class="line">            <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(folder) </span><br><span class="line">            <span class="keyword">if</span> <span class="string">&apos;jpeg&apos;</span> <span class="keyword">in</span> f)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_thumbnail</span><span class="params">(filename)</span>:</span> </span><br><span class="line">    im = Image.open(filename)</span><br><span class="line">    im.thumbnail(SIZE, Image.ANTIALIAS)</span><br><span class="line">    base, fname = os.path.split(filename) </span><br><span class="line">    save_path = os.path.join(base, SAVE_DIRECTORY, fname)</span><br><span class="line">    im.save(save_path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    folder = os.path.abspath(</span><br><span class="line">        <span class="string">&apos;11_18_2013_R000_IQM_Big_Sur_Mon__e10d1958e7b766c3e840&apos;</span>)</span><br><span class="line">    os.mkdir(os.path.join(folder, SAVE_DIRECTORY))</span><br><span class="line"></span><br><span class="line">    images = get_image_paths(folder)</span><br><span class="line"></span><br><span class="line">    pool = Pool()</span><br><span class="line">    pool.map(creat_thumbnail, images)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x539F;&#x6587;&#x4F5C;&#x8005;&#x7684;&#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x8FD9;&#x6B21;&#x8FD0;&#x884C;&#x53EA;&#x7528;&#x4E86;5.6&#x79D2;&#xFF0C;&#x53EF;&#x89C1;&#x901F;&#x5EA6;&#x5927;&#x5927;&#x63D0;&#x5347;&#xFF01;<br><strong>&#x6CE8;&#x610F;&#xFF1A;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x5F71;&#x54CD;&#x7A0B;&#x5E8F;&#x6027;&#x80FD;&#x751A;&#x81F3;&#x5F71;&#x54CD;&#x7A0B;&#x5E8F;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x7684;&#x9690;&#x60A3;&#x6240;&#x5728;&#xFF0C;&#x56E0;&#x6B64;&#x6700;&#x597D;&#x4FDD;&#x8BC1;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5E93;&#x7684;&#x5F15;&#x7528;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4EE3;&#x7801;&#x4E0D;&#x653E;&#x5728;Pool&#x7684;map&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6700;&#x597D;&#x653E;&#x5728;map&#x91CC;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x89C1;<a href="https://segmentfault.com/q/1010000000421911" target="_blank" rel="external">&#x8FD9;&#x4E2A;&#x8BA8;&#x8BBA;</a></strong></p>
+<h4 id="&#x4F7F;&#x7528;Pool&#x7684;apply-async&#x65B9;&#x6CD5;"><a href="#&#x4F7F;&#x7528;Pool&#x7684;apply-async&#x65B9;&#x6CD5;" class="headerlink" title="&#x4F7F;&#x7528;Pool&#x7684;apply_async&#x65B9;&#x6CD5;"></a>&#x4F7F;&#x7528;Pool&#x7684;apply_async&#x65B9;&#x6CD5;</h4><p>&#x4E0B;&#x9762;&#x662F;&#x524D;&#x6587;&#x63D0;&#x5230;&#x7684;&#x535A;&#x5BA2;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x540C;&#x6837;&#x5B8C;&#x6210;&#x8BA1;&#x7B97;0&#x5230;9&#x7684;&#x5E73;&#x65B9;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> x*x</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> x*x</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    p=Pool(processes=<span class="number">5</span>)</span><br><span class="line">    res_list=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        res=p.apply_async(f,[i,])</span><br><span class="line">        res_list.append(res)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> res_list:</span><br><span class="line">        <span class="keyword">print</span> item.get(),</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x540C;&#x4E0A;&#xFF0C;&#x4ECD;&#x4E3A;&#x6709;&#x5E8F;&#x5E8F;&#x5217;&#x3002;&#x4E0D;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x4E0A;&#x4E00;&#x6B21;&#x662F;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x8FD4;&#x56DE;&#x5217;&#x8868;&#xFF0C;&#x800C;&#x8FD9;&#x4E00;&#x6B21;&#x4E00;&#x8FB9;&#x8BA1;&#x7B97;&#x4E00;&#x8FB9;&#x663E;&#x793A;&#xFF08;&#x8FD9;&#x6B63;&#x662F;&#x4F7F;&#x7528;apply_async&#x65B9;&#x6CD5;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x662F;&#x5F02;&#x6B65;&#x7684;&#xFF09;&#x3002;&#x60F3;&#x8981;&#x8BE6;&#x7EC6;&#x89C2;&#x5BDF;&#x6548;&#x679C;&#x7684;&#x8BDD;&#x5EFA;&#x8BAE;&#x8BFB;&#x8005;&#x5728;&#x672C;&#x5730;&#x673A;&#x5668;&#x4E0A;&#x8FD0;&#x884C;&#x6BD4;&#x8F83;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;Process&#x7C7B;"><a href="#&#x4F7F;&#x7528;Process&#x7C7B;" class="headerlink" title="&#x4F7F;&#x7528;Process&#x7C7B;"></a>&#x4F7F;&#x7528;Process&#x7C7B;</h4><p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x662F;&#x4F7F;&#x7528;multiprocessing&#x6A21;&#x5757;&#x4E2D;&#x7684;Process&#x7C7B;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x591A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5B9E;&#x4F8B;&#x901A;&#x8FC7;&#x6253;&#x5370;&#x4E3B;&#x8FDB;&#x7A0B;&#x548C;&#x4ECE;&#x8FDB;&#x7A0B;&#x7684;pid&#x6765;&#x9A8C;&#x8BC1;&#x5C5E;&#x4E8E;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">info</span><span class="params">(title)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> title</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;module_name:&apos;</span>,__name__</span><br><span class="line">    <span class="keyword">if</span> hasattr(os,<span class="string">&apos;getppid&apos;</span>):<span class="comment">#&#x4EC5;&#x5728;Unix&#x4E3B;&#x673A;&#x4E0A;&#x624D;&#x6709;&#x6B64;&#x5C5E;&#x6027;</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">&apos;parent process:&apos;</span>,os.getppid()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;process id:&apos;</span>,os.getpid()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(name)</span>:</span></span><br><span class="line">    info(<span class="string">&apos;funcion f&apos;</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;hello&apos;</span>,name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    info(<span class="string">&apos;main line&apos;</span>)</span><br><span class="line">    p=Process(target=f,args=(<span class="string">&apos;bob&apos;</span>,))</span><br><span class="line">    p.start()</span><br><span class="line">    p.join()</span><br></pre></td></tr></table></figure></p>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">main line</span><br><span class="line">module_name: __main__</span><br><span class="line">process id: 11688</span><br><span class="line">funcion f</span><br><span class="line">module_name: __main__</span><br><span class="line">process id: 10520</span><br><span class="line">hello bob</span><br></pre></td></tr></table></figure></p>
+<p>&#x901A;&#x8FC7;&#x6253;&#x5370;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x901A;&#x8FC7;Process&#x5BF9;&#x8C61;&#x6210;&#x529F;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x3002;</p>
+<h4 id="&#x9898;&#x5916;&#x8BDD;"><a href="#&#x9898;&#x5916;&#x8BDD;" class="headerlink" title="&#x9898;&#x5916;&#x8BDD;"></a>&#x9898;&#x5916;&#x8BDD;</h4><p>&#x4E0B;&#x9762;&#x8C08;&#x4E00;&#x4E9B;&#x5468;&#x8FB9;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x9996;&#x5148;&#x901A;&#x8FC7;&#x5B9E;&#x4F8B;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;&#x591A;&#x8FDB;&#x7A0B;&#x6570;&#x636E;&#x533A;&#x57DF;&#x7684;&#x72EC;&#x7ACB;&#x6027;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x8FD0;&#x884C;&#x7ED3;&#x679C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[0[]1[</span><br><span class="line">]2</span><br><span class="line">[][5]</span><br><span class="line">[3</span><br><span class="line">4]]</span><br><span class="line">[</span><br><span class="line">6]</span><br><span class="line">[7[8]</span><br><span class="line">]</span><br><span class="line">[9]</span><br></pre></td></tr></table></figure></p>
+<p>&#x7B2C;&#x4E8C;&#x6B21;&#x8FD0;&#x884C;&#x7ED3;&#x679C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[[01[3]</span><br><span class="line">][]</span><br><span class="line">2[</span><br><span class="line">[5]</span><br><span class="line">]4</span><br><span class="line">][</span><br><span class="line">6[]7</span><br><span class="line">[]8</span><br><span class="line">][</span><br><span class="line">9]</span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x4E0B;&#x4E00;&#x7BC7;&#x9884;&#x544A;"><a href="#&#x4E0B;&#x4E00;&#x7BC7;&#x9884;&#x544A;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7BC7;&#x9884;&#x544A;"></a>&#x4E0B;&#x4E00;&#x7BC7;&#x9884;&#x544A;</h4><p>&#x4E0B;&#x4E00;&#x7BC7;&#x4F1A;&#x8C08;&#x5230;&#x534F;&#x7A0B;&#xFF0C;&#x81F3;&#x4E8E;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5C31;&#x4E0D;&#x77E5;&#x9053;&#x4E86;2333</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多进程/">多进程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python-multi-programming-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-multi-programming-3/" class="article-date">
+      <time datetime="2016-05-15T04:39:13.550Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/python-multi-programming-3/">Python 并发编程系列--3、多线程编程方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;"><a href="#&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;" class="headerlink" title="&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;"></a>&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming-2/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;</a></h4><h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x6839;&#x636E;&#x524D;&#x9762;&#x7684;&#x5E94;&#x7528;&#x80CC;&#x666F;&#xFF0C;&#x8FD9;&#x91CC;&#x4ECB;&#x7ECD;Python&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65F6;&#x5B9E;&#x4F8B;&#x5E94;&#x7528;&#x4E8E;&#x7F51;&#x7EDC;&#x722C;&#x866B;&#x2013;&#x7EAF;&#x7684;I/O&#x5BC6;&#x96C6;&#x578B;&#x4EFB;&#x52A1;&#x3002;</p>
+<h3 id="&#x591A;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;"><a href="#&#x591A;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;" class="headerlink" title="&#x591A;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;"></a>&#x591A;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</h3><p>&#x591A;&#x7EBF;&#x7A0B;&#x5728;Python&#x4E2D;&#x6709;&#x4E0D;&#x6B62;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EE7;&#x627F;Threading&#x7C7B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x7EAF;&#x4F7F;&#x7528;Thread&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x662F;&#x524D;&#x8005;&#x662F;&#x540E;&#x8005;&#x7684;&#x5C01;&#x88C5;&#x548C;&#x6539;&#x8FDB;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x524D;&#x8005;&#xFF0C;&#x56E0;&#x4E3A;&#x5176;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#xFF0C;&#x5F53;&#x7136;&#x5076;&#x5C14;&#x5B58;&#x5728;&#x9700;&#x8981;&#x4F7F;&#x7528;Thread&#x7C7B;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x7684;&#x4EFB;&#x52A1;&#xFF08;&#x5982;&#x5BF9;&#x5B50;&#x7EBF;&#x7A0B;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x8BBE;&#x7F6E;Threading&#x7684;setDaemon&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4E0D;&#x591F;&#x7528;&#xFF09;&#x3002;&#x4ECA;&#x5929;&#x770B;&#x5230;&#x4E86;&#x4E00;&#x7BC7;&#x8BD1;&#x6587;&#xFF1A;<a href="http://blog.segmentfault.com/caspar/1190000000414339" target="_blank" rel="external">&#x300A;&#x4E00;&#x884C; Python &#x5B9E;&#x73B0;&#x5E76;&#x884C;&#x5316; &#x2013; &#x65E5;&#x5E38;&#x591A;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#x7684;&#x65B0;&#x601D;&#x8DEF;&#x300B;</a>&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x53C2;&#x7167;<a href="https://medium.com/building-things-on-the-internet/40e9b2b36148#66bf-f06f781cb52b" target="_blank" rel="external">&#x539F;&#x4F5C;&#x8005; Chris&#x7684;&#x6587;&#x7AE0;</a>&#xFF0C;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x4E86;&#x4F7F;&#x7528;map&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x66F4;&#x4E3A;&#x7B80;&#x6D01;&#x7684;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x3002;&#x672C;&#x6587;&#x5BF9;&#x8FD9;&#x51E0;&#x79CD;&#x5206;&#x522B;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+<h4 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;Thread&#x7C7B;&#x7684;&#x65B9;&#x6CD5;"><a href="#&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;Thread&#x7C7B;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;Thread&#x7C7B;&#x7684;&#x65B9;&#x6CD5;"></a>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x4F7F;&#x7528;Thread&#x7C7B;&#x7684;&#x65B9;&#x6CD5;</h4><p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6700;&#x4E3A;&#x201D;&#x539F;&#x59CB;&#x201D;,&#x6700;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x662F;&#x76F4;&#x63A5;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;Thread&#x7C7B;&#x7684;start_new_thread&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x9700;&#x8981;&#x5E76;&#x884C;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;&#x53CA;&#x5176;&#x9700;&#x8981;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x8FDB;&#x53BB;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<h4 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;Threading&#x7ED3;&#x5408;Queue&#x4F7F;&#x7528;"><a href="#&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;Threading&#x7ED3;&#x5408;Queue&#x4F7F;&#x7528;" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;Threading&#x7ED3;&#x5408;Queue&#x4F7F;&#x7528;"></a>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;&#x4F7F;&#x7528;Threading&#x7ED3;&#x5408;Queue&#x4F7F;&#x7528;</h4><p>Python&#x4E2D;&#x7684;Queue&#x6A21;&#x5757;&#x5B9E;&#x73B0;&#x4E86;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x961F;&#x5217;&#x7ED3;&#x6784;&#xFF08;Queue&#x4E2D;&#x4F7F;&#x7528;&#x4E86;Threading&#x4E2D;&#x63D0;&#x4F9B;&#x7684;&#x9501;&#x5B9E;&#x73B0;&#x4E86;&#x540C;&#x6B65;&#x4E0E;&#x4E92;&#x65A5;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;Queue&#x5C31;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x9965;&#x997F;&#x6216;&#x8005;&#x6B7B;&#x9501;&#x95EE;&#x9898;&#x7684;&#x53D1;&#x751F;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x8F83;&#x4E3A;&#x901A;&#x7528;&#x7684;I/O&#x591A;&#x7EBF;&#x7A0B;&#x4E66;&#x5199;&#x6A21;&#x677F;&#xFF0C;&#x53C2;&#x7167;&#x7F51;&#x4E0A;&#x770B;&#x5230;&#x7684;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#xFF1A;<a href="http://www.68idc.cn/help/jiabenmake/python/20150119177823.html" target="_blank" rel="external">Python&#x722C;&#x866B;(&#x516D;)&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x7EED;(Queue)</a>&#x3002;&#x5173;&#x4E8E;Queue&#x6A21;&#x5757;&#x7684;&#x4ECB;&#x7ECD;&#x53C2;&#x89C1;&#x535A;&#x5BA2;&#x7684;&#x53E6;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;<a href="../python-queue/">Python Queue&#x4ECB;&#x7ECD;</a>&#xFF0C;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x4ECB;&#x7ECD;&#x591A;&#x7EBF;&#x7A0B;&#x7ED3;&#x5408;Queue&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3002;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line">SHARE_Q=Queue.Queue()</span><br><span class="line"><span class="comment">#&#x7EBF;&#x7A0B;&#x4E2A;&#x6570;</span></span><br><span class="line">_WORKED_THERAD_NUM=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="string">&apos;&apos;&apos;</span><br><span class="line">    &#x5176;&#x4E2D;func&#x4E3A;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;&#x7684;&#x903B;&#x8F91;&#x90E8;&#x5206;</span><br><span class="line">    &apos;&apos;&apos;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,func)</span>:</span></span><br><span class="line">        super(MyThread,self).__init__()</span><br><span class="line">        self.func=func</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&apos;&apos;&apos;</span><br><span class="line">        &#x91CD;&#x5199;&#x57FA;&#x7C7B;&#x7684;run&#x65B9;&#x6CD5;</span><br><span class="line">        &apos;&apos;&apos;</span></span><br><span class="line">        self.func()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_something</span><span class="params">(item)</span>:</span></span><br><span class="line">    <span class="string">&apos;&apos;&apos;</span><br><span class="line">    &#x8FD0;&#x884C;&#x903B;&#x8F91;</span><br><span class="line">    &apos;&apos;&apos;</span></span><br><span class="line">    <span class="keyword">print</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">&apos;&apos;&apos;</span><br><span class="line">    &#x7528;&#x4E8E;&#x5199;&#x5DE5;&#x4F5C;&#x903B;&#x8F91;&#xFF0C;&#x53EA;&#x8981;&#x961F;&#x5217;&#x4E0D;&#x7A7A;&#x5C31;&#x6301;&#x7EED;&#x5904;&#x7406;&#xFF0C;&#x4E3A;&#x7A7A;&#x65F6;&#x68C0;&#x67E5;&#x961F;&#x5217;&#x3002;</span><br><span class="line">    &#x7531;&#x4E8E;Queue&#x4E2D;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;wait notify &#x548C;&#x54CD;&#x5E94;&#x7684;&#x9501;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5728;&#x53D6;&#x4EFB;&#x52A1;&#x6216;&#x8005;&#x653E;&#x4EFB;&#x52A1;&#x7684;&#x65F6;&#x5019;</span><br><span class="line">    &#x52A0;&#x9501;&#x6216;&#x89E3;&#x9501;</span><br><span class="line">    &apos;&apos;&apos;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> SHARE_Q</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> SHARE_Q.empty():</span><br><span class="line">        item=SHARE_Q.get()</span><br><span class="line">        do_something(item)</span><br><span class="line">        SHARE_Q.task_done()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> SHARE_Q</span><br><span class="line">    threads=[]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> task <span class="keyword">in</span> xrange(<span class="number">5</span>):</span><br><span class="line">        SHARE_Q.put(task)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(_WORKED_THREAD_NUM):</span><br><span class="line">        thread=MyThread(worker)</span><br><span class="line">        thread.start()</span><br><span class="line">        threads.append(thread)</span><br><span class="line">    <span class="keyword">for</span> thread <span class="keyword">in</span> threads:</span><br><span class="line">        thread.join()</span><br><span class="line"></span><br><span class="line">    SHARE_Q.join()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x6709;&#x4E00;&#x5904;&#x548C;&#x539F;&#x6587;&#x5199;&#x7684;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5728;worker&#x51FD;&#x6570;&#x5185;&#xFF0C;&#x539F;&#x6587;&#x4E66;&#x5199;&#x65B9;&#x5F0F;&#x4E3A;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> SHARE_Q.empty():</span><br><span class="line">        item=SHARE_Q.get()</span><br><span class="line">        do_something(item)</span><br><span class="line">        SHARE_Q.task_done()</span><br></pre></td></tr></table></figure></p>
+<p>&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x91C7;&#x53D6;&#x8FD9;&#x79CD;&#x7684;&#x65B9;&#x5F0F;&#x4F1A;&#x5BFC;&#x81F4;&#x7A0B;&#x5E8F;&#x65E0;&#x6CD5;&#x7ED3;&#x675F;&#xFF0C;&#x6000;&#x7591;&#x662F;&#x7A0B;&#x5E8F;&#x65E0;&#x6CD5;&#x9000;&#x51FA;while&#x5FAA;&#x73AF;&#xFF08;&#x8FD9;&#x5757;&#x6CA1;&#x6709;&#x4ED4;&#x7EC6;&#x8C03;&#x8BD5;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#xFF09;&#x3002;&#x6539;&#x6210;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x5904;&#x7684;&#x65B9;&#x5F0F;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x4E2D;&#x6B62;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E66;&#x5199;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x5728;do_something&#x51FD;&#x6570;&#x5185;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x7136;&#x540E;&#x6DFB;&#x52A0;&#x5FC5;&#x8981;&#x7684;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x63A7;&#x5236;&#x8BED;&#x53E5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x4EE3;&#x7801;&#x3002;</p>
+<h4 id="&#x65B9;&#x6CD5;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;map&#x51FD;&#x6570;&#x548C;multiprocessing&#x6A21;&#x5757;"><a href="#&#x65B9;&#x6CD5;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;map&#x51FD;&#x6570;&#x548C;multiprocessing&#x6A21;&#x5757;" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;map&#x51FD;&#x6570;&#x548C;multiprocessing&#x6A21;&#x5757;"></a>&#x65B9;&#x6CD5;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;map&#x51FD;&#x6570;&#x548C;multiprocessing&#x6A21;&#x5757;</h4><p>&#x524D;&#x9762;&#x8C08;&#x5230;&#x4E86;&#x8FD9;&#x662F;&#x5728;&#x522B;&#x7684;&#x535A;&#x5BA2;&#x4E2D;&#x89C1;&#x5230;&#x7684;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7B80;&#x6D01;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#xFF0C;&#x521A;&#x597D;&#x5229;&#x7528;&#x4E86;map&#x51FD;&#x6570;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5173;&#x4E8E;map&#x51FD;&#x6570;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x6211;&#x7684;&#x53E6;&#x4E00;&#x7BC7;&#x535A;&#x5BA2; <a href="../../02/python-functions/">Python &#x51FD;&#x6570;</a>,&#x91CC;&#x9762;&#x8BB2;&#x5230;&#x4E86;map&#x51FD;&#x6570;&#x7684;&#x7528;&#x6CD5;&#x3002;&#x4E0B;&#x9762;&#x76F4;&#x63A5;&#x770B;map&#x51FD;&#x6570;&#x7684;&#x6548;&#x679C;&#x3002;<br>&#x5148;&#x770B;&#x4E00;&#x4E0B;map&#x7684;&#x5B9E;&#x73B0;&#x6548;&#x679C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x7528;map&#x5BF9;&#x4E00;&#x7CFB;&#x5217;url&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C;&#x5E76;&#x5C06;&#x7ED3;&#x679C;&#x653E;&#x5230;&#x5217;&#x8868;results&#x4E2D;&#x8FD4;&#x56DE;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results=map(urllib2.urlopen,[<span class="string">&apos;https://www.baidu.com&apos;</span>,<span class="string">&apos;http://cn.bing.com&apos;</span>])</span><br></pre></td></tr></table></figure></p>
+<p>&#x76F8;&#x5F53;&#x4E8E;&#x4E0B;&#x9762;&#x7684;&#x64CD;&#x4F5C;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urls=[<span class="string">&apos;https://www.baidu.com&apos;</span>,<span class="string">&apos;http://cn.bing.com&apos;</span>]</span><br><span class="line">results=[]</span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">    results.append(urllib2.urlopen(url))</span><br></pre></td></tr></table></figure></p>
+<p>map&#x51FD;&#x6570;&#x4E00;&#x624B;&#x5305;&#x529E;&#x4E86;&#x5E8F;&#x5217;&#x64CD;&#x4F5C;&#x3001;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x548C;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x7B49;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x501F;&#x9274;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x9009;&#x62E9;multiprocessing&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x5B50;&#x6A21;&#x5757;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x3002;<br>&#x5728;Python&#x4E2D;&#x7531;&#x4E24;&#x4E2A;&#x5E93;&#x5305;&#x542B;&#x4E86;map&#x51FD;&#x6570;&#xFF0C;multiprocessing&#x548C;&#x5B83;&#x7684;&#x5B50;&#x6A21;&#x5757;multiprocessing.dummy&#xFF0C;&#x524D;&#x8005;&#x7528;&#x5728;&#x591A;&#x8FDB;&#x7A0B;&#xFF0C;&#x800C;&#x540E;&#x8005;&#x7528;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x3002;&#x4E24;&#x8005;&#x90FD;&#x6709;pool&#x5BF9;&#x8C61;&#xFF08;&#x7EBF;&#x7A0B;&#x6C60;&#x6216;&#x8005;&#x8FDB;&#x7A0B;&#x6C60;&#xFF09;&#x3002;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;pool&#x7684;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool <span class="keyword">as</span> ThreadPool</span><br></pre></td></tr></table></figure></p>
+<p>Pool&#x5BF9;&#x8C61;&#x6709;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x8BBE;&#x5B9A;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;CPU&#x7684;&#x6838;&#x6570;&#x3002;&#x7EBF;&#x7A0B;&#x4E0D;&#x591F;&#xFF0C;&#x4F18;&#x52BF;&#x4F53;&#x73B0;&#x5F97;&#x4E0D;&#x660E;&#x663E;&#xFF1B;&#x7EBF;&#x7A0B;&#x8FC7;&#x591A;&#xFF0C;&#x5BFC;&#x81F4;&#x7EBF;&#x7A0B;&#x5207;&#x6362;&#x82B1;&#x7684;&#x65F6;&#x95F4;&#x592A;&#x957F;&#xFF0C;&#x5212;&#x4E0D;&#x6765;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x4E2D;&#x6700;&#x597D;&#x6839;&#x636E;&#x9700;&#x6C42;&#x4EBA;&#x4E3A;&#x8BBE;&#x5B9A;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x9488;&#x5BF9;&#x4E0A;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x7248;&#x672C;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool <span class="keyword">as</span> ThreadPool</span><br><span class="line"></span><br><span class="line">urls=[</span><br><span class="line"><span class="string">&apos;http://www.python.org&apos;</span>, </span><br><span class="line">    <span class="string">&apos;http://www.python.org/about/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.python.org/doc/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.python.org/download/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.python.org/getit/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.python.org/community/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;https://wiki.python.org/moin/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://planet.python.org/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;https://wiki.python.org/moin/LocalUserGroups&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.python.org/psf/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://docs.python.org/devguide/&apos;</span>,</span><br><span class="line">    <span class="string">&apos;http://www.python.org/community/awards/&apos;</span></span><br><span class="line">	]</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x8BBE;&#x5B9A;&#x6C60;&#x5B50;&#x7684;&#x5927;&#x5C0F;</span></span><br><span class="line">pool=ThreadPool(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">results=pool.map(urllib2.urlopen,urls)</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x6838;&#x5FC3;&#x53EA;&#x6709;4&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x5173;&#x952E;&#x53EA;&#x6709;&#x7B2C;23&#x884C;&#x8FD9;&#x4E00;&#x884C;&#x3002;&#x800C;&#x4E0B;&#x9762;&#x5219;&#x662F;<a href="http://www.ibm.com/developerworks/aix/library/au-threadingpython/" target="_blank" rel="external">IBM&#x7ECF;&#x5178;&#x6559;&#x7A0B;</a>&#x4E2D;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x8DB3;&#x8DB3;40&#x591A;&#x884C;&#x3002;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&apos;&apos;&apos;</span><br><span class="line">A more realistic thread pool example </span><br><span class="line">&apos;&apos;&apos;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time </span><br><span class="line"><span class="keyword">import</span> threading </span><br><span class="line"><span class="keyword">import</span> Queue </span><br><span class="line"><span class="keyword">import</span> urllib2 </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(threading.Thread)</span>:</span> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, queue)</span>:</span> </span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self._queue = queue </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>: </span><br><span class="line">            content = self._queue.get() </span><br><span class="line">            <span class="keyword">if</span> isinstance(content, str) <span class="keyword">and</span> content == <span class="string">&apos;quit&apos;</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            response = urllib2.urlopen(content)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&apos;Bye byes!&apos;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Producer</span><span class="params">()</span>:</span></span><br><span class="line">    urls = [</span><br><span class="line">        <span class="string">&apos;http://www.python.org&apos;</span>, <span class="string">&apos;http://www.yahoo.com&apos;</span></span><br><span class="line">        <span class="string">&apos;http://www.scala.org&apos;</span>, <span class="string">&apos;http://www.google.com&apos;</span></span><br><span class="line">        <span class="comment"># etc.. </span></span><br><span class="line">    ]</span><br><span class="line">    queue = Queue.Queue()</span><br><span class="line">    worker_threads = build_worker_pool(queue, <span class="number">4</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Add the urls to process</span></span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls: </span><br><span class="line">        queue.put(url)  </span><br><span class="line">    <span class="comment"># Add the poison pillv</span></span><br><span class="line">    <span class="keyword">for</span> worker <span class="keyword">in</span> worker_threads:</span><br><span class="line">        queue.put(<span class="string">&apos;quit&apos;</span>)</span><br><span class="line">    <span class="keyword">for</span> worker <span class="keyword">in</span> worker_threads:</span><br><span class="line">        worker.join()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;Done! Time taken: {}&apos;</span>.format(time.time() - start_time)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_worker_pool</span><span class="params">(queue, size)</span>:</span></span><br><span class="line">    workers = []</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(size):</span><br><span class="line">        worker = Consumer(queue)</span><br><span class="line">        worker.start() </span><br><span class="line">        workers.append(worker)</span><br><span class="line">    <span class="keyword">return</span> workers</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    Producer()</span><br></pre></td></tr></table></figure></p>
+<p>&#x76F8;&#x8F83;&#x4E4B;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;multiprocessing.dummpy&#x4E2D;&#x7684;pool&#x5BF9;&#x8C61;&#x7684;map&#x65B9;&#x6CD5;&#x8981;&#x65B9;&#x4FBF;&#x5F97;&#x591A;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h3><p>&#x4EE5;&#x4E0A;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#x53EA;&#x662F;&#x4F17;&#x591A;&#x591A;&#x7EBF;&#x7A0B;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x51E0;&#x79CD;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#x6211;&#x4EEC;&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Threading&#x6A21;&#x5757;&#x672C;&#x8EAB;&#x800C;&#x4E0D;&#x7528;Queue&#x6A21;&#x5757;&#x5B9E;&#x73B0;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x53EA;&#x662F;&#x8981;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x904D;&#x5C01;&#x88C5;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5176;&#x5B9E;&#x5F52;&#x6839;&#x7ED3;&#x5E95;&#x8FD8;&#x662F;Thread&#x548C;Threading&#x6A21;&#x5757;&#xFF0C;&#x901A;&#x6B64;&#x4E24;&#x8005;&#xFF0C;&#x518D;&#x65E0;&#x96BE;&#x4E8B;:-)</p>
+<h4 id="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;4&#x3001;&#x591A;&#x8FDB;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;"><a href="#&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;4&#x3001;&#x591A;&#x8FDB;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;4&#x3001;&#x591A;&#x8FDB;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;"></a>&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming-4/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;4&#x3001;&#x591A;&#x8FDB;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;</a></h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python-multi-programming-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-multi-programming-2/" class="article-date">
+      <time datetime="2016-05-15T02:32:22.078Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/python-multi-programming-2/">Python 并发编程系列--2、并发方式的选择</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;1&#x3001;&#x6D45;&#x8C08;GIL&#x5386;&#x53F2;&#x53CA;&#x5BF9;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5F71;&#x54CD;"><a href="#&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;1&#x3001;&#x6D45;&#x8C08;GIL&#x5386;&#x53F2;&#x53CA;&#x5BF9;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5F71;&#x54CD;" class="headerlink" title="&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;1&#x3001;&#x6D45;&#x8C08;GIL&#x5386;&#x53F2;&#x53CA;&#x5BF9;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5F71;&#x54CD;"></a>&#x4E0A;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;1&#x3001;&#x6D45;&#x8C08;GIL&#x5386;&#x53F2;&#x53CA;&#x5BF9;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5F71;&#x54CD;</a></h4><h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x524D;&#x9762;&#x8BF4;&#x4E86;&#x4E0B;GIL&#x7684;&#x5386;&#x53F2;&#xFF0C;&#x73B0;&#x5728;&#x7AD9;&#x5728;&#x63A5;&#x53D7;GIL&#x7684;&#x89D2;&#x5EA6;&#x8C08;&#x4F55;&#x65F6;&#x9009;&#x62E9;&#x591A;&#x7EBF;&#x7A0B;&#x3001;&#x4F55;&#x65F6;&#x9009;&#x62E9;&#x591A;&#x8FDB;&#x7A0B;&#x7684;&#x95EE;&#x9898;&#xFF08;&#x4E0D;&#x63A5;&#x53D7;GIL&#x90A3;&#x4F60;&#x7528;Jython&#x5450;2333&#xFF09;&#x3002;</p>
+<h4 id="&#x9009;&#x62E9;&#x56E0;&#x7D20;1&#x2013;&#x95EE;&#x9898;&#x7C7B;&#x578B;"><a href="#&#x9009;&#x62E9;&#x56E0;&#x7D20;1&#x2013;&#x95EE;&#x9898;&#x7C7B;&#x578B;" class="headerlink" title="&#x9009;&#x62E9;&#x56E0;&#x7D20;1&#x2013;&#x95EE;&#x9898;&#x7C7B;&#x578B;"></a>&#x9009;&#x62E9;&#x56E0;&#x7D20;1&#x2013;&#x95EE;&#x9898;&#x7C7B;&#x578B;</h4><p>&#x7B80;&#x5355;&#x7684;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x770B;&#x4F60;&#x8981;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x5C5E;&#x4E8E;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#x3002;&#x8FD9;&#x5757;&#x5927;&#x4F53;&#x4E0A;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#x2013;CPU&#x5BC6;&#x96C6;&#x578B;&#x548C;I/O&#x5BC6;&#x96C6;&#x578B;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#x5C31;&#x662F;&#x504F;&#x91CD;&#x4E8E;&#x8BA1;&#x7B97;&#x8FD8;&#x662F;&#x4FA7;&#x91CD;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x3002;&#x4F8B;&#x5982;&#x8981;&#x8FDB;&#x884C;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#xFF0C;&#x8BA1;&#x7B97;&#x91CF;&#x5F88;&#x5927;&#xFF0C;&#x90A3;&#x5C31;&#x5C5E;&#x4E8E;CPU&#x5BC6;&#x96C6;&#x578B;&#xFF0C;&#x56E0;&#x4E3A;&#x5BF9;CPU&#x7684;&#x9700;&#x6C42;&#x5360;&#x636E;&#x4E86;&#x4E3B;&#x4F53;&#x3002;&#x518D;&#x6BD4;&#x5982;&#x5199;&#x4E00;&#x4E2A;&#x722C;&#x866B;&#x7A0B;&#x5E8F;&#xFF0C;&#x5176;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x90FD;&#x82B1;&#x5728;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x663E;&#x7136;&#x662F;I/O&#x5BC6;&#x96C6;&#x578B;&#x3002;</p>
+<h4 id="&#x9009;&#x62E9;&#x56E0;&#x7D20;2&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x591A;&#x8FDB;&#x7A0B;&#x6027;&#x80FD;&#x6BD4;&#x5BF9;"><a href="#&#x9009;&#x62E9;&#x56E0;&#x7D20;2&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x591A;&#x8FDB;&#x7A0B;&#x6027;&#x80FD;&#x6BD4;&#x5BF9;" class="headerlink" title="&#x9009;&#x62E9;&#x56E0;&#x7D20;2&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x591A;&#x8FDB;&#x7A0B;&#x6027;&#x80FD;&#x6BD4;&#x5BF9;"></a>&#x9009;&#x62E9;&#x56E0;&#x7D20;2&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x591A;&#x8FDB;&#x7A0B;&#x6027;&#x80FD;&#x6BD4;&#x5BF9;</h4><p>&#x5173;&#x4E8E;&#x6027;&#x80FD;&#x6BD4;&#x5BF9;&#xFF0C;&#x7F51;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6BD4;&#x5BF9;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x591A;&#x8FDB;&#x7A0B;&#x901F;&#x5EA6;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x91CD;&#x590D;&#x9020;&#x8F6E;&#x5B50;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x51E0;&#x4E2A;&#x76F8;&#x5173;&#x7684;&#x94FE;&#x63A5;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E00;&#x4E0B;&#x4ED6;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;&#x3002;<br>&#x8FD9;&#x91CC;&#x76F4;&#x63A5;&#x7ED9;&#x51FA;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x591A;&#x8FDB;&#x7A0B;&#x7684;&#x5BF9;&#x6BD4;&#x7ED3;&#x679C;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;CPU&#x5BC6;&#x96C6;&#x578B;&#xFF0C;&#x6548;&#x7387;&#x5173;&#x7CFB;:&#x591A;&#x8FDB;&#x7A0B;&gt;&#x5355;&#x8FDB;&#x7A0B;&#xFF08;&#x5355;&#x7EBF;&#x7A0B;&#xFF09;&gt;&#x591A;&#x7EBF;&#x7A0B;</li>
+<li>&#x5BF9;&#x4E8E;I/O&#x5BC6;&#x96C6;&#x578B;&#xFF0C;&#x6548;&#x7387;&#x5173;&#x7CFB;&#xFF1A;&#x591A;&#x7EBF;&#x7A0B;&gt;&#x591A;&#x8FDB;&#x7A0B;&gt;&#x5355;&#x8FDB;&#x7A0B;(&#x5355;&#x7EBF;&#x7A0B;)<h4 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h4>&#x4ECE;&#x4EE5;&#x4E0A;&#x7ED3;&#x679C;&#x4E0D;&#x96BE;&#x770B;&#x51FA;&#xFF0C;&#x5BF9;&#x4E8E;&#x89C4;&#x6A21;&#x8F83;&#x5927;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5355;&#x8FDB;&#x7A0B;(&#x5355;&#x7EBF;&#x7A0B;)&#x5904;&#x7406;&#x8D77;&#x6765;&#x6027;&#x80FD;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x9700;&#x8981;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x8003;&#x8651;&#x5E76;&#x53D1;&#x4E86;&#x3002;CPU&#x5BC6;&#x96C6;&#x578B;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x7528;&#x591A;&#x8FDB;&#x7A0B;&#xFF1B;I/O&#x5BC6;&#x96C6;&#x578B;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#x3002;<h4 id="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;"><a href="#&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;"></a>&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming-3/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;3&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;</a></h4></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多进程/">多进程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python-multi-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-multi-programming/" class="article-date">
+      <time datetime="2016-05-15T01:08:07.230Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/python-multi-programming/">Python 并发编程系列--1、浅谈GIL历史及对多线程的影响</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x6211;&#x4EEC;&#x9664;&#x4E86;&#x4FEE;&#x6539;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x6539;&#x5584;&#x7B97;&#x6CD5;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x89D2;&#x5EA6;&#x5C31;&#x662F;&#x91C7;&#x53D6;&#x5E76;&#x53D1;&#x7684;&#x7B56;&#x7565;&#x3002;&#x5E76;&#x53D1;&#x6709;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x4E24;&#x8005;&#x6709;&#x5F88;&#x591A;&#x533A;&#x522B;&#xFF0C;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x533A;&#x522B;&#xFF1A;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x662F;&#x65E0;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#xFF0C;&#x56E0;&#x800C;&#x6BD4;&#x8F83;&#x8017;&#x8D39;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#xFF0C;&#x4F18;&#x70B9;&#x5219;&#x662F;&#x66F4;&#x597D;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF1B;&#x800C;&#x7EBF;&#x7A0B;&#x56E0;&#x4E3A;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#xFF0C;&#x6240;&#x4EE5;&#x76F8;&#x5BF9;&#x4E8E;&#x8FDB;&#x7A0B;&#x66F4;&#x52A0;&#x8F7B;&#x91CF;&#x7EA7;&#xFF0C;&#x7F3A;&#x70B9;&#x5219;&#x662F;&#x5BF9;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x9700;&#x8981;&#x4EBA;&#x4E3A;&#x7BA1;&#x7406;&#xFF0C;&#x5373;&#x5B58;&#x5728;&#x201C;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x201D;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a href="#&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h4><p>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x91CC;&#x9762;&#x7684;&#x72EC;&#x6709;&#x6982;&#x5FF5;&#xFF08;&#x4ECE;&#x540D;&#x5B57;&#x4E0A;&#x4E5F;&#x80FD;&#x770B;&#x51FA;&#x6765;^_^&#xFF09;&#xFF0C;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;wikipedia&#x4E0A;&#x9762;&#x7684;&#x89E3;&#x91CA;&#xFF1A;</p>
+<blockquote>
+<p>Thread safety is a computer programming concept applicable in the context of multi-threaded programs. A piece of code is thread-safe if it functions correctly during simultaneous execution by multiple threads. In particular, it must satisfy the need for multiple threads to access the same shared data, and the need for a shared piece of data to be accessed by only one thread at any given time.</p>
+</blockquote>
+<p>&#x7B80;&#x8A00;&#x4E4B;&#xFF0C;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5728;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x4E8E;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#xFF08;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4EA7;&#x751F;&#x7EBF;&#x7A0B;&#x6B7B;&#x9501;&#x7684;&#x4E00;&#x4E2A;&#x5FC5;&#x8981;&#x6761;&#x4EF6;&#x5C31;&#x662F;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x5BF9;&#x4E8E;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x5C31;&#x662F;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#x7684;&#xFF09;&#x3002;</p>
+<h4 id="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a href="#&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h4><p>&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x53EF;&#x4EE5;&#x53C2;&#x7167;&#x8FDB;&#x7A0B;&#x95F4;&#x5BF9;&#x4E8E;&#x4E34;&#x754C;&#x8D44;&#x6E90;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x52A0;&#x9501;&#x662F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x505A;&#x6CD5;&#x3002;&#x4E3A;&#x4E86;&#x505A;&#x5230;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x91C7;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x52A0;&#x9501;&#x65B9;&#x5F0F;&#xFF0C;&#x5927;&#x4F53;&#x6709;&#x4E24;&#x4E2A;&#x7EA7;&#x522B;&#x7684;&#xFF1A;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x9501;&#xFF0C;&#x4EC5;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x624D;&#x52A0;&#xFF0C;&#x56E0;&#x4E3A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E0D;&#x77E5;&#x9053;&#x4F60;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981;&#x52A0;&#x9501;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x5C31;&#x8981;&#x7ED9;&#x7F16;&#x7A0B;&#x4EBA;&#x5458;&#x53BB;&#x638C;&#x63A7;&#xFF0C;java&#x5C31;&#x662F;&#x91C7;&#x53D6;&#x8FD9;&#x79CD;&#x7B56;&#x7565;&#xFF0C;jython(Python &#x7684;java&#x5B9E;&#x73B0;)&#x4E5F;&#x662F;&#x91C7;&#x7528;&#x7684;&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;&#xFF1B;&#x7C97;&#x7C92;&#x5EA6;&#x7684;&#x9501;&#xFF0C;&#x4E3A;&#x4E86;&#x7EDD;&#x5BF9;&#x7684;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x7684;&#x5B89;&#x5168;&#xFF0C;&#x91C7;&#x53D6;&#x5168;&#x5C40;&#x52A0;&#x9501;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x4E2A;&#x7531;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x76F4;&#x63A5;&#x7BA1;&#x7406;&#xFF0C;&#x7F16;&#x7A0B;&#x4EBA;&#x5458;&#x4E0D;&#x7528;&#x64CD;&#x5FC3;&#xFF0C;&#x5178;&#x578B;&#x7684;&#x662F;CPython&#xFF08;&#x6211;&#x4EEC;&#x8BF4;&#x7684;Python&#x9ED8;&#x8BA4;&#x5C31;&#x662F;CPython&#xFF09;&#x3002;&#x7B80;&#x5355;&#x7684;&#x8BF4;&#x524D;&#x4E00;&#x79CD;&#x66F4;&#x5B89;&#x5168;&#xFF0C;&#x540E;&#x4E00;&#x79CD;&#x66F4;&#x65B9;&#x4FBF;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x624B;&#x61D2;&#x3001;&#x996D;&#x90FD;&#x61D2;&#x5F97;&#x5403;&#x7684;&#x4EBA;&#xFF0C;&#x6211;&#x6BD4;&#x8F83;&#x559C;&#x6B22;&#x540E;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x628A;&#x54EA;&#x4E9B;&#x7410;&#x788E;&#x7684;&#x4E8B;&#x4EA4;&#x7ED9;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x53BB;&#x505A;&#x5427;&#x3002;</p>
+<h4 id="Python&#x7684;GIL"><a href="#Python&#x7684;GIL" class="headerlink" title="Python&#x7684;GIL"></a>Python&#x7684;GIL</h4><p>&#x524D;&#x9762;&#x4EA4;&#x4EE3;&#x8FC7;&#x4E86;&#xFF0C;&#x6B63;&#x662F;&#x7531;&#x4E8E;&#x5168;&#x5C40;&#x7684;&#x52A0;&#x9501;&#x7684;&#x60F3;&#x6CD5;&#xFF0C;CPython&#x7684;&#x4F5C;&#x8005;(&#x5F53;&#x7136;&#x5C31;&#x662F;&#x6B63;&#x7EDF;&#x7684;Python&#x7684;&#x521B;&#x9020;&#x8005;)Guido&#x5728;Python&#x5F15;&#x5165;&#x4E86;GIL(Global Interpreter Lock)&#x3002;&#x6BCF;&#x4E00;&#x4E2A;interperter&#x8FDB;&#x7A0B;&#xFF0C;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6765;&#x6267;&#x884C;&#xFF0C;&#x83B7;&#x5F97;&#x9501;&#x5E76;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x907F;&#x514D;&#x4E86;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x5E76;&#x53D1;&#x6267;&#x884C;&#xFF0C;&#x56E0;&#x800C;&#x4FDD;&#x8BC1;&#x4E86;&#x7EBF;&#x7A0B;&#x7684;&#x5B89;&#x5168;&#x3002;&#x4F46;&#x662F;&#x7EBF;&#x7A0B;&#x90FD;&#x65E0;&#x6CD5;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x90A3;&#x8FD8;&#x53EB;&#x591A;&#x7EBF;&#x7A0B;&#x5417;&#xFF1F;&#x2299;&#xFE4F;&#x2299;&#x2016;&#x2223;<br>&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;GIL&#x59CB;&#x7EC8;&#x6709;&#x4E24;&#x79CD;&#x58F0;&#x97F3;&#xFF1A;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;GIL&#xFF08;&#x53EA;&#x662F;&#x80FD;&#x63A5;&#x53D7;&#xFF0C;&#x672A;&#x5FC5;&#x5F88;&#x559C;&#x6B22;&#xFF09;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x8BA4;&#x4E3A;&#x5E94;&#x8BE5;&#x53BB;&#x6389;GIL&#x3002;&#x8BA4;&#x4E3A;&#x80FD;&#x63A5;&#x53D7;&#x7684;&#x539F;&#x56E0;&#x7531;&#x4E24;&#x4E2A;&#xFF1A;&#x4E00;&#x3001;&#x81EA;&#x4ECE;Python&#x51FA;&#x73B0;&#x540E;&#xFF0C;&#x540E;&#x9762;&#x592A;&#x591A;&#x7684;&#x6A21;&#x5757;&#x90FD;&#x4F7F;&#x7528;&#x4E86;Python&#x7684;GIL&#x6765;&#x7F16;&#x5199;&#xFF0C;&#x4E00;&#x65E6;&#x53BB;&#x6389;GIL&#xFF0C;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x90FD;&#x5F97;&#x91CD;&#x5199;&#xFF0C;&#x90A3;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x903B;&#x8F91;&#x5F97;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x7F16;&#x5199;&#xFF0C;&#x4EE3;&#x4EF7;&#x5F88;&#x5927;&#xFF1B;&#x4E8C;&#x3001;&#x53BB;&#x6389;GIL&#x5BF9;&#x4E8E;&#x5355;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x4F1A;&#x6709;&#x6027;&#x80FD;&#x7684;&#x964D;&#x4F4E;(&#x5728;1999&#x5E74;&#x5C31;&#x8BD5;&#x8FC7;&#xFF0C;&#x79FB;&#x9664;&#x4E86;GIL&#x5BFC;&#x81F4;&#x5355;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x901F;&#x5EA6;&#x4E0B;&#x964D;&#x4E86;2&#x500D;&#x591A;)&#x3002;&#x8BA4;&#x4E3A;&#x8BE5;&#x79FB;&#x9664;&#x7684;&#x539F;&#x56E0;&#x4E3B;&#x8981;&#x4E5F;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;&#x4E00;&#x3001;&#x53BB;&#x6389;GIL&#x624D;&#x80FD;&#x53D1;&#x6325;&#x591A;&#x6838;&#x5904;&#x7406;&#x5668;&#x7684;&#x4F18;&#x52BF;&#x3002;&#x4E8C;&#x3001;&#x53BB;&#x6389;GIL&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x5B9E;&#x73B0;&#x771F;&#x6B63;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x3002;</p>
+<h4 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h4><p>GIL&#x65B9;&#x6848;&#x786E;&#x5B9E;&#x4E0D;&#x591F;&#x597D;&#xFF08;&#x4ECE;&#x591A;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x7684;&#x89D2;&#x5EA6;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x5355;&#x7EAF;&#x7684;&#x79FB;&#x9664;GIL&#x5E76;&#x975E;&#x5B8C;&#x7F8E;&#x7684;&#x5BF9;&#x7B56;&#xFF1A;&#x4E0D;&#x4EC5;&#x628A;&#x70C2;&#x644A;&#x5B50;&#x7ED9;&#x4E86;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x800C;&#x4E14;&#x635F;&#x5931;&#x4E86;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x3002;&#x5C24;&#x5176;&#x5BF9;&#x4E8E;Python&#xFF0C;&#x7B80;&#x5355;&#x548C;&#x4F18;&#x96C5;&#x662F;&#x5B83;&#x4E00;&#x8D2F;&#x7684;&#x7279;&#x8272;&#xFF0C;&#x79FB;&#x9664;GIL&#x4F1A;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x95EE;&#x9898;&#x53D8;&#x5F97;&#x590D;&#x6742;&#xFF0C;&#x4E5F;&#x6CA1;&#x4E86;&#x4F18;&#x96C5;&#x3002;&#x5982;&#x679C;&#x771F;&#x7684;&#x5BF9;&#x6027;&#x80FD;&#x8981;&#x6C42;&#x9AD8;&#xFF0C;&#x90A3;&#x5C31;&#x7528;Python&#x7684;&#x591A;&#x8FDB;&#x7A0B;&#x5427;&#xFF0C;&#x5475;&#x5475;&#x3002;</p>
+<h4 id="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;"><a href="#&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;"></a>&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming-2/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;</a></h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIL/">GIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-python-opetating-excel" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -703,581 +1066,9 @@
 
 
   
-    <article id="post-adb-note-chapter8" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/01/adb-note-chapter8/" class="article-date">
-      <time datetime="2016-05-01T04:11:18.777Z" itemprop="datePublished">2016-05-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/adb-note-chapter8/">《高级数据库系统》笔记——  第八章 日志与故障恢复</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"><a href="#&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;" class="headerlink" title="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"></a><a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter7/">&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;</a></h4><h3 id="&#x4E8B;&#x52A1;&#x7684;&#x5F15;&#x5165;"><a href="#&#x4E8B;&#x52A1;&#x7684;&#x5F15;&#x5165;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;&#x5F15;&#x5165;"></a>&#x4E8B;&#x52A1;&#x7684;&#x5F15;&#x5165;</h3><ul>
-<li>&#x8BA1;&#x7B97;&#x73AF;&#x5883;&#x7684;&#x8106;&#x5F31;&#x6027;&#x2014;&#x6545;&#x969C;&#x6062;&#x590D;&#x95EE;&#x9898;<ul>
-<li>&#x94F6;&#x884C;&#x8F6C;&#x5E10;&#xFF08;&#x6545;&#x969C;&#x6062;&#x590D;&#xFF09;</li>
-</ul>
-</li>
-<li>&#x8BA1;&#x7B97;&#x73AF;&#x5883;&#x7684;&#x5206;&#x5E03;&#x6027;&#x2014;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x95EE;&#x9898;<ul>
-<li>&#x8BA2;&#x98DE;&#x673A;&#x7968;&#xFF08;&#x5E76;&#x53D1;&#x6267;&#x884C;&#xFF09;</li>
-</ul>
-</li>
-</ul>
-<h4 id="&#x4E8B;&#x52A1;&#x793A;&#x4F8B;"><a href="#&#x4E8B;&#x52A1;&#x793A;&#x4F8B;" class="headerlink" title="&#x4E8B;&#x52A1;&#x793A;&#x4F8B;"></a>&#x4E8B;&#x52A1;&#x793A;&#x4F8B;</h4><p>&#x94F6;&#x884C;&#x8F6C;&#x5E10;&#xFF1A;&#x4E8B;&#x52A1;T&#x4ECE;A&#x5E10;&#x6237;&#x8FC7;&#x6237;50&#xFFE5;&#x5230;B&#x5E10;&#x6237;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T&#xFF1A;<span class="built_in">read</span>(A);</span><br><span class="line">   A := A &#x2013; 50;</span><br><span class="line">   write(A);</span><br><span class="line">   <span class="built_in">read</span>(B);</span><br><span class="line">   B := B + 50;</span><br><span class="line">   write(B);</span><br></pre></td></tr></table></figure></p>
-<p>&#x5176;&#x4E2D;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span>(X)&#xFF1A;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4F20;&#x9001;&#x6570;&#x636E;&#x9879;X&#x5230;&#x4E8B;&#x52A1;&#x7684;&#x5DE5;&#x4F5C;&#x533A;&#x4E2D;</span><br><span class="line">write(X)&#xFF1A;&#x4ECE;&#x4E8B;&#x52A1;&#x7684;&#x5DE5;&#x4F5C;&#x533A;&#x4E2D;&#x5C06;&#x6570;&#x636E;&#x9879;X&#x5199;&#x56DE;&#x6570;&#x636E;&#x5E93;</span><br></pre></td></tr></table></figure>
-<h4 id="&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;"><a href="#&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;"></a>&#x4E8B;&#x52A1;&#x4E2D;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;</h4><p><img src="/2016/05/01/adb-note-chapter8/dataaccess.png" alt="&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;"></p>
-<h4 id="&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;"><a href="#&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;" class="headerlink" title="&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;"></a>&#x53EF;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x7684;&#x95EE;&#x9898;&#x4E0E;&#x6A21;&#x578B;</h4><p>&#x6545;&#x969C;&#x6A21;&#x5F0F;&#xFF1A;</p>
-<ul>
-<li>&#x9519;&#x8BEF;&#x6570;&#x636E;&#x8F93;&#x5165;&#xFF1A;&#x5F15;&#x5165;&#x7EA6;&#x675F;&#x673A;&#x5236;<ul>
-<li>&#x4F46;&#x6709;&#x4E9B;&#x9519;&#x8BEF;&#x662F;&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x8F93;&#x9519;&#x67D0;&#x4E00;&#x4F4D;&#x3002;</li>
-</ul>
-</li>
-<li>&#x4ECB;&#x8D28;&#x6545;&#x969C;<ul>
-<li>&#x78C1;&#x76D8;&#x5C40;&#x90E8;&#x6545;&#x969C;&#xFF1A;&#x53EF;&#x901A;&#x8FC7;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x68C0;&#x6D4B;</li>
-<li>&#x78C1;&#x76D8;&#x91CD;&#x5927;&#x6545;&#x969C;&#xFF1A;&#x5229;&#x7528;RAID</li>
-</ul>
-</li>
-<li>&#x707E;&#x96BE;&#x6027;&#x6545;&#x969C;<ul>
-<li>RAID&#x5931;&#x6548;&#xFF0C;&#x56E0;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x6709;&#x78C1;&#x76D8;&#x5747;&#x88AB;&#x7834;&#x574F;</li>
-<li>&#x53EF;&#x7528;&#x5907;&#x4EFD;&#x6216;&#x5197;&#x4F59;&#x5206;&#x5E03;&#x5F0F;&#x62F7;&#x8D1D;&#x6062;&#x590D;</li>
-</ul>
-</li>
-<li>&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#xFF1A;&#x662F;&#x5BFC;&#x81F4;&#x4E8B;&#x52A1;&#x72B6;&#x6001;&#x4E22;&#x5931;&#x7684;&#x95EE;&#x9898;<ul>
-<li>&#x6389;&#x7535;&#x6216;&#x8F6F;&#x4EF6;&#x9519;&#x8BEF;</li>
-<li>&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x4E8B;&#x52A1;&#x7684;&#x54EA;&#x4E9B;&#x90E8;&#x5206;(&#x5305;&#x62EC;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4FEE;&#x6539;)&#x5DF2;&#x7ECF;&#x8FDB;&#x884C;</li>
-</ul>
-</li>
-</ul>
-<p>&#x4E8B;&#x52A1;&#xFF1A;</p>
-<ul>
-<li>&#x4E8B;&#x52A1;&#x662F;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x7684;&#x6267;&#x884C;&#x5355;&#x4F4D;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x67E5;&#x8BE2;&#x6216;&#x6570;&#x636E;&#x5E93;&#x66F4;&#x65B0;&#x8BED;&#x53E5;&#x5C31;&#x662F;&#x2014;&#x4E2A;&#x4E8B;&#x52A1;</li>
-<li>&#x5728;&#x5D4C;&#x5165;&#x5F0F;SQL&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x4E00;&#x65E6;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#xFF0C;&#x4E8B;&#x52A1;&#x5C31;&#x5F00;&#x59CB;&#xFF0C;&#x800C;&#x4E8B;&#x52A1;&#x7684;&#x7ED3;&#x675F;&#x4F7F;&#x7528;&#x663E;&#x5F0F;&#x7684;commit&#x6216;rollback&#x7ED3;&#x675F;</li>
-<li>SQL&#x4E2D;&#x4E8B;&#x52A1;&#x7684;&#x5B9A;&#x4E49;<ul>
-<li>&#x4E8B;&#x52A1;&#x4EE5;Begin transaction&#x5F00;&#x59CB;&#xFF0C;&#x4EE5;Commit work&#x6216; Rollback work&#x7ED3;&#x675F;    </li>
-<li>Commit work&#x8868;&#x793A;&#x63D0;&#x4EA4;&#xFF0C;&#x4E8B;&#x52A1;&#x6B63;&#x5E38;&#x7ED3;&#x675F;</li>
-<li>Rollback work&#x8868;&#x793A;&#x4E8B;&#x52A1;&#x975E;&#x6B63;&#x5E38;&#x7ED3;&#x675F;&#xFF0C;&#x64A4;&#x6D88;&#x4E8B;&#x52A1;&#x5DF2;&#x505A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x56DE;&#x6EDA;&#x5230;&#x4E8B;&#x52A1;&#x5F00;&#x59CB;&#x65F6;&#x7684;&#x72B6;&#x6001;</li>
-</ul>
-</li>
-</ul>
-<h4 id="&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;"><a href="#&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;"></a>&#x4E8B;&#x52A1;&#x7684;ACID&#x7279;&#x6027;</h4><p>A&#xFF1A;&#x8868;&#x793A;&#x4E8B;&#x52A1;&#x7684;&#x539F;&#x5B50;&#x6027;(Atomicity)&#xFF0C;&#x5373;&#x4E8B;&#x52A1;&#x5B8C;&#x5168;&#x6267;&#x884C;&#x6216;&#x5B8C;&#x5168;&#x4E0D;&#x6267;&#x884C;</p>
-<ul>
-<li>&#x4E8B;&#x52A1;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x8981;&#x4E48;&#x5168;&#x505A;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x4E0D;&#x505A;&#x539F;&#x5B50;&#x6027;&#x7531;&#x6062;&#x590D;&#x673A;&#x5236;&#x5B9E;&#x73B0;</li>
-</ul>
-<p>C&#xFF1A;&#x8868;&#x793A;&#x4E00;&#x81F4;&#x6027;(Consistency)&#xFF0C;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x90FD;&#x6709;&#x4E00;&#x81F4;&#x6027;&#x7EA6;&#x675F;&#xFF0C;&#x6216;&#x5173;&#x4E8E;&#x6570;&#x636E;&#x4E4B;&#x95F4;&#x8054;&#x7CFB;&#x7684;&#x9884;&#x671F;&#x72B6;&#x6001;</p>
-<ul>
-<li>&#x4E8B;&#x52A1;&#x7684;&#x9694;&#x79BB;&#x6267;&#x884C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x4E8B;&#x52A1;&#x5F00;&#x59CB;&#x524D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x5904;&#x4E8E;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x72B6;&#x6001;&#xFF1B;&#x4E8B;&#x52A1;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x5FC5;&#x987B;&#x4ECD;&#x5904;&#x4E8E;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x3002;</li>
-<li>&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x7531;&#x7528;&#x6237;&#x6765;&#x8D1F;&#x8D23;&#xFF0C;&#x7531;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x3002;&#x5982;&#x94F6;&#x884C;&#x8F6C;&#x5E10;&#xFF0C;&#x8F6C;&#x5E10;&#x524D;&#x540E;&#x4E24;&#x4E2A;&#x5E10;&#x6237;&#x91D1;&#x989D;&#x4E4B;&#x548C;&#x5E94;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;</li>
-</ul>
-<p>I&#xFF1A;&#x8868;&#x793A;&#x9694;&#x79BB;(Isolation)&#xFF0C;&#x5373;&#x8868;&#x9762;&#x770B;&#x8D77;&#x6765;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x52A1;&#x90FD;&#x662F;&#x5728;&#x6CA1;&#x6709;&#x5176;&#x5B83;&#x4E8B;&#x52A1;&#x540C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x7684;</p>
-<ul>
-<li>&#x7CFB;&#x7EDF;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x4E8B;&#x52A1;&#x4E0D;&#x53D7;&#x5176;&#x5B83;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x4E8B;&#x52A1;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x5BF9;&#x4EFB;&#x4F55;&#x4E00;&#x5BF9;&#x4E8B;&#x52A1;T1&#xFF0C;T2&#xFF0C;&#x5728;T1&#x770B;&#x6765;&#xFF0C;T2&#x8981;&#x4E48;&#x5728;T1&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#xFF0C;&#x8981;&#x4E48;&#x5728;T1&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x518D;&#x5F00;&#x59CB;&#x6267;&#x884C;</li>
-<li>&#x9694;&#x79BB;&#x6027;&#x901A;&#x8FC7;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x673A;&#x5236;&#x5B9E;&#x73B0;</li>
-</ul>
-<p>D&#xFF1A;&#x8868;&#x793A;&#x6301;&#x4E45;&#x6027;(Durability)&#xFF0C;&#x5373;&#x4E00;&#x65E6;&#x4E8B;&#x52A1;&#x5B8C;&#x6210;&#x4E86;&#xFF0C; &#x4E8B;&#x52A1;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5F71;&#x54CD;&#x5C31;&#x4E0D;&#x4F1A;&#x4E22;&#x5931;</p>
-<ul>
-<li>&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x4E00;&#x65E6;&#x63D0;&#x4EA4;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5F71;&#x54CD;&#x5FC5;&#x987B;&#x662F;&#x6C38;&#x4E45;&#x7684;</li>
-<li>&#x7CFB;&#x7EDF;&#x53D1;&#x751F;&#x6545;&#x969C;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x4E8B;&#x52A1;&#x7684;&#x6301;&#x4E45;&#x6027;&#x3002;&#x6301;&#x4E45;&#x6027;&#x901A;&#x8FC7;&#x6062;&#x590D;&#x673A;&#x5236;&#x5B9E;&#x73B0;</li>
-</ul>
-<h4 id="&#x4E8B;&#x52A1;"><a href="#&#x4E8B;&#x52A1;" class="headerlink" title="&#x4E8B;&#x52A1;"></a>&#x4E8B;&#x52A1;</h4><p>&#x4E8B;&#x52A1;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x4EA4;&#x4E92;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x4E09;&#x79CD;&#x5730;&#x5740;&#x7A7A;&#x95F4;</p>
-<ul>
-<li>&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;&#x7684;&#x78C1;&#x76D8;&#x5757;&#x7A7A;&#x95F4;</li>
-<li>&#x7F13;&#x51B2;&#x533A;&#x7BA1;&#x7406;&#x5668;&#x7BA1;&#x7406;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;</li>
-<li>&#x4E8B;&#x52A1;&#x7684;&#x5C40;&#x90E8;&#x5730;&#x5740;&#x7A7A;&#x95F4;</li>
-</ul>
-<p>&#x4E09;&#x79CD;&#x7A7A;&#x95F4;&#x7684;&#x8BA1;&#x5212;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;<br><img src="/2016/05/01/adb-note-chapter8/transaction.png" alt="&#x4E09;&#x79CD;&#x5730;&#x5740;&#x7A7A;&#x95F4;"><br>&#x4E0A;&#x56FE;&#x4E2D;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">READ(X, t)&#x548C;WRITE(t, X)&#x7531;&#x4E8B;&#x52A1;&#x53D1;&#x51FA;</span><br><span class="line">INPUT(X)&#x548C;OUTPUT(X)&#x7531;&#x7F13;&#x51B2;&#x533A;&#x7BA1;&#x7406;&#x5668;&#x53D1;&#x51FA;</span><br></pre></td></tr></table></figure></p>
-<h4 id="&#x4E8B;&#x52A1;&#x7684;&#x539F;&#x8BED;&#x64CD;&#x4F5C;"><a href="#&#x4E8B;&#x52A1;&#x7684;&#x539F;&#x8BED;&#x64CD;&#x4F5C;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;&#x539F;&#x8BED;&#x64CD;&#x4F5C;"></a>&#x4E8B;&#x52A1;&#x7684;&#x539F;&#x8BED;&#x64CD;&#x4F5C;</h4><p>&#x7528;&#x4E00;&#x79CD;&#x8BB0;&#x6CD5;&#x6765;&#x63CF;&#x8FF0;&#x4F7F;&#x6570;&#x636E;&#x5728;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x4E4B;&#x95F4;&#x79FB;&#x52A8;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<ul>
-<li>1&#xFF0E;INPUT(X)&#xFF1A;&#x5C06;&#x5305;&#x542B;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#x7684;&#x78C1;&#x76D8;&#x5757;&#x62F7;&#x8D1D;&#x5230;&#x4E3B;&#x5B58;&#x7F13;&#x51B2;&#x533A;</li>
-<li>2&#xFF0E;READ(X, t)&#xFF1A;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#x62F7;&#x8D1D;&#x5230;&#x4E8B;&#x52A1;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;t</li>
-<li>3&#xFF0E;WRITE(X, t)&#xFF1A;&#x5C06;&#x5C40;&#x90E8;&#x53D8;&#x91CF;t&#x7684;&#x503C;&#x62F7;&#x8D1D;&#x5230;&#x4E3B;&#x5B58;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X</li>
-<li><ol>
-<li>OUTPUT(X)&#xFF1A;&#x5C06;&#x5305;&#x542B;X&#x7684;&#x7F13;&#x51B2;&#x533A;&#x62F7;&#x8D1D;&#x56DE;&#x78C1;&#x76D8;</li>
-</ol>
-</li>
-</ul>
-<h4 id="&#x4E8B;&#x52A1;&#x72B6;&#x6001;"><a href="#&#x4E8B;&#x52A1;&#x72B6;&#x6001;" class="headerlink" title="&#x4E8B;&#x52A1;&#x72B6;&#x6001;"></a>&#x4E8B;&#x52A1;&#x72B6;&#x6001;</h4><p>&#x4E0B;&#x56FE;&#x8BF4;&#x660E;&#x4E86;&#x4E8B;&#x52A1;&#x7684;&#x51E0;&#x79CD;&#x72B6;&#x6001;&#x4EE5;&#x53CA;&#x8FD9;&#x4E9B;&#x72B6;&#x6001;&#x95F4;&#x7684;&#x8F6C;&#x6362;<br><img src="/2016/05/01/adb-note-chapter8/&#x4E8B;&#x52A1;&#x72B6;&#x6001;&#x8F6C;&#x6362;.png" alt="&#x51E0;&#x79CD;&#x72B6;&#x6001;&#x7684;&#x8F6C;&#x6362;"></p>
-<h3 id="undo-&#x65E5;&#x5FD7;"><a href="#undo-&#x65E5;&#x5FD7;" class="headerlink" title="undo &#x65E5;&#x5FD7;"></a>undo &#x65E5;&#x5FD7;</h3><ul>
-<li>&#x65E5;&#x5FD7; <ul>
-<li>&#x65E5;&#x5FD7;&#x662F;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x7684;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x7528;&#x4E8E;&#x8BB0;&#x8F7D;&#x6709;&#x5173;&#x67D0;&#x4E2A;&#x4E8B;&#x52A1;&#x5DF2;&#x505A;&#x7684;&#x4E8B;&#x7684;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;</li>
-</ul>
-</li>
-<li>&#x65E5;&#x5FD7;&#x5757;&#x6700;&#x521D;&#x5728;&#x4E3B;&#x5B58;&#x4E2D;&#x521B;&#x5EFA;&#xFF0C;&#x4E00;&#x65E6;&#x5408;&#x9002;&#xFF0C;&#x65E5;&#x5FD7;&#x5757;&#x5C31;&#x88AB;&#x6C38;&#x4E45;&#x5730;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;</li>
-<li>&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x7684;&#x683C;&#x5F0F;<ul>
-<li><start t="">&#xFF0C;&#x8868;&#x793A;&#x4E8B;&#x52A1;T&#x5DF2;&#x7ECF;&#x5F00;&#x59CB;</start></li>
-<li><commit t="">&#xFF0C;&#x8868;&#x793A;&#x4E8B;&#x52A1;T&#x6210;&#x529F;&#x5B8C;&#x6210;</commit></li>
-<li><abort t="">&#xFF0C;&#x4E8B;&#x52A1;T&#x672A;&#x6210;&#x529F;&#xFF0C;&#x88AB;&#x4E2D;&#x6B62;</abort></li>
-<li><t, x,="" v="">&#xFF0C;&#x8868;&#x793A;&#x4E8B;&#x52A1;T&#x6539;&#x53D8;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#xFF0C;X&#x539F;&#x6765;&#x7684;&#x503C;&#x4E3A;v(X&#x7684;&#x65E7;&#x503C;)</t,></li>
-</ul>
-</li>
-<li>&#x66F4;&#x65B0;&#x8BB0;&#x5F55;</li>
-<li>undo&#x65E5;&#x5FD7;&#x89C4;&#x5219;</li>
-<li><p>&#x4F7F;&#x7528;undo&#x65E5;&#x5FD7;&#x7684;&#x6062;&#x590D;</p>
-<ul>
-<li>&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x5B8C;&#x5168;&#x786E;&#x5B9A;&#x4E8B;&#x52A1;&#x7684;&#x5F71;&#x54CD;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x5E76;&#x4E14;&#x5DF2;&#x7ECF;&#x5B58;&#x50A8;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#xFF0C;&#x90A3;&#x4E48;&#x4E8B;&#x52A1;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6240;&#x505A;&#x7684;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x90FD;&#x5C06;&#x88AB;&#x64A4;&#x9500;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x88AB;&#x6062;&#x590D;&#xFF0C;&#x5C31;&#x597D;&#x50CF;&#x8FD9;  - &#x4E9B;&#x4E8B;&#x52A1;&#x4ECE;&#x6765;&#x672A;&#x66FE;&#x6267;&#x884C;&#x8FC7;&#x3002;</li>
-</ul>
-</li>
-<li><p>&#x66F4;&#x65B0;&#x8BB0;&#x5F55;</p>
-<ul>
-<li><t, x,="" v="">&#x542B;&#x4E49;&#x662F;&#xFF0C;&#x4E8B;&#x52A1;T&#x6539;&#x53D8;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#xFF0C;X&#x539F;&#x6765;&#x7684;&#x503C;&#x662F;v</t,></li>
-<li>&#x6CE8;&#x610F;: undo&#x65E5;&#x5FD7;&#x4E0D;&#x8BB0;&#x5F55;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;&#x7684;&#x65B0;&#x503C;&#xFF0C;&#x800C;&#x53EA;&#x8BB0;&#x5F55;&#x65E7;&#x503C;&#x3002;&#x5982;&#x679C;&#x5728;&#x4F7F;&#x7528;undo&#x65E5;&#x5FD7;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6062;&#x590D;&#x65F6;&#xFF0C;&#x6062;&#x590D;&#x7BA1;&#x7406;&#x5668;&#x8981;&#x505A;&#x7684;&#x552F;&#x4E00;&#x4E8B;&#x60C5;&#x662F;   &#x901A;&#x8FC7;&#x6062;&#x590D;&#x65E7;&#x503C;&#x6D88;&#x9664;&#x4E8B;&#x52A1;&#x53EF;&#x80FD;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x9020;&#x6210;&#x7684;&#x5F71;&#x54CD;</li>
-</ul>
-</li>
-<li>undo&#x65E5;&#x5FD7;&#x7684;&#x89C4;&#x5219;<br>&#x5BF9;&#x4E8E;&#x4EFB;&#x4E00;&#x4E8B;&#x52A1;T&#xFF0C;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x987A;&#x5E8F;&#x5411;&#x78C1;&#x76D8;&#x8F93;&#x51FA;<br>T&#x7684;&#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#xFF1A; <ul>
-<li>&#x9996;&#x5148;&#xFF0C;&#x5199;&#x66F4;&#x65B0;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;<t, x,="" v=""></t,></li>
-<li>&#x5176;&#x6B21;&#xFF0C;&#x6539;&#x53D8;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6267;&#x884C;OUTPUT(X)</li>
-<li>&#x6700;&#x540E;&#xFF0C;&#x5199;<commit t="">&#x65E5;&#x5FD7;<br>&#x4F46;&#x662F;&#x987A;&#x5E8F;&#x662F;&#x5BF9;&#x5404;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;&#x5355;&#x72EC;&#x9002;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5BF9;&#x4E8B;&#x52A1;&#x7684;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;&#x96C6;&#x5408;&#x6574;&#x4E2A;&#x9002;&#x7528;<br>&#x2192;&#x7ACB;&#x5373;&#x4FEE;&#x6539;&#x7684;&#x6280;&#x672F;<br>&#x5141;&#x8BB8;&#x6570;&#x636E;&#x5E93;&#x4FEE;&#x6539;&#x5728;&#x4E8B;&#x52A1;&#x4ECD;&#x5904;&#x4E8E;&#x6D3B;&#x8DC3;&#x72B6;&#x6001;&#x65F6;&#x5C31;&#x8F93;&#x51FA;&#x5230;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;&#x6B64;&#x65F6;&#x79F0;&#x5176;&#x4E3A;&#x672A;&#x63D0;&#x4EA4;&#x4FEE;&#x6539;</commit></li>
-</ul>
-</li>
-</ul>
-<p>&#x4F8B;&#x5982;&#x5BF9;&#x4E8E;&#x4E0B;&#x9762;&#x7684;&#x4E8B;&#x52A1;<br><img src="/2016/05/01/adb-note-chapter8/transactionexample.png" alt="&#x4E8B;&#x52A1;&#x4E3E;&#x4F8B;"><br>&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x65E5;&#x5FD7;&#x987A;&#x5E8F;&#x4E3A;<br><img src="/2016/05/01/adb-note-chapter8/transactionlog.png" alt="&#x4E8B;&#x52A1;&#x65E5;&#x5FD7;"></p>
-<h4 id="&#x4F7F;&#x7528;undo&#x65E5;&#x5FD7;&#x8FDB;&#x884C;&#x6062;&#x590D;"><a href="#&#x4F7F;&#x7528;undo&#x65E5;&#x5FD7;&#x8FDB;&#x884C;&#x6062;&#x590D;" class="headerlink" title="&#x4F7F;&#x7528;undo&#x65E5;&#x5FD7;&#x8FDB;&#x884C;&#x6062;&#x590D;"></a>&#x4F7F;&#x7528;undo&#x65E5;&#x5FD7;&#x8FDB;&#x884C;&#x6062;&#x590D;</h4><ul>
-<li>&#x4ECE;&#x5C3E;&#x90E8;&#x5F00;&#x59CB;&#x626B;&#x63CF;&#x65E5;&#x5FD7;</li>
-<li>&#x5728;&#x626B;&#x63CF;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8BB0;&#x4F4F;&#x6240;&#x6709;&#x6709;<commit t="">&#x548C;<abort t="">&#x8BB0;&#x5F55;&#x7684;&#x4E8B;&#x52A1;T</abort></commit></li>
-<li>&#x5728;&#x7531;&#x5C3E;&#x90E8;&#x5411;&#x540E;&#x626B;&#x63CF;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x82E5;&#x770B;&#x5230;<br> &#x6709;&#x8BB0;&#x5F55;<t, x,="" v="">, &#x5219;<ul>
-<li>&#x82E5;T&#x7684;COMMIT&#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x88AB;&#x626B;&#x63CF;&#x5230;&#xFF0C;&#x5219;&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;&#xFF1B;</li>
-<li>&#x5426;&#x5219;&#xFF0C;T&#x662F;&#x4E00;&#x4E2A;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x4E8B;&#x52A1;&#x6216;&#x88AB;&#x4E2D;&#x6B62;&#x7684;&#x4E8B;&#x52A1;&#x3002;&#x5FC5;&#x987B;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x4E2D;X&#x7684;&#x503C;&#x6539;&#x4E3A;v&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5C06;<abort t="">&#x5199;&#x5165;&#x78C1;&#x76D8;</abort></li>
-</ul>
-</t,></li>
-</ul>
-<p>&#x4F8B;&#x5982;&#x5BF9;&#x4E8E;&#x4E0B;&#x9762;&#x7684;&#x4E8B;&#x52A1;<br><img src="/2016/05/01/adb-note-chapter8/undolog.png" alt="undo&#x65E5;&#x5FD7;"></p>
-<ul>
-<li>&#x82E5;&#x6267;&#x884C;&#x5230;&#x7B2C;2~11&#x6B65;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x6B65;&#x53D1;&#x751F;&#x6545;&#x969C;&#xFF0C;<ul>
-<li>&#x5229;&#x7528;undo&#x65E5;&#x5FD7;&#xFF0C;&#x6062;&#x590D;&#x65E7;&#x503C;</li>
-</ul>
-</li>
-<li>&#x82E5;&#x6267;&#x884C;&#x5B8C;&#x7B2C;12&#x6B65;&#x540E;&#x53D1;&#x751F;&#x6545;&#x969C;&#xFF0C;&#x5219;&#x8868;&#x793A;T&#x5DF2;&#x7ECF;&#x5B8C;&#x5168;&#x6267;&#x884C;&#x5B8C;&#xFF0C;&#x4E0D;&#x5FC5;&#x505A;&#x4EFB;&#x4F55;&#x5904;&#x7406;&#x52A8;&#x4F5C;</li>
-</ul>
-<h4 id="&#x68C0;&#x67E5;&#x70B9;&#xFF1A;&#x5468;&#x671F;&#x6027;&#x5730;&#x5BF9;&#x65E5;&#x5FD7;&#x4F5C;&#x68C0;&#x67E5;&#x70B9;"><a href="#&#x68C0;&#x67E5;&#x70B9;&#xFF1A;&#x5468;&#x671F;&#x6027;&#x5730;&#x5BF9;&#x65E5;&#x5FD7;&#x4F5C;&#x68C0;&#x67E5;&#x70B9;" class="headerlink" title="&#x68C0;&#x67E5;&#x70B9;&#xFF1A;&#x5468;&#x671F;&#x6027;&#x5730;&#x5BF9;&#x65E5;&#x5FD7;&#x4F5C;&#x68C0;&#x67E5;&#x70B9;"></a>&#x68C0;&#x67E5;&#x70B9;&#xFF1A;&#x5468;&#x671F;&#x6027;&#x5730;&#x5BF9;&#x65E5;&#x5FD7;&#x4F5C;&#x68C0;&#x67E5;&#x70B9;</h4><ul>
-<li>&#x9759;&#x6B62;&#x68C0;&#x67E5;&#x70B9;&#xFF1A;<ul>
-<li>&#x505C;&#x6B62;&#x63A5;&#x53D7;&#x65B0;&#x7684;&#x4E8B;&#x52A1;</li>
-<li>&#x7B49;&#x5230;&#x6240;&#x6709;&#x5F53;&#x524D;&#x6D3B;&#x8DC3;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6216;&#x4E2D;&#x6B62;&#xFF0C;&#x5E76;&#x5728;&#x65E5;&#x5FD7;&#x4E2D;&#x5199;&#x5165;&#x4E86;COMMIT&#x6216;ABORT&#x8BB0;&#x5F55;</li>
-<li>&#x5C06;&#x65E5;&#x5FD7;&#x5237;&#x65B0;&#x5230;&#x78C1;&#x76D8;</li>
-<li>&#x5199;&#x5165;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;<ckpt>&#xFF0C;&#x5E76;&#x518D;&#x6B21;&#x5237;&#x65B0;&#x65E5;&#x5FD7;</ckpt></li>
-</ul>
-</li>
-<li>&#x975E;&#x9759;&#x6B62;&#x68C0;&#x67E5;&#x70B9;<ul>
-<li>&#x5728;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x70B9;&#x65F6;&#x4E0D;&#x5FC5;&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#xFF0C;&#x5141;&#x8BB8;&#x65B0;&#x4E8B;&#x52A1;&#x8FDB;&#x5165;</li>
-</ul>
-</li>
-</ul>
-<h3 id="redo&#x65E5;&#x5FD7;"><a href="#redo&#x65E5;&#x5FD7;" class="headerlink" title="redo&#x65E5;&#x5FD7;"></a>redo&#x65E5;&#x5FD7;</h3><h4 id="Undo&#x65E5;&#x5FD7;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;"><a href="#Undo&#x65E5;&#x5FD7;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;" class="headerlink" title="Undo&#x65E5;&#x5FD7;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;"></a>Undo&#x65E5;&#x5FD7;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;</h4><p>&#x5C06;&#x4E8B;&#x52A1;&#x6539;&#x53D8;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x524D;&#x4E0D;&#x80FD;&#x63D0;&#x4EA4;&#x8BE5;&#x4E8B;&#x52A1;</p>
-<h4 id="redo&#x65E5;&#x5FD7;-1"><a href="#redo&#x65E5;&#x5FD7;-1" class="headerlink" title="redo&#x65E5;&#x5FD7;"></a>redo&#x65E5;&#x5FD7;</h4><p>&#x66F4;&#x65B0;&#x8BB0;&#x5F55;&#x7684;&#x683C;&#x5F0F;<t, x,="" v="">&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;v&#x4E3A;X&#x7684;&#x65B0;&#x503C;</t,></p>
-<h4 id="redo&#x65E5;&#x5FD7;&#x7684;&#x89C4;&#x5219;"><a href="#redo&#x65E5;&#x5FD7;&#x7684;&#x89C4;&#x5219;" class="headerlink" title="redo&#x65E5;&#x5FD7;&#x7684;&#x89C4;&#x5219;"></a>redo&#x65E5;&#x5FD7;&#x7684;&#x89C4;&#x5219;</h4><ul>
-<li>&#x5199;&#x78C1;&#x76D8;&#x7684;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;<ul>
-<li>&#x66F4;&#x65B0;&#x8BB0;&#x5F55;<t, x,="" v=""></t,></li>
-<li>COMMIT&#x65E5;&#x5FD7;</li>
-<li>OUTPUT(X)</li>
-</ul>
-</li>
-<li>&#x4F7F;&#x7528;redo&#x65E5;&#x5FD7;&#x7684;&#x6062;&#x590D;</li>
-</ul>
-<p>&#x6062;&#x590D;&#x7BA1;&#x7406;&#x5668;&#x7684;&#x5DE5;&#x4F5C;&#xFF1A;</p>
-<ul>
-<li>&#x786E;&#x5B9A;&#x5DF2;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;&#x3002;</li>
-<li>&#x4ECE;&#x9996;&#x90E8;&#x5F00;&#x59CB;&#x626B;&#x63CF;&#x65E5;&#x5FD7;&#x3002;&#x5BF9;&#x9047;&#x5230;&#x7684;&#x6BCF;&#x4E00;<t, x="" ,="" v="">&#x8BB0;&#x5F55;&#xFF1A;<ul>
-<li>&#x5982;&#x679C;T&#x662F;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;&#xFF0C;&#x5219;&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;&#x3002;</li>
-<li>&#x5982;&#x679C;T&#x662F;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;&#xFF0C;&#x5219;&#x4E3A;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#x5199;&#x5165;&#x503C;v&#x3002;</li>
-</ul>
-</t,></li>
-<li>&#x5BF9;&#x6BCF;&#x4E2A;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x4E8B;&#x52A1;T&#xFF0C;&#x5728;&#x65E5;&#x5FD7;&#x4E2D;&#x5199;&#x5165;&#x4E00;&#x4E2A;<abort t="">&#x8BB0;&#x5F55;&#x5E76;&#x5237;&#x65B0;&#x65E5;&#x5FD7;&#x3002;</abort></li>
-</ul>
-<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;redo&#x65E5;&#x5FD7;&#x7684;&#x4F8B;&#x5B50;<br><img src="/2016/05/01/adb-note-chapter8/redoexample.png" alt="redo&#x65E5;&#x5FD7;&#x4F8B;&#x5B50;"></p>
-<h4 id="redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;"><a href="#redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;" class="headerlink" title="redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;"></a>redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;</h4><ul>
-<li>&#x4E0D;&#x7BA1;&#x68C0;&#x67E5;&#x70B9;&#x662F;&#x9759;&#x6B62;&#x7684;&#x8FD8;&#x662F;&#x975E;&#x9759;&#x6B62;&#x7684;&#xFF0C;&#x5728;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x4E4B;&#x95F4;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x91C7;&#x53D6;&#x7684;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x52A8;&#x4F5C;&#x662F;&#x5C06;&#x5DF2;&#x88AB;&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#x4FEE;&#x6539;&#x4F46;&#x8FD8;&#x672A;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;&#x5199;&#x5230;&#x78C1;&#x76D8;</li>
-<li>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x6D3B;&#x8DC3;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6216;&#x4E2D;&#x6B62;&#x5C31;&#x80FD;&#x5B8C;&#x6210;&#x68C0;&#x67E5;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x65E0;&#x8BBA;&#x5982;&#x4F55;&#x90FD;&#x4E0D;&#x5141;&#x8BB8;&#x5728;&#x90A3;&#x4E2A;&#x65F6;&#x5019;&#x5C06;&#x5B83;&#x4EEC;&#x7684;&#x9875;&#x5199;&#x5230;&#x78C1;&#x76D8;</li>
-</ul>
-<p><img src="/2016/05/01/adb-note-chapter8/redoexample1.png" alt="redo&#x65E5;&#x5FD7;&#x4E3E;&#x4F8B;"></p>
-<h4 id="&#x68C0;&#x67E5;&#x70B9;&#x6062;&#x590D;&#x89C4;&#x5219;"><a href="#&#x68C0;&#x67E5;&#x70B9;&#x6062;&#x590D;&#x89C4;&#x5219;" class="headerlink" title="&#x68C0;&#x67E5;&#x70B9;&#x6062;&#x590D;&#x89C4;&#x5219;"></a>&#x68C0;&#x67E5;&#x70B9;&#x6062;&#x590D;&#x89C4;&#x5219;</h4><ul>
-<li>&#x627E;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;<end ckpt="">&#x65E5;&#x5FD7;</end></li>
-<li>&#x5BF9;&#x4E8E;&#x5728;&#x76F8;&#x5E94;&#x68C0;&#x67E5;&#x70B9;&#x63D2;&#x5165;&#x65F6;&#x6D3B;&#x8DC3;&#x7684;&#x4E8B;&#x52A1;&#x548C;&#x63D2;&#x5165;&#x68C0;&#x67E5;&#x70B9;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x7684;&#x4E8B;&#x52A1;&#xFF0C;&#x8BB0;&#x5F55;&#x6240;&#x6709;&#x9700;&#x8981;Redo&#x7684;&#x5DF2;&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;</li>
-<li>&#x4ECE;&#x9700;redo&#x4E8B;&#x52A1;&#x4E2D;&#x6700;&#x65E9;&#x5F00;&#x59CB;&#x7684;&#x4E8B;&#x52A1;&#x5411;&#x540E;&#x626B;&#x63CF;&#xFF0C;&#x5E76;Redo&#x6240;&#x6709;&#x9700;&#x8981;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;</li>
-<li>&#x5BF9;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;&#x63D2;&#x5165; <abort t=""></abort></li>
-</ul>
-<p><img src="/2016/05/01/adb-note-chapter8/&#x542B;&#x6709;checkpoint&#x7684;redo&#x793A;&#x4F8B;.png" alt="&#x542B;&#x6709;checkpoint&#x7684;redo&#x793A;&#x4F8B;"></p>
-<h3 id="undo&#x65E5;&#x5FD7;vs-redo&#x65E5;&#x5FD7;"><a href="#undo&#x65E5;&#x5FD7;vs-redo&#x65E5;&#x5FD7;" class="headerlink" title="undo&#x65E5;&#x5FD7;vs.redo&#x65E5;&#x5FD7;"></a>undo&#x65E5;&#x5FD7;vs.redo&#x65E5;&#x5FD7;</h3><p>Undo&#x65E5;&#x5FD7;&#x4E0E;Redo&#x65E5;&#x5FD7;&#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;<br><strong>&#x5F53;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;&#x88AB;&#x4FEE;&#x6539;&#x65F6;&#x65E5;&#x5FD7;&#x4E2D;&#x4FDD;&#x5B58;&#x65E7;&#x503C;&#x8FD8;&#x662F;&#x65B0;&#x503C;</strong></p>
-<ul>
-<li>Undo&#x65E5;&#x5FD7;&#x8981;&#x6C42;&#x6570;&#x636E;&#x5728;&#x4E8B;&#x52A1;&#x7ED3;&#x675F;&#x540E;&#x7ACB;&#x5373;&#x5199;&#x5230;&#x78C1;&#x76D8;&#xFF0C;&#x53EF;&#x80FD;&#x589E;&#x52A0;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7684;&#x78C1;&#x76D8;I/O&#x6570;</li>
-<li>Redo&#x65E5;&#x5FD7;&#x8981;&#x6C42;&#x6211;&#x4EEC;&#x5728;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x548C;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x5237;&#x65B0;&#x4EE5;&#x524D;&#x5C06;&#x6240;&#x6709;&#x4FEE;&#x6539;&#x8FC7;&#x7684;&#x5757;&#x4FDD;&#x7559;&#x5728;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#xFF0C;&#x53EF;&#x80FD;&#x589E;&#x52A0;&#x4E8B;&#x52A1;&#x9700;&#x8981;&#x7684;&#x5E73;&#x5747;&#x7F13;&#x51B2;&#x533A;&#x6570;</li>
-</ul>
-<h3 id="undo-redo&#x65E5;&#x5FD7;"><a href="#undo-redo&#x65E5;&#x5FD7;" class="headerlink" title="undo/redo&#x65E5;&#x5FD7;"></a>undo/redo&#x65E5;&#x5FD7;</h3><h4 id="undo-redo&#x65E5;&#x5FD7;&#x7ED3;&#x5408;&#x4E86;&#x4E24;&#x79CD;&#x65E5;&#x5FD7;&#x7684;&#x4F18;&#x70B9;"><a href="#undo-redo&#x65E5;&#x5FD7;&#x7ED3;&#x5408;&#x4E86;&#x4E24;&#x79CD;&#x65E5;&#x5FD7;&#x7684;&#x4F18;&#x70B9;" class="headerlink" title="undo/redo&#x65E5;&#x5FD7;&#x7ED3;&#x5408;&#x4E86;&#x4E24;&#x79CD;&#x65E5;&#x5FD7;&#x7684;&#x4F18;&#x70B9;"></a>undo/redo&#x65E5;&#x5FD7;&#x7ED3;&#x5408;&#x4E86;&#x4E24;&#x79CD;&#x65E5;&#x5FD7;&#x7684;&#x4F18;&#x70B9;</h4><p>&#x4EE3;&#x4EF7;&#xFF1A;&#x5728;&#x65E5;&#x5FD7;&#x4E2D;&#x7EF4;&#x62A4;&#x66F4;&#x591A;&#x4FE1;&#x606F; <t,x, v,="" w="">&#xFF0C;&#x4E8B;&#x52A1;T&#x66F4;&#x65B0;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#x7684;&#x503C;&#xFF1B;&#x5176;&#x66F4;&#x65B0;&#x524D;&#x7684;&#x503C;&#x4E3A;v&#xFF0C;&#x66F4;&#x65B0;&#x540E;&#x7684;&#x503C;&#x4E3A;w</t,x,></p>
-<h4 id="undo-redo&#x65E5;&#x5FD7;&#x89C4;&#x5219;"><a href="#undo-redo&#x65E5;&#x5FD7;&#x89C4;&#x5219;" class="headerlink" title="undo/redo&#x65E5;&#x5FD7;&#x89C4;&#x5219;"></a>undo/redo&#x65E5;&#x5FD7;&#x89C4;&#x5219;</h4><ul>
-<li>&#x5728;&#x4E8B;&#x52A1;T&#x6240;&#x66F4;&#x65B0;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;X&#x4E4B;&#x524D;&#xFF0C;&#x76F8;&#x5E94;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;<t, x,="" v,="" w="">&#x5FC5;&#x987B;&#x5199;&#x5165;&#x78C1;&#x76D8;</t,></li>
-<li>&#x6CE8;&#x610F;&#xFF1A;&#x6B64;&#x5904;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5BF9;commit&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x7684;&#x8981;&#x6C42;&#xFF0C;Undo/Redo&#x65E5;&#x5FD7;&#x4EC5;&#x9700;&#x8981;&#x6EE1;&#x8DB3;Undo &#x548C;Redo&#x65E5;&#x5FD7;&#x5171;&#x540C;&#x7684;&#x9650;&#x5236;</li>
-</ul>
-<h4 id="undo-redo&#x65E5;&#x5FD7;&#x6062;&#x590D;&#x8FC7;&#x7A0B;"><a href="#undo-redo&#x65E5;&#x5FD7;&#x6062;&#x590D;&#x8FC7;&#x7A0B;" class="headerlink" title="undo/redo&#x65E5;&#x5FD7;&#x6062;&#x590D;&#x8FC7;&#x7A0B;"></a>undo/redo&#x65E5;&#x5FD7;&#x6062;&#x590D;&#x8FC7;&#x7A0B;</h4><ul>
-<li>&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x626B;&#x63CF;&#x65E5;&#x5FD7;&#xFF0C;&#x6784;&#x9020;undo-list&#x548C;redo-list<ul>
-<li>&#x5BF9;&#x6BCF;&#x4E2A;&#x5F62;&#x5982;<ti commit="">&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x5C06;Ti &#x52A0;&#x5165;redo-list</ti></li>
-<li>&#x5BF9;&#x6BCF;&#x4E2A;&#x5F62;&#x5982;<ti start="">&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x5982;&#x679C;Ti&#x4E0D;&#x5C5E;&#x4E8E;redo-list&#xFF0C;&#x5219;&#x5C06;Ti&#x52A0;&#x5165;undo-list</ti></li>
-</ul>
-</li>
-<li>&#x7531;&#x540E;&#x81F3;&#x524D;&#x626B;&#x63CF;&#x65E5;&#x5FD7;&#xFF0C;&#x5BF9;undo-list&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x4E8B;&#x52A1;       Ti&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x6267;&#x884C;undo&#x64CD;&#x4F5C;<ul>
-<li>&#x5728;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E2D;&#x672C;&#x6B65;&#x9AA4;&#x53EF;&#x4EE5;&#x548C;&#x7B2C;&#x4E00;&#x6B65;&#x4E00;&#x8D77;&#x8FDB;&#x884C;</li>
-</ul>
-</li>
-<li>&#x7531;&#x524D;&#x81F3;&#x540E;&#x91CD;&#x65B0;&#x626B;&#x63CF;&#x65E5;&#x5FD7;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;redo-list&#x4E2D;&#x6BCF;&#x4E2A;&#x4E8B;&#x52A1;Ti&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x6267;&#x884C;redo&#x64CD;&#x4F5C;<ul>
-<li>&#x5BF9;&#x6BCF;&#x4E2A;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x4E8B;&#x52A1;&#x5728;&#x65E5;&#x5FD7;Ti&#x672B;&#x5C3E;&#x52A0;&#x5165;<abort ti="">, Flush log &#x5E76;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x7F6E;&#x4E3A;&#x6B63;&#x5E38;&#x72B6;&#x6001;</abort></li>
-</ul>
-</li>
-</ul>
-<h4 id="undo-redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;"><a href="#undo-redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;" class="headerlink" title="undo/redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;"></a>undo/redo&#x65E5;&#x5FD7;&#x7684;&#x68C0;&#x67E5;&#x70B9;</h4><ul>
-<li>&#x5199;&#x5165;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;<start ckpt(t1,="" …,="" tk)="">&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;T1, &#x2026;, Tk&#x662F;&#x6240;&#x6709;&#x7684;&#x6D3B;&#x8DC3;&#x4E8B;&#x52A1;&#xFF0C; &#x5E76;&#x5237;&#x65B0;&#x65E5;&#x5FD7;</start></li>
-<li>&#x5C06;&#x6240;&#x6709;&#x810F;&#x7F13;&#x51B2;&#x533A;&#x5199;&#x5230;&#x78C1;&#x76D8;&#xFF0C;&#x810F;&#x7F13;&#x51B2;&#x533A;&#x5373;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x4FEE;&#x6539;&#x8FC7;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5143;&#x7D20;&#x7684;&#x7F13;&#x51B2;&#x533A;<ul>
-<li>&#x6CE8;&#x610F;&#xFF1A;&#x8BE5;&#x8FC7;&#x7A0B;&#x5E76;&#x4E0D;&#x5C06;&#x68C0;&#x67E5;&#x70B9;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x4E4B;&#x95F4;&#x4FEE;&#x6539;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#x78C1;&#x76D8;</li>
-</ul>
-</li>
-<li>&#x5199;&#x5165;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;<end ckpt="">&#x5E76;&#x5237;&#x65B0;&#x65E5;&#x5FD7;</end></li>
-</ul>
-<h3 id="&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;"><a href="#&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;" class="headerlink" title="&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;"></a>&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;</h3><ul>
-<li>&#x5F53;&#x4E3B;&#x5B58;&#x6570;&#x636E;&#x4E22;&#x5931;&#x65F6;&#xFF0C;&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x4F1A;&#x4E22;&#x5931;&#x3002;</li>
-<li>&#x7136;&#x800C;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x78C1;&#x76D8;&#x4E22;&#x5931;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x5217;&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x65E5;&#x5FD7;&#x91CD;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#xFF1A;<ul>
-<li>&#x65E5;&#x5FD7;&#x6240;&#x5728;&#x7684;&#x78C1;&#x76D8;&#x4E0D;&#x540C;&#x4E8E;&#x5B58;&#x653E;&#x6570;&#x636E;&#x7684;&#x78C1;&#x76D8;</li>
-<li>&#x65E5;&#x5FD7;&#x5728;&#x68C0;&#x67E5;&#x70B9;&#x4EE5;&#x540E;&#x4E0D;&#x4F1A;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x5E76;&#x4E14;</li>
-<li>&#x65E5;&#x5FD7;&#x662F;redo&#x6216;undo/redo&#x7C7B;&#x578B;&#xFF0C;&#x56E0;&#x800C;&#x65B0;&#x503C;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x65E5;&#x5FD7;&#x5F53;&#x4E2D;</li>
-</ul>
-</li>
-<li>&#x7136;&#x800C;&#xFF0C;&#x5B9E;&#x9645;&#x4E2D;&#xFF0C;&#x65E5;&#x5FD7;&#x7684;&#x589E;&#x957F;&#x8FDC;&#x6BD4;&#x6570;&#x636E;&#x5E93;&#x5FEB;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6C38;&#x8FDC;&#x4FDD;&#x5B58;&#x65E5;&#x5FD7;&#x662F;&#x4E0D;&#x73B0;&#x5B9E;&#x7684;</li>
-</ul>
-<h4 id="&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;&#x7684;&#x63AA;&#x65BD;"><a href="#&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;&#x7684;&#x63AA;&#x65BD;" class="headerlink" title="&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;&#x7684;&#x63AA;&#x65BD;"></a>&#x9632;&#x5907;&#x4ECB;&#x8D28;&#x6545;&#x969C;&#x7684;&#x63AA;&#x65BD;</h4><p>&#x5907;&#x4EFD;&#xFF1A;&#x5F53;&#x4ECB;&#x8D28;&#x6545;&#x969C;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x4EE5;&#x6062;&#x590D;&#x5230;&#x5907;&#x4EFD;&#x90A3;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x72B6;&#x6001;</p>
-<ul>
-<li>&#x8981;&#x524D;&#x8FDB;&#x5230;&#x4E00;&#x4E2A;&#x66F4;&#x8FD1;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x65E5;&#x5FD7;</li>
-<li>&#x5177;&#x4F53;&#x65B9;&#x5F0F;<ul>
-<li>&#x5B8C;&#x5168;&#x8F6C;&#x50A8;</li>
-<li>&#x589E;&#x91CF;&#x8F6C;&#x50A8;</li>
-</ul>
-</li>
-</ul>
-<p>&#x65E5;&#x5FD7;&#x6062;&#x590D;</p>
-<h3 id="&#x4E0B;&#x4E00;&#x7AE0;-&#x5E76;&#x53D1;&#x63A7;&#x5236;"><a href="#&#x4E0B;&#x4E00;&#x7AE0;-&#x5E76;&#x53D1;&#x63A7;&#x5236;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7AE0; &#x5E76;&#x53D1;&#x63A7;&#x5236;"></a>&#x4E0B;&#x4E00;&#x7AE0; <a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter9/">&#x5E76;&#x53D1;&#x63A7;&#x5236;</a></h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-adb-note-chapter7" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/01/adb-note-chapter7/" class="article-date">
-      <time datetime="2016-05-01T04:10:38.782Z" itemprop="datePublished">2016-05-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/adb-note-chapter7/">《高级数据库系统》笔记——  第七章 查询编译器</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"><a href="#&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;" class="headerlink" title="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"></a><a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter6/">&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;</a></h4><h3 id="&#x5185;&#x5BB9;&#x6982;&#x89C8;"><a href="#&#x5185;&#x5BB9;&#x6982;&#x89C8;" class="headerlink" title="&#x5185;&#x5BB9;&#x6982;&#x89C8;"></a>&#x5185;&#x5BB9;&#x6982;&#x89C8;</h3><p>&#x672C;&#x7AE0;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
-<ul>
-<li>&#x67E5;&#x8BE2;&#x5206;&#x6790;&#x7EC4;&#x4EF6;<ul>
-<li>tokenizer, parser, access planner, optimizer, buffer manager</li>
-<li>logical and physical query plans</li>
-</ul>
-</li>
-<li>&#x67E5;&#x8BE2;&#x4F18;&#x5316;<ul>
-<li>relational algebra laws for query plans</li>
-<li>cost based optimization versus heuristic optimization</li>
-</ul>
-</li>
-</ul>
-<p>&#x4E0B;&#x9762;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;</p>
-<h3 id="&#x4E0B;&#x4E00;&#x7AE0;-&#x65E5;&#x5FD7;&#x4E0E;&#x6545;&#x969C;&#x6062;&#x590D;"><a href="#&#x4E0B;&#x4E00;&#x7AE0;-&#x65E5;&#x5FD7;&#x4E0E;&#x6545;&#x969C;&#x6062;&#x590D;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7AE0; &#x65E5;&#x5FD7;&#x4E0E;&#x6545;&#x969C;&#x6062;&#x590D;"></a>&#x4E0B;&#x4E00;&#x7AE0; <a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter8/">&#x65E5;&#x5FD7;&#x4E0E;&#x6545;&#x969C;&#x6062;&#x590D;</a></h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-adb-note-chapter6" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/01/adb-note-chapter6/" class="article-date">
-      <time datetime="2016-05-01T04:09:28.974Z" itemprop="datePublished">2016-05-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/adb-note-chapter6/">《高级数据库系统》笔记——  第六章 查询执行</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"><a href="#&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;" class="headerlink" title="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"></a><a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter5/">&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;</a></h4><h3 id="&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"><a href="#&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;"></a>&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;</h3><ul>
-<li>A &#x67E5;&#x8BE2;&#x5206;&#x6790;&#xFF1A;&#x6784;&#x9020;&#x5206;&#x6790;&#x6811;&#x8868;&#x8FBE;&#x67E5;&#x8BE2;&#x53CA;&#x5176;&#x7ED3;&#x6784;</li>
-<li>B &#x67E5;&#x8BE2;&#x91CD;&#x5199;&#xFF1A;&#x5C06;&#x5206;&#x6790;&#x6811;&#x8F6C;&#x5316;&#x4E3A;&#x903B;&#x8F91;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;<ul>
-<li>&#x903B;&#x8F91;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;&#x901A;&#x5E38;&#x662F;&#x67E5;&#x8BE2;&#x7684;&#x4EE3;&#x6570;&#x8868;&#x8FBE;&#x5F0F;</li>
-<li>&#x903B;&#x8F91;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;&#x5C06;&#x4F1A;&#x88AB;&#x8F6C;&#x5316;&#x4E3A;&#x4E00;&#x4E2A;&#x9884;&#x671F;&#x6240;&#x9700;&#x65F6;&#x95F4;&#x8F83;&#x5C0F;&#x7684;&#x7B49;&#x4EF7;&#x7684;&#x8BA1;&#x5212;</li>
-</ul>
-</li>
-<li>C &#x751F;&#x6210;&#x7269;&#x7406;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;&#xFF1A;&#x6839;&#x636E;B &#x6B65;&#x9AA4;&#x751F;&#x6210;&#x7684;&#x903B;&#x8F91;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#x9009;&#x62E9;&#x5B9E;&#x73B0;&#x7B97;&#x6CD5;&#xFF0C;&#x5E76;&#x9009;&#x62E9;&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x7269;&#x7406;&#x8BA1;&#x5212;&#x8FD8;&#x5305;&#x62EC;&#x8BB8;&#x591A;&#x7EC6;&#x8282;    &#xFF0C;&#x5982;&#x88AB;&#x67E5;&#x8BE2;&#x7684;&#x5173;&#x7CFB;&#x662F;&#x5982;&#x4F55;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x53CA;&#x5173;&#x7CFB;&#x662F;&#x5426;&#x9700;&#x8981;&#x6392;&#x5E8F;&#x7B49;</li>
-</ul>
-<p>B&#xFF0C;C&#x90E8;&#x5206;&#x88AB;&#x79F0;&#x4E3A;&#x67E5;&#x8BE2;&#x4F18;&#x5316;&#x5668;</p>
-<h3 id="&#x4E0B;&#x4E00;&#x7AE0;-&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x5668;"><a href="#&#x4E0B;&#x4E00;&#x7AE0;-&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x5668;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7AE0; &#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x5668;"></a>&#x4E0B;&#x4E00;&#x7AE0; <a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter7/">&#x67E5;&#x8BE2;&#x7F16;&#x8BD1;&#x5668;</a></h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-adb-note-chapter5" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/01/adb-note-chapter5/" class="article-date">
-      <time datetime="2016-05-01T04:07:28.146Z" itemprop="datePublished">2016-05-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/adb-note-chapter5/">《高级数据库系统》笔记——  第五章 多维索引</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"><a href="#&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;" class="headerlink" title="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"></a><a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter4/">&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;</a></h4><h3 id="&#x95EE;&#x9898;&#x5F15;&#x5165;"><a href="#&#x95EE;&#x9898;&#x5F15;&#x5165;" class="headerlink" title="&#x95EE;&#x9898;&#x5F15;&#x5165;"></a>&#x95EE;&#x9898;&#x5F15;&#x5165;</h3><ul>
-<li>&#x67E5;&#x627E;&#x7ED9;&#x5B9A;&#x952E;&#x503C;&#x7684;&#x5143;&#x7EC4;&#xFF0C;&#x5982;&#xFF1A;<pre><code>Select    * 
-From   Employee
-Where Dept=&#x2018;Toy&#x2019; and Salary&gt;=50K
-</code></pre></li>
-<li>Where&#x6761;&#x4EF6;&#x4E2D;&#x6D89;&#x53CA;&#x4E86;&#x591A;&#x4E2A;&#x5C5E;&#x6027;</li>
-</ul>
-<h3 id="&#x4E0B;&#x4E00;&#x7AE0;-&#x67E5;&#x8BE2;&#x6267;&#x884C;"><a href="#&#x4E0B;&#x4E00;&#x7AE0;-&#x67E5;&#x8BE2;&#x6267;&#x884C;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7AE0; &#x67E5;&#x8BE2;&#x6267;&#x884C;"></a>&#x4E0B;&#x4E00;&#x7AE0; <a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter6/">&#x67E5;&#x8BE2;&#x6267;&#x884C;</a></h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-adb-note-chapter4" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/01/adb-note-chapter4/" class="article-date">
-      <time datetime="2016-05-01T04:00:01.469Z" itemprop="datePublished">2016-05-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/adb-note-chapter4/">《高级数据库系统》笔记——  第四章 索引结构</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"><a href="#&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;" class="headerlink" title="&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;"></a><a href="http://wenqiang-china.github.io/2016/04/30/adb-note-chapter3/">&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7AE0;</a></h4><h3 id="&#x95EE;&#x9898;&#x5F15;&#x5165;"><a href="#&#x95EE;&#x9898;&#x5F15;&#x5165;" class="headerlink" title="&#x95EE;&#x9898;&#x5F15;&#x5165;"></a>&#x95EE;&#x9898;&#x5F15;&#x5165;</h3><p><strong>&#x5982;&#x4F55;&#x5FEB;&#x901F;&#x5730;&#x83B7;&#x5F97;&#x6307;&#x5B9A;&#x5173;&#x7CFB;&#x7684;&#x5143;&#x7EC4;&#x5E76;&#x6709;&#x6548;&#x5730;&#x652F;&#x6301;&#x67E5;&#x8BE2;&#x5904;&#x7406;&#xFF1F;</strong></p>
-<h3 id="&#x4E0B;&#x4E00;&#x7AE0;-&#x591A;&#x7EF4;&#x7D22;&#x5F15;"><a href="#&#x4E0B;&#x4E00;&#x7AE0;-&#x591A;&#x7EF4;&#x7D22;&#x5F15;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7AE0; &#x591A;&#x7EF4;&#x7D22;&#x5F15;"></a>&#x4E0B;&#x4E00;&#x7AE0; <a href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter5/">&#x591A;&#x7EF4;&#x7D22;&#x5F15;</a></h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta name="google-site-verification" content="ry1yoyqNLU4E5QrzTiEwH_DmCaDdP_ZRhtp9KqfPD5Y" />
+  
+  <meta name="baidu-site-verification" content="8t675UMTPK" />
+  <meta name="msvalidate.01" content="69587B143623DA93DFA18F587EACF888" />
+  <meta charset="utf-8">
+  
+  <title>Python 并发编程系列--1、浅谈GIL历史及对多线程的影响 | 文强的个人空间</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x4E3A;&amp;#x4E86;&amp;#x63D0;&amp;#x9AD8;&amp;#x7A0B;&amp;#x5E8F;&amp;#x7684;&amp;#x8FD0;&amp;#x884C;&amp;#x901F;&amp;#x5EA6;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x9664;&amp;#x4E86;&amp;#x4FEE;&amp;#x6539;&amp;#x7A0B;&amp;#x5E8F;&amp;#x903B;&amp;#x8F91;&amp;#x6539;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 并发编程系列--1、浅谈GIL历史及对多线程的影响">
+<meta property="og:url" content="http://wenqiang-china.github.io/2016/05/15/python-multi-programming/index.html">
+<meta property="og:site_name" content="文强的个人空间">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x4E3A;&amp;#x4E86;&amp;#x63D0;&amp;#x9AD8;&amp;#x7A0B;&amp;#x5E8F;&amp;#x7684;&amp;#x8FD0;&amp;#x884C;&amp;#x901F;&amp;#x5EA6;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x9664;&amp;#x4E86;&amp;#x4FEE;&amp;#x6539;&amp;#x7A0B;&amp;#x5E8F;&amp;#x903B;&amp;#x8F91;&amp;#x6539;">
+<meta property="og:updated_time" content="2016-05-15T04:36:34.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 并发编程系列--1、浅谈GIL历史及对多线程的影响">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x4E3A;&amp;#x4E86;&amp;#x63D0;&amp;#x9AD8;&amp;#x7A0B;&amp;#x5E8F;&amp;#x7684;&amp;#x8FD0;&amp;#x884C;&amp;#x901F;&amp;#x5EA6;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x9664;&amp;#x4E86;&amp;#x4FEE;&amp;#x6539;&amp;#x7A0B;&amp;#x5E8F;&amp;#x903B;&amp;#x8F91;&amp;#x6539;">
+  
+    <link rel="alternative" href="/atom.xml" title="文强的个人空间" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.9/clipboard.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+          fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+          scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.0.9/scrollreveal.min.js"
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">wenqiang</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:wenqiang_china@126.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2631742593/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/wenqiang-china/" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/wen-qiang-83-85" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIL/">GIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openpyxl/">openpyxl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlrd/">xlrd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlwt/">xlwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/休闲/">休闲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入门教程/">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多进程/">多进程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/wenqiang-china/">Wenqiang</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Python党，立志成为全栈工程师的菜鸟一枚。爱大数据，更爱美女。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">wenqiang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">wenqiang</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:wenqiang_china@126.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2631742593/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/wenqiang-china/" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/wen-qiang-83-85" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-python-multi-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-multi-programming/" class="article-date">
+      <time datetime="2016-05-15T01:08:07.230Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python 并发编程系列--1、浅谈GIL历史及对多线程的影响
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIL/">GIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x6211;&#x4EEC;&#x9664;&#x4E86;&#x4FEE;&#x6539;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x6539;&#x5584;&#x7B97;&#x6CD5;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x89D2;&#x5EA6;&#x5C31;&#x662F;&#x91C7;&#x53D6;&#x5E76;&#x53D1;&#x7684;&#x7B56;&#x7565;&#x3002;&#x5E76;&#x53D1;&#x6709;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x4E24;&#x8005;&#x6709;&#x5F88;&#x591A;&#x533A;&#x522B;&#xFF0C;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x533A;&#x522B;&#xFF1A;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x662F;&#x65E0;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#xFF0C;&#x56E0;&#x800C;&#x6BD4;&#x8F83;&#x8017;&#x8D39;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#xFF0C;&#x4F18;&#x70B9;&#x5219;&#x662F;&#x66F4;&#x597D;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF1B;&#x800C;&#x7EBF;&#x7A0B;&#x56E0;&#x4E3A;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#xFF0C;&#x6240;&#x4EE5;&#x76F8;&#x5BF9;&#x4E8E;&#x8FDB;&#x7A0B;&#x66F4;&#x52A0;&#x8F7B;&#x91CF;&#x7EA7;&#xFF0C;&#x7F3A;&#x70B9;&#x5219;&#x662F;&#x5BF9;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x9700;&#x8981;&#x4EBA;&#x4E3A;&#x7BA1;&#x7406;&#xFF0C;&#x5373;&#x5B58;&#x5728;&#x201C;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x201D;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a href="#&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x4F55;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h4><p>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x91CC;&#x9762;&#x7684;&#x72EC;&#x6709;&#x6982;&#x5FF5;&#xFF08;&#x4ECE;&#x540D;&#x5B57;&#x4E0A;&#x4E5F;&#x80FD;&#x770B;&#x51FA;&#x6765;^_^&#xFF09;&#xFF0C;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;wikipedia&#x4E0A;&#x9762;&#x7684;&#x89E3;&#x91CA;&#xFF1A;</p>
+<blockquote>
+<p>Thread safety is a computer programming concept applicable in the context of multi-threaded programs. A piece of code is thread-safe if it functions correctly during simultaneous execution by multiple threads. In particular, it must satisfy the need for multiple threads to access the same shared data, and the need for a shared piece of data to be accessed by only one thread at any given time.</p>
+</blockquote>
+<p>&#x7B80;&#x8A00;&#x4E4B;&#xFF0C;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5728;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x4E8E;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#xFF08;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4EA7;&#x751F;&#x7EBF;&#x7A0B;&#x6B7B;&#x9501;&#x7684;&#x4E00;&#x4E2A;&#x5FC5;&#x8981;&#x6761;&#x4EF6;&#x5C31;&#x662F;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x5BF9;&#x4E8E;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x5C31;&#x662F;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;&#x7684;&#xFF09;&#x3002;</p>
+<h4 id="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a href="#&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h4><p>&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x53EF;&#x4EE5;&#x53C2;&#x7167;&#x8FDB;&#x7A0B;&#x95F4;&#x5BF9;&#x4E8E;&#x4E34;&#x754C;&#x8D44;&#x6E90;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x52A0;&#x9501;&#x662F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x505A;&#x6CD5;&#x3002;&#x4E3A;&#x4E86;&#x505A;&#x5230;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x91C7;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x52A0;&#x9501;&#x65B9;&#x5F0F;&#xFF0C;&#x5927;&#x4F53;&#x6709;&#x4E24;&#x4E2A;&#x7EA7;&#x522B;&#x7684;&#xFF1A;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x9501;&#xFF0C;&#x4EC5;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x624D;&#x52A0;&#xFF0C;&#x56E0;&#x4E3A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E0D;&#x77E5;&#x9053;&#x4F60;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981;&#x52A0;&#x9501;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x5C31;&#x8981;&#x7ED9;&#x7F16;&#x7A0B;&#x4EBA;&#x5458;&#x53BB;&#x638C;&#x63A7;&#xFF0C;java&#x5C31;&#x662F;&#x91C7;&#x53D6;&#x8FD9;&#x79CD;&#x7B56;&#x7565;&#xFF0C;jython(Python &#x7684;java&#x5B9E;&#x73B0;)&#x4E5F;&#x662F;&#x91C7;&#x7528;&#x7684;&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;&#xFF1B;&#x7C97;&#x7C92;&#x5EA6;&#x7684;&#x9501;&#xFF0C;&#x4E3A;&#x4E86;&#x7EDD;&#x5BF9;&#x7684;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x7684;&#x5B89;&#x5168;&#xFF0C;&#x91C7;&#x53D6;&#x5168;&#x5C40;&#x52A0;&#x9501;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x4E2A;&#x7531;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x76F4;&#x63A5;&#x7BA1;&#x7406;&#xFF0C;&#x7F16;&#x7A0B;&#x4EBA;&#x5458;&#x4E0D;&#x7528;&#x64CD;&#x5FC3;&#xFF0C;&#x5178;&#x578B;&#x7684;&#x662F;CPython&#xFF08;&#x6211;&#x4EEC;&#x8BF4;&#x7684;Python&#x9ED8;&#x8BA4;&#x5C31;&#x662F;CPython&#xFF09;&#x3002;&#x7B80;&#x5355;&#x7684;&#x8BF4;&#x524D;&#x4E00;&#x79CD;&#x66F4;&#x5B89;&#x5168;&#xFF0C;&#x540E;&#x4E00;&#x79CD;&#x66F4;&#x65B9;&#x4FBF;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x624B;&#x61D2;&#x3001;&#x996D;&#x90FD;&#x61D2;&#x5F97;&#x5403;&#x7684;&#x4EBA;&#xFF0C;&#x6211;&#x6BD4;&#x8F83;&#x559C;&#x6B22;&#x540E;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x628A;&#x54EA;&#x4E9B;&#x7410;&#x788E;&#x7684;&#x4E8B;&#x4EA4;&#x7ED9;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x53BB;&#x505A;&#x5427;&#x3002;</p>
+<h4 id="Python&#x7684;GIL"><a href="#Python&#x7684;GIL" class="headerlink" title="Python&#x7684;GIL"></a>Python&#x7684;GIL</h4><p>&#x524D;&#x9762;&#x4EA4;&#x4EE3;&#x8FC7;&#x4E86;&#xFF0C;&#x6B63;&#x662F;&#x7531;&#x4E8E;&#x5168;&#x5C40;&#x7684;&#x52A0;&#x9501;&#x7684;&#x60F3;&#x6CD5;&#xFF0C;CPython&#x7684;&#x4F5C;&#x8005;(&#x5F53;&#x7136;&#x5C31;&#x662F;&#x6B63;&#x7EDF;&#x7684;Python&#x7684;&#x521B;&#x9020;&#x8005;)Guido&#x5728;Python&#x5F15;&#x5165;&#x4E86;GIL(Global Interpreter Lock)&#x3002;&#x6BCF;&#x4E00;&#x4E2A;interperter&#x8FDB;&#x7A0B;&#xFF0C;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6765;&#x6267;&#x884C;&#xFF0C;&#x83B7;&#x5F97;&#x9501;&#x5E76;&#x4F7F;&#x7528;&#x8D44;&#x6E90;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x907F;&#x514D;&#x4E86;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x5E76;&#x53D1;&#x6267;&#x884C;&#xFF0C;&#x56E0;&#x800C;&#x4FDD;&#x8BC1;&#x4E86;&#x7EBF;&#x7A0B;&#x7684;&#x5B89;&#x5168;&#x3002;&#x4F46;&#x662F;&#x7EBF;&#x7A0B;&#x90FD;&#x65E0;&#x6CD5;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x90A3;&#x8FD8;&#x53EB;&#x591A;&#x7EBF;&#x7A0B;&#x5417;&#xFF1F;&#x2299;&#xFE4F;&#x2299;&#x2016;&#x2223;<br>&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;GIL&#x59CB;&#x7EC8;&#x6709;&#x4E24;&#x79CD;&#x58F0;&#x97F3;&#xFF1A;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;GIL&#xFF08;&#x53EA;&#x662F;&#x80FD;&#x63A5;&#x53D7;&#xFF0C;&#x672A;&#x5FC5;&#x5F88;&#x559C;&#x6B22;&#xFF09;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x8BA4;&#x4E3A;&#x5E94;&#x8BE5;&#x53BB;&#x6389;GIL&#x3002;&#x8BA4;&#x4E3A;&#x80FD;&#x63A5;&#x53D7;&#x7684;&#x539F;&#x56E0;&#x7531;&#x4E24;&#x4E2A;&#xFF1A;&#x4E00;&#x3001;&#x81EA;&#x4ECE;Python&#x51FA;&#x73B0;&#x540E;&#xFF0C;&#x540E;&#x9762;&#x592A;&#x591A;&#x7684;&#x6A21;&#x5757;&#x90FD;&#x4F7F;&#x7528;&#x4E86;Python&#x7684;GIL&#x6765;&#x7F16;&#x5199;&#xFF0C;&#x4E00;&#x65E6;&#x53BB;&#x6389;GIL&#xFF0C;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x90FD;&#x5F97;&#x91CD;&#x5199;&#xFF0C;&#x90A3;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x903B;&#x8F91;&#x5F97;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x7F16;&#x5199;&#xFF0C;&#x4EE3;&#x4EF7;&#x5F88;&#x5927;&#xFF1B;&#x4E8C;&#x3001;&#x53BB;&#x6389;GIL&#x5BF9;&#x4E8E;&#x5355;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x4F1A;&#x6709;&#x6027;&#x80FD;&#x7684;&#x964D;&#x4F4E;(&#x5728;1999&#x5E74;&#x5C31;&#x8BD5;&#x8FC7;&#xFF0C;&#x79FB;&#x9664;&#x4E86;GIL&#x5BFC;&#x81F4;&#x5355;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x901F;&#x5EA6;&#x4E0B;&#x964D;&#x4E86;2&#x500D;&#x591A;)&#x3002;&#x8BA4;&#x4E3A;&#x8BE5;&#x79FB;&#x9664;&#x7684;&#x539F;&#x56E0;&#x4E3B;&#x8981;&#x4E5F;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;&#x4E00;&#x3001;&#x53BB;&#x6389;GIL&#x624D;&#x80FD;&#x53D1;&#x6325;&#x591A;&#x6838;&#x5904;&#x7406;&#x5668;&#x7684;&#x4F18;&#x52BF;&#x3002;&#x4E8C;&#x3001;&#x53BB;&#x6389;GIL&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x5B9E;&#x73B0;&#x771F;&#x6B63;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x3002;</p>
+<h4 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h4><p>GIL&#x65B9;&#x6848;&#x786E;&#x5B9E;&#x4E0D;&#x591F;&#x597D;&#xFF08;&#x4ECE;&#x591A;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x7684;&#x89D2;&#x5EA6;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x5355;&#x7EAF;&#x7684;&#x79FB;&#x9664;GIL&#x5E76;&#x975E;&#x5B8C;&#x7F8E;&#x7684;&#x5BF9;&#x7B56;&#xFF1A;&#x4E0D;&#x4EC5;&#x628A;&#x70C2;&#x644A;&#x5B50;&#x7ED9;&#x4E86;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x800C;&#x4E14;&#x635F;&#x5931;&#x4E86;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x3002;&#x5C24;&#x5176;&#x5BF9;&#x4E8E;Python&#xFF0C;&#x7B80;&#x5355;&#x548C;&#x4F18;&#x96C5;&#x662F;&#x5B83;&#x4E00;&#x8D2F;&#x7684;&#x7279;&#x8272;&#xFF0C;&#x79FB;&#x9664;GIL&#x4F1A;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x95EE;&#x9898;&#x53D8;&#x5F97;&#x590D;&#x6742;&#xFF0C;&#x4E5F;&#x6CA1;&#x4E86;&#x4F18;&#x96C5;&#x3002;&#x5982;&#x679C;&#x771F;&#x7684;&#x5BF9;&#x6027;&#x80FD;&#x8981;&#x6C42;&#x9AD8;&#xFF0C;&#x90A3;&#x5C31;&#x7528;Python&#x7684;&#x591A;&#x8FDB;&#x7A0B;&#x5427;&#xFF0C;&#x5475;&#x5475;&#x3002;</p>
+<h4 id="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;"><a href="#&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66;-Python-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;" class="headerlink" title="&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;"></a>&#x4E0B;&#x4E00;&#x7BC7;&#x76F4;&#x901A;&#x8F66; <a href="../python-multi-programming-2/">Python &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;&#x2013;2&#x3001;&#x5E76;&#x53D1;&#x65B9;&#x5F0F;&#x7684;&#x9009;&#x62E9;</a></h4>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/15/python-multi-programming/">Python 并发编程系列--1、浅谈GIL历史及对多线程的影响</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">wenqiang</a></p>
+        <p><span>发布时间:</span>2016-05-15, 09:08:07</p>
+        <p><span>最后更新:</span>2016-05-15, 12:36:34</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/15/python-multi-programming/" title="Python 并发编程系列--1、浅谈GIL历史及对多线程的影响">http://wenqiang-china.github.io/2016/05/15/python-multi-programming/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://wenqiang-china.github.io/2016/05/15/python-multi-programming/　　作者: wenqiang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/15/python-multi-programming-2/">
+                    Python 并发编程系列--2、并发方式的选择
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/13/python-opetating-excel/">
+                    Python操作excel的几种方式--xlrd、xlwt、openpyxl
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#何为线程安全"><span class="toc-number">1.1.</span> <span class="toc-text">何为线程安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何保证线程安全"><span class="toc-number">1.2.</span> <span class="toc-text">如何保证线程安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python的GIL"><span class="toc-number">1.3.</span> <span class="toc-text">Python的GIL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下一篇直通车-Python-并发编程系列–2、并发方式的选择"><span class="toc-number">1.5.</span> <span class="toc-text">下一篇直通车 Python 并发编程系列–2、并发方式的选择</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Python 并发编程系列--1、浅谈GIL历史及对多线程的影响　| 文强的个人空间　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/15/python-multi-programming/" data-title="Python 并发编程系列--1、浅谈GIL历史及对多线程的影响" data-url="http://wenqiang-china.github.io/2016/05/15/python-multi-programming/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wenqiangchina"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://wenqiang-china.github.io/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/15/python-multi-programming-2/" title="上一篇: Python 并发编程系列--2、并发方式的选择">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/13/python-opetating-excel/" title="下一篇: Python操作excel的几种方式--xlrd、xlwt、openpyxl">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-queue/">Python Queue介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming-4/">Python 并发编程系列--4、多进程编程方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming-3/">Python 并发编程系列--3、多线程编程方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming-2/">Python 并发编程系列--2、并发方式的选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming/">Python 并发编程系列--1、浅谈GIL历史及对多线程的影响</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/python-opetating-excel/">Python操作excel的几种方式--xlrd、xlwt、openpyxl</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/get-ctrip-flights-info-2/">用Python抓取携程网机票信息 过程纪实（下篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/get-ctrip-flights-info/">用Python抓取携程网机票信息 过程纪实（上篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/python-functions/">Python函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter9/">《高级数据库系统》笔记——  第九章 并发控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter8/">《高级数据库系统》笔记——  第八章 日志与故障恢复</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter7/">《高级数据库系统》笔记——  第七章 查询编译器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter6/">《高级数据库系统》笔记——  第六章 查询执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter5/">《高级数据库系统》笔记——  第五章 多维索引</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter4/">《高级数据库系统》笔记——  第四章 索引结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/access-by-proxy/">通过在线代理获取网站的最新域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter3/">《高级数据库系统》笔记——  第三章 数据元素和表示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter2/">《高级数据库系统》笔记——  第二章 数据存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter1/">《高级数据库系统》笔记——  第一章 数据库系统简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/python-rumen-chart/">Python入门神图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/youkutudou-intern-coding/">优酷土豆2016实习生笔试 Python编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/music-during-work/">你工作的时候该听什么音乐？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/mysqldb-install/">MySQLdb安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/adb-note-1/">《高级数据库系统》笔记—— 一、简介</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 wenqiang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </div>
+</body>
+</html>
+

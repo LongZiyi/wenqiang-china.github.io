@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta name="google-site-verification" content="ry1yoyqNLU4E5QrzTiEwH_DmCaDdP_ZRhtp9KqfPD5Y" />
+  
+  <meta name="baidu-site-verification" content="8t675UMTPK" />
+  <meta name="msvalidate.01" content="69587B143623DA93DFA18F587EACF888" />
+  <meta charset="utf-8">
+  
+  <title>Python Queue介绍 | 文强的个人空间</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;Python&amp;#x4E2D;&amp;#x7684;Queue&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x540C;&amp;#x6B65;&amp;#x961F;&amp;#x5217;&amp;#xFF0C;&amp;#x5E76;&amp;#x4E14;&amp;#x8BE5;&amp;#x7C7B;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;&amp;#x6240;&amp;#x6709;&amp;#x97">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Queue介绍">
+<meta property="og:url" content="http://wenqiang-china.github.io/2016/05/15/python-queue/index.html">
+<meta property="og:site_name" content="文强的个人空间">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;Python&amp;#x4E2D;&amp;#x7684;Queue&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x540C;&amp;#x6B65;&amp;#x961F;&amp;#x5217;&amp;#xFF0C;&amp;#x5E76;&amp;#x4E14;&amp;#x8BE5;&amp;#x7C7B;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;&amp;#x6240;&amp;#x6709;&amp;#x97">
+<meta property="og:updated_time" content="2016-05-15T05:59:21.561Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Queue介绍">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;Python&amp;#x4E2D;&amp;#x7684;Queue&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x540C;&amp;#x6B65;&amp;#x961F;&amp;#x5217;&amp;#xFF0C;&amp;#x5E76;&amp;#x4E14;&amp;#x8BE5;&amp;#x7C7B;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;&amp;#x6240;&amp;#x6709;&amp;#x97">
+  
+    <link rel="alternative" href="/atom.xml" title="文强的个人空间" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.9/clipboard.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+          fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+          scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.0.9/scrollreveal.min.js"
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">wenqiang</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:wenqiang_china@126.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2631742593/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/wenqiang-china/" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/wen-qiang-83-85" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIL/">GIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQLdb/">MySQLdb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openpyxl/">openpyxl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlrd/">xlrd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlwt/">xlwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/互联网/">互联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代理/">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/休闲/">休闲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入门教程/">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多进程/">多进程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高级数据库/">高级数据库</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/wenqiang-china/">Wenqiang</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Python党，立志成为全栈工程师的菜鸟一枚。爱大数据，更爱美女。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">wenqiang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">wenqiang</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:wenqiang_china@126.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/2631742593/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/wenqiang-china/" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/wen-qiang-83-85" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-python-queue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/python-queue/" class="article-date">
+      <time datetime="2016-05-15T05:29:24.341Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python Queue介绍
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Queue/">Queue</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>Python&#x4E2D;&#x7684;Queue&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x961F;&#x5217;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86;&#x6240;&#x6709;&#x9700;&#x8981;&#x7684;&#x9501;&#x539F;&#x8BED;&#x3002;Queue&#x5B9E;&#x73B0;&#x4E86;&#x4E09;&#x79CD;&#x961F;&#x5217;&#xFF1A;&#x666E;&#x901A;&#x7684;FIFO&#x961F;&#x5217;&#xFF08;Queue&#xFF09;&#x3001;LIFO&#x961F;&#x5217;&#xFF08;LifoQueue&#xFF09;&#x3001;&#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;&#xFF08;PriorityQueue&#xFF09;&#x3002;&#x5176;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0B;&#x9762;&#x4EE5;&#x666E;&#x901A;&#x7684;&#x5148;&#x8FDB;&#x5148;&#x51FA;&#x961F;&#x5217;Queue&#x4E3A;&#x4F8B;&#x8C08;&#x4E00;&#x4E0B;Queue&#x4E2D;&#x7684;&#x4E3B;&#x8981;&#x65B9;&#x6CD5;</p>
+<h4 id="Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;"><a href="#Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;" class="headerlink" title="Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;"></a>Queue&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53CA;&#x4F7F;&#x7528;</h4><p>&#x4F7F;&#x7528;Queue<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&#x5F15;&#x5165;Queue&#x7C7B;</span></span><br><span class="line"><span class="keyword">from</span> Queue <span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5F97;&#x5230;&#x961F;&#x5217;&#x7684;&#x5927;&#x5C0F;</span></span><br><span class="line">Queue.qsize()</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5224;&#x65AD;&#x961F;&#x5217;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</span></span><br><span class="line">Queue.empty()</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5224;&#x65AD;&#x961F;&#x5217;&#x662F;&#x5426;&#x5DF2;&#x6EE1;</span></span><br><span class="line">Queue.full()</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x4ECE;&#x961F;&#x5217;&#x5934;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x963B;&#x585E;</span></span><br><span class="line">Queue.get([block[,timeout]])</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x4ECE;&#x961F;&#x5217;&#x5934;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x975E;&#x963B;&#x585E;&#x65B9;&#x5F0F;</span></span><br><span class="line">Queue.get_nowait()</span><br><span class="line"><span class="comment">#&#x6216;&#x8005;</span></span><br><span class="line">Queue.get(block=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x963B;&#x585E;&#x5199;&#x5165;&#x961F;&#x5217;</span></span><br><span class="line">Queue.put(item)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x975E;&#x963B;&#x585E;&#x5199;&#x5165;&#x961F;&#x5217;</span></span><br><span class="line">Queue.put_nowait(item)</span><br><span class="line"><span class="comment">#&#x6216;&#x8005;</span></span><br><span class="line">Queue.put(item,block=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x5411;&#x961F;&#x5217;&#x4E2D;&#x5DF2;&#x5B8C;&#x6210;&#x7684;&#x5143;&#x7D20;&#x53D1;&#x9001;join&#x4FE1;&#x53F7;</span></span><br><span class="line">Queue.task_done()</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0A;&#x9762;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x548C;&#x5411;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x90FD;&#x6709;&#x963B;&#x585E;&#x548C;&#x975E;&#x963B;&#x585E;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x91C7;&#x7528;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x5143;&#x7D20;&#x800C;&#x5143;&#x7D20;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x7EBF;&#x7A0B;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#x7B49;&#x5F85;&#x77E5;&#x9053;&#x961F;&#x5217;&#x4E2D;&#x6709;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x53D6;&#x51FA;&#xFF1B;&#x5982;&#x679C;&#x5411;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x800C;&#x6B64;&#x65F6;&#x961F;&#x5217;&#x5DF2;&#x6EE1;&#xFF0C;&#x5219;&#x540C;&#x6837;&#x7EBF;&#x7A0B;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#x76F4;&#x5230;&#x505C;&#x6B62;&#x3002;&#x5982;&#x679C;&#x91C7;&#x7528;&#x975E;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#xFF0C;&#x53D6;&#x5143;&#x7D20;&#x65F6;&#x4E00;&#x65E6;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x4F1A;&#x5F15;&#x53D1;Empty&#x5F02;&#x5E38;&#xFF0C;&#x653E;&#x5143;&#x7D20;&#x65F6;&#x4E00;&#x65E6;&#x961F;&#x5217;&#x5DF2;&#x6EE1;&#xFF0C;&#x5C31;&#x4F1A;&#x5F15;&#x53D1;Full&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x91C7;&#x7528;Queue&#x5B9E;&#x73B0;&#x7684;&#x7ECF;&#x5178;&#x751F;&#x4EA7;&#x8005;&#x6D88;&#x8D39;&#x8005;&#x95EE;&#x9898;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6765;&#x6E90;&#xFF1A;<a href="http://blog.itpub.net/22664653/viewspace-764044/" target="_blank" rel="external">Python&#x6A21;&#x5757;&#x4E4B;Queue</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Queue <span class="keyword">import</span> Queue</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment">#Producer thread</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, t_name, queue)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self, name=t_name)</span><br><span class="line">        self.data=queue</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">print</span> <span class="string">&quot;%s: %s is producing %d to the queue!&quot;</span> %(time.ctime(), self.getName(), i)</span><br><span class="line">            self.data.put(i)</span><br><span class="line">            time.sleep(random.randrange(<span class="number">10</span>)/<span class="number">5</span>)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;%s: %s finished!&quot;</span> %(time.ctime(), self.getName())</span><br><span class="line"></span><br><span class="line"><span class="comment">#Consumer thread</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, t_name, queue)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self, name=t_name)</span><br><span class="line">        self.data=queue</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            val = self.data.get()</span><br><span class="line">            <span class="keyword">print</span> <span class="string">&quot;%s: %s is consuming. %d in the queue is consumed!&quot;</span> %(time.ctime(), self.getName(), val)</span><br><span class="line">            time.sleep(random.randrange(<span class="number">10</span>))</span><br><span class="line">        <span class="keyword">print</span> <span class="string">&quot;%s: %s finished!&quot;</span> %(time.ctime(), self.getName())</span><br><span class="line"></span><br><span class="line"><span class="comment">#Main thread</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    queue = Queue()</span><br><span class="line">    producer = Producer(<span class="string">&apos;Pro.&apos;</span>, queue)</span><br><span class="line">    consumer = Consumer(<span class="string">&apos;Con.&apos;</span>, queue)</span><br><span class="line">    producer.start()</span><br><span class="line">    consumer.start()</span><br><span class="line">    producer.join()</span><br><span class="line">    consumer.join()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">&apos;All threads terminate!&apos;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<p>&#x6700;&#x540E;&#x9644;&#x4E0A;Queue&#x6A21;&#x5757;&#x7684;&#x6E90;&#x7801;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;A multi-producer, multi-consumer queue.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time <span class="keyword">as</span> _time</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> threading <span class="keyword">as</span> _threading          <span class="comment"># &#x5BFC;&#x5165;threading&#x6A21;&#x5757;</span></span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> dummy_threading <span class="keyword">as</span> _threading    <span class="comment"># &#x8BE5;&#x6A21;&#x5757;&#x7684;&#x63A5;&#x53E3;&#x548C;thread&#x76F8;&#x540C;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;thread&#x6A21;&#x5757;&#x7684;&#x5E73;&#x53F0;&#x4E0A;&#x63D0;&#x4F9B;thread&#x6A21;&#x5757;&#x7684;&#x529F;&#x80FD;&#x3002;</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque               <span class="comment"># https://github.com/BeginMan/pythonStdlib/blob/master/collections.md</span></span><br><span class="line"><span class="keyword">import</span> heapq                                <span class="comment"># &#x5806;&#x6392;&#x5E8F; https://github.com/qiwsir/algorithm/blob/master/heapq.md</span></span><br><span class="line"></span><br><span class="line">__all__ = [<span class="string">&apos;Empty&apos;</span>, <span class="string">&apos;Full&apos;</span>, <span class="string">&apos;Queue&apos;</span>, <span class="string">&apos;PriorityQueue&apos;</span>, <span class="string">&apos;LifoQueue&apos;</span>]  <span class="comment"># &#x6A21;&#x5757;&#x7EA7;&#x522B;&#x66B4;&#x9732;&#x63A5;&#x53E3;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Empty</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;&#x5F53;&#x8C03;&#x7528;Queue.get(block=0)/get_nowait()&#x65F6;&#x89E6;&#x53D1;Empty&#x5F02;&#x5E38;</span><br><span class="line"></span><br><span class="line">    &#x8C03;&#x7528;&#x961F;&#x5217;&#x5BF9;&#x8C61;&#x7684;get()&#x65B9;&#x6CD5;&#x4ECE;&#x961F;&#x5934;&#x5220;&#x9664;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x3002;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x4E3A;block&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;True&#x3002;</span><br><span class="line">    &#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#x4E14;block&#x4E3A;True&#xFF0C;get()&#x5C31;&#x4F7F;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;&#x6682;&#x505C;&#xFF0C;&#x76F4;&#x81F3;&#x6709;&#x9879;&#x76EE;&#x53EF;&#x7528;&#x3002;</span><br><span class="line">    &#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#x4E14;block&#x4E3A;False&#xFF0C;&#x961F;&#x5217;&#x5C06;&#x5F15;&#x53D1;Empty&#x5F02;&#x5E38;</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Full</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;&#x5F53;&#x8C03;&#x7528;Queue.put(block=0)/put_nowait()&#x65F6;&#x89E6;&#x53D1;Full&#x5F02;&#x5E38;</span><br><span class="line"></span><br><span class="line">    &#x5982;&#x679C;&#x961F;&#x5217;&#x5F53;&#x524D;&#x4E3A;&#x7A7A;&#x4E14;block&#x4E3A;1&#xFF0C;put()&#x65B9;&#x6CD5;&#x5C31;&#x4F7F;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;&#x6682;&#x505C;,&#x76F4;&#x5230;&#x7A7A;&#x51FA;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5355;&#x5143;&#x3002;</span><br><span class="line">    &#x5982;&#x679C;block&#x4E3A;0&#xFF0C;put&#x65B9;&#x6CD5;&#x5C06;&#x5F15;&#x53D1;Full&#x5F02;&#x5E38;&#x3002;</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x6700;&#x5927;&#x5927;&#x5C0F;&#x7684;&#x961F;&#x5217;&#x5BF9;&#x8C61;.</span><br><span class="line"></span><br><span class="line">    FIFO(&#x5148;&#x8FDB;&#x5148;&#x51FA;)&#x961F;&#x5217;, &#x7B2C;&#x4E00;&#x52A0;&#x5165;&#x961F;&#x5217;&#x7684;&#x4EFB;&#x52A1;, &#x88AB;&#x7B2C;&#x4E00;&#x4E2A;&#x53D6;&#x51FA;</span><br><span class="line">    If maxsize is &lt;= 0, the queue size is &#x65E0;&#x9650;&#x5927;&#x5C0F;.</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, maxsize=<span class="number">0</span>)</span>:</span></span><br><span class="line">        self.maxsize = maxsize</span><br><span class="line">        self._init(maxsize)             <span class="comment"># &#x521D;&#x59CB;&#x5316;queue&#x4E3A;&#x7A7A;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x6240;&#x6709;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x5148;&#x91CA;&#x653E;&#xFF0C;&#x4E92;&#x65A5;&#x9501;&#x5728;&#x4E0B;&#x9762;&#x4E09;&#x4E2A;Condition&#x6761;&#x4EF6;&#x5171;&#x4EAB;</span></span><br><span class="line">        <span class="comment"># &#x4ECE;&#x800C;&#x83B7;&#x53D6;&#x548C;&#x91CA;&#x653E;&#x7684;&#x6761;&#x4EF6;&#x4E0B;&#x4E5F;&#x83B7;&#x5F97;&#x548C;&#x91CA;&#x653E;&#x4E92;&#x65A5;&#x9501;&#x3002;</span></span><br><span class="line">        self.mutex = _threading.Lock()  <span class="comment"># Lock&#x9501;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x5F53;&#x6DFB;&#x52A0;queue&#x5143;&#x7D20;&#x65F6;&#x901A;&#x77E5;`not_empty`,&#x4E4B;&#x540E;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;get</span></span><br><span class="line">        self.not_empty = _threading.Condition(self.mutex)       <span class="comment"># not_empty Condition&#x5B9E;&#x4F8B;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x5F53;&#x79FB;&#x9664;queue&#x5143;&#x7D20;&#x65F6;&#x901A;&#x77E5;`not_full`,&#x4E4B;&#x540E;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;put.</span></span><br><span class="line">        self.not_full = _threading.Condition(self.mutex)        <span class="comment"># not_full Condition&#x5B9E;&#x4F8B;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &#x5F53;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x4EFB;&#x52A1;&#x6570;&#x4E3A;0&#x65F6;&#xFF0C;&#x901A;&#x77E5;`all_tasks_done`,&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;join()</span></span><br><span class="line">        self.all_tasks_done = _threading.Condition(self.mutex)  <span class="comment"># all_tasks_done Condition&#x5B9E;&#x4F8B;</span></span><br><span class="line">        self.unfinished_tasks = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">task_done</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x8868;&#x660E;&#xFF0C;&#x4EE5;&#x524D;&#x6392;&#x961F;&#x7684;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x4E86;</span><br><span class="line"></span><br><span class="line">        &#x88AB;&#x6D88;&#x8D39;&#x8005;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;. &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;get()&#xFF0C;&#x968F;&#x540E;&#x8C03;&#x7528;task_done()&#x544A;&#x77E5;queue&#x8FD9;&#x4E2A;task&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.all_tasks_done.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># unfinished_tasks &#x7D2F;&#x51CF;</span></span><br><span class="line">            unfinished = self.unfinished_tasks - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> unfinished &lt;= <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># &#x8C03;&#x7528;&#x591A;&#x6B21;task_done&#x5219;&#x89E6;&#x53D1;&#x5F02;&#x5E38;</span></span><br><span class="line">                <span class="keyword">if</span> unfinished &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">raise</span> ValueError(<span class="string">&apos;task_done() called too many times&apos;</span>)</span><br><span class="line">                self.all_tasks_done.notify_all()    <span class="comment"># &#x91CA;&#x653E;&#x6240;&#x6709;&#x7B49;&#x5F85;&#x8BE5;&#x6761;&#x4EF6;&#x7684;&#x7EBF;&#x7A0B;</span></span><br><span class="line">            self.unfinished_tasks = unfinished</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.all_tasks_done.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">join</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x963B;&#x585E;&#x76F4;&#x5230;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x90FD;&#x5904;&#x7406;&#x5B8C;&#x6210;</span><br><span class="line">        &#x672A;&#x5B8C;&#x6210;&#x7684;task&#x4F1A;&#x5728;put()&#x7D2F;&#x52A0;&#xFF0C;&#x5728;task_done()&#x7D2F;&#x51CF;, &#x4E3A;0&#x65F6;&#xFF0C;join()&#x975E;&#x963B;&#x585E;.</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.all_tasks_done.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># &#x4E00;&#x76F4;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x672A;&#x5B8C;&#x6210;&#x6570;</span></span><br><span class="line">            <span class="keyword">while</span> self.unfinished_tasks:</span><br><span class="line">                self.all_tasks_done.wait()</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.all_tasks_done.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">qsize</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x8FD4;&#x56DE;&#x961F;&#x5217;&#x7684;&#x8FD1;&#x4F3C;&#x5927;&#x5C0F;&#xFF08;&#x4E0D;&#x53EF;&#x9760;&#xFF01;&#xFF09;&quot;&quot;&quot;</span></span><br><span class="line">        self.mutex.acquire()</span><br><span class="line">        n = self._qsize()       <span class="comment"># len(queue)</span></span><br><span class="line">        self.mutex.release()</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x961F;&#x5217;&#x662F;&#x5426;&#x4E3A;&#x7A7A;(&#x4E0D;&#x53EF;&#x9760;).&quot;&quot;&quot;</span></span><br><span class="line">        self.mutex.acquire()</span><br><span class="line">        n = <span class="keyword">not</span> self._qsize()</span><br><span class="line">        self.mutex.release()</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">full</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x961F;&#x5217;&#x662F;&#x5426;&#x5DF2;&#x6EE1;(&#x4E0D;&#x53EF;&#x9760;!).&quot;&quot;&quot;</span></span><br><span class="line">        self.mutex.acquire()</span><br><span class="line">        n = <span class="number">0</span> &lt; self.maxsize == self._qsize()</span><br><span class="line">        self.mutex.release()</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, item, block=True, timeout=None)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x6DFB;&#x52A0;&#x5143;&#x7D20;.</span><br><span class="line"></span><br><span class="line">        &#x5982;&#x679C;&#x53EF;&#x9009;&#x53C2;&#x6570;block&#x4E3A;True&#x5E76;&#x4E14;timeout&#x53C2;&#x6570;&#x4E3A;None(&#x9ED8;&#x8BA4;), &#x4E3A;&#x963B;&#x585E;&#x578B;put().</span><br><span class="line">        &#x5982;&#x679C;timeout&#x662F;&#x6B63;&#x6570;, &#x4F1A;&#x963B;&#x585E;timeout&#x65F6;&#x95F4;&#x5E76;&#x5F15;&#x53D1;Queue.Full&#x5F02;&#x5E38;.</span><br><span class="line">        &#x5982;&#x679C;block&#x4E3A;False&#x4E3A;&#x975E;&#x963B;&#x585E;put</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.not_full.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> self.maxsize &gt; <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> block:</span><br><span class="line">                    <span class="keyword">if</span> self._qsize() == self.maxsize:</span><br><span class="line">                        <span class="keyword">raise</span> Full</span><br><span class="line">                <span class="keyword">elif</span> timeout <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                    <span class="keyword">while</span> self._qsize() == self.maxsize:</span><br><span class="line">                        self.not_full.wait()</span><br><span class="line">                <span class="keyword">elif</span> timeout &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">raise</span> ValueError(<span class="string">&quot;&apos;timeout&apos; must be a non-negative number&quot;</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    endtime = _time() + timeout</span><br><span class="line">                    <span class="keyword">while</span> self._qsize() == self.maxsize:</span><br><span class="line">                        remaining = endtime - _time()</span><br><span class="line">                        <span class="keyword">if</span> remaining &lt;= <span class="number">0.0</span>:</span><br><span class="line">                            <span class="keyword">raise</span> Full</span><br><span class="line">                        self.not_full.wait(remaining)</span><br><span class="line"></span><br><span class="line">            self._put(item)</span><br><span class="line">            self.unfinished_tasks += <span class="number">1</span></span><br><span class="line">            self.not_empty.notify()</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.not_full.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put_nowait</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span><br><span class="line">        &#x975E;&#x963B;&#x585E;put</span><br><span class="line">        &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5C06;put&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;block&#x8BBE;&#x4E3A;False</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.put(item, <span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, block=True, timeout=None)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;&#x79FB;&#x9664;&#x5217;&#x961F;&#x5143;&#x7D20;&#x5E76;&#x5C06;&#x5143;&#x7D20;&#x8FD4;&#x56DE;.</span><br><span class="line"></span><br><span class="line">        block = True&#x4E3A;&#x963B;&#x585E;&#x51FD;&#x6570;, block = False&#x4E3A;&#x975E;&#x963B;&#x585E;&#x51FD;&#x6570;. &#x53EF;&#x80FD;&#x8FD4;&#x56DE;Queue.Empty&#x5F02;&#x5E38;</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        self.not_empty.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> block:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> self._qsize():</span><br><span class="line">                    <span class="keyword">raise</span> Empty</span><br><span class="line">            <span class="keyword">elif</span> timeout <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">while</span> <span class="keyword">not</span> self._qsize():</span><br><span class="line">                    self.not_empty.wait()</span><br><span class="line">            <span class="keyword">elif</span> timeout &lt; <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">raise</span> ValueError(<span class="string">&quot;&apos;timeout&apos; must be a non-negative number&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                endtime = _time() + timeout</span><br><span class="line">                <span class="keyword">while</span> <span class="keyword">not</span> self._qsize():</span><br><span class="line">                    remaining = endtime - _time()</span><br><span class="line">                    <span class="keyword">if</span> remaining &lt;= <span class="number">0.0</span>:</span><br><span class="line">                        <span class="keyword">raise</span> Empty</span><br><span class="line">                    self.not_empty.wait(remaining)</span><br><span class="line">            item = self._get()</span><br><span class="line">            self.not_full.notify()</span><br><span class="line">            <span class="keyword">return</span> item</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.not_empty.release()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_nowait</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span><br><span class="line">        &#x975E;&#x963B;&#x585E;get()</span><br><span class="line">        &#x4E5F;&#x5373;&#x662F;get()&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;False</span><br><span class="line">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.get(<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Override these methods to implement other queue organizations</span></span><br><span class="line">    <span class="comment"># (e.g. stack or priority queue).</span></span><br><span class="line">    <span class="comment"># These will only be called with appropriate locks held</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># &#x521D;&#x59CB;&#x5316;&#x961F;&#x5217;&#x8868;&#x793A;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init</span><span class="params">(self, maxsize)</span>:</span></span><br><span class="line">        self.queue = deque()        <span class="comment"># &#x5C06;queue&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;deque&#x5BF9;&#x8C61;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_qsize</span><span class="params">(self, len=len)</span>:</span>      <span class="comment"># &#x961F;&#x5217;&#x957F;&#x5EA6;</span></span><br><span class="line">        <span class="keyword">return</span> len(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Put a new item in the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_put</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        self.queue.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get an item from the queue</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.queue.popleft()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span><span class="params">(Queue)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span><br><span class="line">    &#x7EE7;&#x627F;Queue</span><br><span class="line">    &#x6784;&#x9020;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;</span><br><span class="line">    maxsize&#x8BBE;&#x7F6E;&#x961F;&#x5217;&#x5927;&#x5C0F;&#x7684;&#x4E0A;&#x754C;, &#x5982;&#x679C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x65F6;, &#x8FBE;&#x5230;&#x4E0A;&#x754C;&#x4F1A;&#x53D1;&#x751F;&#x963B;&#x585E;, &#x76F4;&#x5230;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x6570;&#x636E;.</span><br><span class="line">    &#x5F53;maxsize&#x5C0F;&#x4E8E;&#x6216;&#x8005;&#x7B49;&#x4E8E;0, &#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;&#x961F;&#x5217;&#x7684;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;).</span><br><span class="line">    &#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;&#x4E2D;, &#x6700;&#x5C0F;&#x503C;&#x88AB;&#x6700;&#x5148;&#x53D6;&#x51FA;</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init</span><span class="params">(self, maxsize)</span>:</span></span><br><span class="line">        self.queue = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_qsize</span><span class="params">(self, len=len)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_put</span><span class="params">(self, item, heappush=heapq.heappush)</span>:</span></span><br><span class="line">        heappush(self.queue, item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self, heappop=heapq.heappop)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> heappop(self.queue)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LifoQueue</span><span class="params">(Queue)</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span><br><span class="line">    &#x6784;&#x9020;&#x4E00;LIFO(&#x5148;&#x8FDB;&#x540E;&#x51FA;)&#x961F;&#x5217;</span><br><span class="line">    maxsize&#x8BBE;&#x7F6E;&#x961F;&#x5217;&#x5927;&#x5C0F;&#x7684;&#x4E0A;&#x754C;, &#x5982;&#x679C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x65F6;, &#x8FBE;&#x5230;&#x4E0A;&#x754C;&#x4F1A;&#x53D1;&#x751F;&#x963B;&#x585E;, &#x76F4;&#x5230;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x6570;&#x636E;.</span><br><span class="line">    &#x5F53;maxsize&#x5C0F;&#x4E8E;&#x6216;&#x8005;&#x7B49;&#x4E8E;0, &#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;&#x961F;&#x5217;&#x7684;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;)</span><br><span class="line">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init</span><span class="params">(self, maxsize)</span>:</span></span><br><span class="line">        self.queue = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_qsize</span><span class="params">(self, len=len)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_put</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        self.queue.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.queue.pop()     <span class="comment"># &#x4E0E;Queue&#x76F8;&#x6BD4;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F; &#x5C06;popleft()&#x6539;&#x6210;&#x4E86;pop()</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/15/python-queue/">Python Queue介绍</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">wenqiang</a></p>
+        <p><span>发布时间:</span>2016-05-15, 13:29:24</p>
+        <p><span>最后更新:</span>2016-05-15, 13:59:21</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/15/python-queue/" title="Python Queue介绍">http://wenqiang-china.github.io/2016/05/15/python-queue/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://wenqiang-china.github.io/2016/05/15/python-queue/　　作者: wenqiang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/15/python-multi-programming-4/">
+                    Python 并发编程系列--4、多进程编程方法
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Queue中的方法及使用"><span class="toc-number">1.1.</span> <span class="toc-text">Queue中的方法及使用</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Python Queue介绍　| 文强的个人空间　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/15/python-queue/" data-title="Python Queue介绍" data-url="http://wenqiang-china.github.io/2016/05/15/python-queue/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wenqiangchina"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://wenqiang-china.github.io/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/15/python-multi-programming-4/" title="下一篇: Python 并发编程系列--4、多进程编程方法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-queue/">Python Queue介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming-4/">Python 并发编程系列--4、多进程编程方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming-3/">Python 并发编程系列--3、多线程编程方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming-2/">Python 并发编程系列--2、并发方式的选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/python-multi-programming/">Python 并发编程系列--1、浅谈GIL历史及对多线程的影响</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/python-opetating-excel/">Python操作excel的几种方式--xlrd、xlwt、openpyxl</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/get-ctrip-flights-info-2/">用Python抓取携程网机票信息 过程纪实（下篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/get-ctrip-flights-info/">用Python抓取携程网机票信息 过程纪实（上篇）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/python-functions/">Python函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter9/">《高级数据库系统》笔记——  第九章 并发控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter8/">《高级数据库系统》笔记——  第八章 日志与故障恢复</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter7/">《高级数据库系统》笔记——  第七章 查询编译器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter6/">《高级数据库系统》笔记——  第六章 查询执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter5/">《高级数据库系统》笔记——  第五章 多维索引</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/adb-note-chapter4/">《高级数据库系统》笔记——  第四章 索引结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/access-by-proxy/">通过在线代理获取网站的最新域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter3/">《高级数据库系统》笔记——  第三章 数据元素和表示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter2/">《高级数据库系统》笔记——  第二章 数据存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/adb-note-chapter1/">《高级数据库系统》笔记——  第一章 数据库系统简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/python-rumen-chart/">Python入门神图</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/youkutudou-intern-coding/">优酷土豆2016实习生笔试 Python编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/music-during-work/">你工作的时候该听什么音乐？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/mysqldb-install/">MySQLdb安装记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/adb-note-1/">《高级数据库系统》笔记—— 一、简介</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 wenqiang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </div>
+</body>
+</html>
+
