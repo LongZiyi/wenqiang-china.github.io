@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wenqiang-china.github.io/2016/05/20/python-property-function/</loc>
+    
+    <lastmod>2016-05-20T03:41:43.874Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/20/python-functional-programming/</loc>
+    
+    <lastmod>2016-05-20T02:09:07.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wenqiang-china.github.io/2016/05/18/python-documentation-multiprocessing/</loc>
+    
+    <lastmod>2016-05-20T01:17:07.140Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wenqiang-china.github.io/2016/05/10/get-ctrip-flights-info/</loc>
     
     <lastmod>2016-05-17T12:06:05.649Z</lastmod>
