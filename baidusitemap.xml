@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://wenqiang-china.github.io/2016/05/19/python-diffrence-between-staticmethod-and-classmethod/</loc>
+    <lastmod>2016-05-20T06:36:19.187Z</lastmod>
+    <data>
+        <display>
+        <title>Python 中@classmethod和@staticmethod的区别</title>
+        <pubTime>2016-05-19T14:46:52.620Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>staticmethod</tag>
+         
+        <tag>classmethod</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wenqiang-china.github.io/2016/05/20/python-property-function/</loc>
     <lastmod>2016-05-20T03:41:43.874Z</lastmod>
     <data>
