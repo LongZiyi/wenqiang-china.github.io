@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wenqiang-china.github.io/2016/05/29/python-flask-experience/</loc>
+    
+    <lastmod>2016-05-29T02:51:24.247Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wenqiang-china.github.io/2016/05/19/python-diffrence-between-staticmethod-and-classmethod/</loc>
     
     <lastmod>2016-05-20T06:36:19.187Z</lastmod>

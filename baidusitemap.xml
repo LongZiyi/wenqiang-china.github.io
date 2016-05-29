@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://wenqiang-china.github.io/2016/05/29/python-flask-experience/</loc>
+    <lastmod>2016-05-29T02:51:24.247Z</lastmod>
+    <data>
+        <display>
+        <title>Python flask使用经验教训总结</title>
+        <pubTime>2016-05-29T02:17:10.988Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>flask</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://wenqiang-china.github.io/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wenqiang-china.github.io/2016/05/19/python-diffrence-between-staticmethod-and-classmethod/</loc>
     <lastmod>2016-05-20T06:36:19.187Z</lastmod>
     <data>
@@ -147,9 +169,9 @@
         
         <tag>Python</tag>
          
-        <tag>并发</tag>
-         
         <tag>编程</tag>
+         
+        <tag>并发</tag>
          
         <tag>多进程</tag>
          
@@ -173,9 +195,9 @@
         
         <tag>Python</tag>
          
-        <tag>并发</tag>
-         
         <tag>编程</tag>
+         
+        <tag>并发</tag>
          
         <tag>多线程</tag>
          
@@ -221,9 +243,9 @@
         
         <tag>Python</tag>
          
-        <tag>并发</tag>
-         
         <tag>编程</tag>
+         
+        <tag>并发</tag>
          
         <tag>多线程</tag>
          
@@ -249,9 +271,9 @@
         
         <tag>Python</tag>
          
-        <tag>并发</tag>
-         
         <tag>编程</tag>
+         
+        <tag>并发</tag>
          
         <tag>多线程</tag>
          

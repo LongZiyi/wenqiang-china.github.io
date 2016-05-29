@@ -7,25 +7,18 @@
   <meta name="msvalidate.01" content="69587B143623DA93DFA18F587EACF888" />
   <meta charset="utf-8">
   
-  <title>通过在线代理获取网站的最新域名 | 文强的个人空间</title>
+  <title>Python flask使用经验教训总结 | 文强的个人空间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x5199;&amp;#x4F5C;&amp;#x76EE;&amp;#x7684;&amp;#x672C;&amp;#x6587;&amp;#x6E90;&amp;#x4E8E;&amp;#x81EA;&amp;#x5DF1;&amp;#x5E73;&amp;#x5E38;&amp;#x4E0A;&amp;#x7F51;&amp;#x65F6;&amp;#x9047;&amp;#x5230;&amp;#x7684;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x6709;&amp;#x7684;">
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x8FD9;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x5F00;&amp;#x59CB;&amp;#x63A5;&amp;#x89E6;flask&amp;#xFF0C;&amp;#x4E2D;&amp;#x95F4;&amp;#x9047;&amp;#x5230;&amp;#x4E9B;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x4E5F;&amp;#x8D70;&amp;#x8FC7;&amp;#x5199;&amp;#x5F2F;&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过在线代理获取网站的最新域名">
-<meta property="og:url" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/index.html">
+<meta property="og:title" content="Python flask使用经验教训总结">
+<meta property="og:url" content="http://wenqiang-china.github.io/2016/05/29/python-flask-experience/index.html">
 <meta property="og:site_name" content="文强的个人空间">
-<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5199;&amp;#x4F5C;&amp;#x76EE;&amp;#x7684;&amp;#x672C;&amp;#x6587;&amp;#x6E90;&amp;#x4E8E;&amp;#x81EA;&amp;#x5DF1;&amp;#x5E73;&amp;#x5E38;&amp;#x4E0A;&amp;#x7F51;&amp;#x65F6;&amp;#x9047;&amp;#x5230;&amp;#x7684;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x6709;&amp;#x7684;">
-<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/baiduresult.png">
-<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/bingresult.png">
-<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/googleresult.png">
-<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/saodaili.com.png">
-<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/dailipage.png">
-<meta property="og:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/result.png">
-<meta property="og:updated_time" content="2016-05-01T01:48:16.812Z">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x8FD9;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x5F00;&amp;#x59CB;&amp;#x63A5;&amp;#x89E6;flask&amp;#xFF0C;&amp;#x4E2D;&amp;#x95F4;&amp;#x9047;&amp;#x5230;&amp;#x4E9B;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x4E5F;&amp;#x8D70;&amp;#x8FC7;&amp;#x5199;&amp;#x5F2F;&amp;#x">
+<meta property="og:updated_time" content="2016-05-29T02:51:24.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通过在线代理获取网站的最新域名">
-<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5199;&amp;#x4F5C;&amp;#x76EE;&amp;#x7684;&amp;#x672C;&amp;#x6587;&amp;#x6E90;&amp;#x4E8E;&amp;#x81EA;&amp;#x5DF1;&amp;#x5E73;&amp;#x5E38;&amp;#x4E0A;&amp;#x7F51;&amp;#x65F6;&amp;#x9047;&amp;#x5230;&amp;#x7684;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x6709;&amp;#x7684;">
-<meta name="twitter:image" content="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/baiduresult.png">
+<meta name="twitter:title" content="Python flask使用经验教训总结">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x8FD9;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x5F00;&amp;#x59CB;&amp;#x63A5;&amp;#x89E6;flask&amp;#xFF0C;&amp;#x4E2D;&amp;#x95F4;&amp;#x9047;&amp;#x5230;&amp;#x4E9B;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x4E5F;&amp;#x8D70;&amp;#x8FC7;&amp;#x5199;&amp;#x5F2F;&amp;#x">
   
     <link rel="alternative" href="/atom.xml" title="文强的个人空间" type="application/atom+xml">
   
@@ -250,11 +243,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-access-by-proxy" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-python-flask-experience" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/01/access-by-proxy/" class="article-date">
-      <time datetime="2016-05-01T00:59:14.257Z" itemprop="datePublished">2016-05-01</time>
+      <a href="/2016/05/29/python-flask-experience/" class="article-date">
+      <time datetime="2016-05-29T02:17:10.988Z" itemprop="datePublished">2016-05-29</time>
 </a>
     </div>
   
@@ -267,7 +260,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      通过在线代理获取网站的最新域名
+      Python flask使用经验教训总结
     </h1>
   
 
@@ -276,13 +269,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/互联网/">互联网</a>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/互联网/">互联网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代理/">代理</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -292,11 +285,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="&#x672C;&#x6587;&#x5199;&#x4F5C;&#x76EE;&#x7684;"><a href="#&#x672C;&#x6587;&#x5199;&#x4F5C;&#x76EE;&#x7684;" class="headerlink" title="&#x672C;&#x6587;&#x5199;&#x4F5C;&#x76EE;&#x7684;"></a>&#x672C;&#x6587;&#x5199;&#x4F5C;&#x76EE;&#x7684;</h3><p>&#x672C;&#x6587;&#x6E90;&#x4E8E;&#x81EA;&#x5DF1;&#x5E73;&#x5E38;&#x4E0A;&#x7F51;&#x65F6;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6709;&#x7684;&#x7F51;&#x7AD9;&#x7531;&#x4E8E;&#x67D0;&#x4E9B;&#x539F;&#x56E0;<strong>&#x57DF;&#x540D;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;</strong>&#xFF0C;&#x539F;&#x57DF;&#x540D;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x4E86;&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x662F;&#x7F51;&#x7AD9;&#x57DF;&#x540D;&#x672A;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x53EA;&#x662F;&#x5355;&#x7EAF;&#x7684;<strong>&#x88AB;&#x5899;</strong>&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x672C;&#x6587;&#x7684;&#x65B9;&#x6CD5;&#x6682;&#x65F6;&#x6027;&#x5730;&#x8BBF;&#x95EE;&#x8BE5;&#x7F51;&#x7AD9;&#x3002;&#x4E0D;&#x8FC7;&#x7531;&#x4E8E;&#x662F;&#x5728;&#x7EBF;&#x4EE3;&#x7406;&#xFF0C;&#x53EF;&#x80FD;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x8BBF;&#x95EE;&#x8BB0;&#x5F55;&#x7B49;&#x4FE1;&#x606F;&#x4F1A;&#x88AB;&#x8BB0;&#x5F55;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x6D89;&#x53CA;&#x5230;&#x4E2A;&#x4EBA;&#x9690;&#x79C1;&#x751A;&#x81F3;&#x4E8E;&#x8D22;&#x4EA7;&#x5B89;&#x5168;&#x7684;&#x8BBF;&#x95EE;&#x884C;&#x4E3A;&#x3002;&#x95F2;&#x8A00;&#x5C11;&#x53D9;&#xFF0C;&#x4E0B;&#x9762;&#x5F00;&#x59CB;&#x6B63;&#x9898;&#x3002;</p>
-<h3 id="&#x5BFB;&#x627E;&#x5728;&#x7EBF;&#x4EE3;&#x7406;"><a href="#&#x5BFB;&#x627E;&#x5728;&#x7EBF;&#x4EE3;&#x7406;" class="headerlink" title="&#x5BFB;&#x627E;&#x5728;&#x7EBF;&#x4EE3;&#x7406;"></a>&#x5BFB;&#x627E;&#x5728;&#x7EBF;&#x4EE3;&#x7406;</h3><p>&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x633A;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x5728;&#x7F51;&#x9875;&#x4E0A;&#x641C;&#x7D22;&#x201C;&#x5728;&#x7EBF;&#x4EE3;&#x7406; &#x8BBF;&#x95EE;&#x7F51;&#x7AD9;&#x201D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x5728;&#x6B64;&#x63A8;&#x8350;&#x4F7F;&#x7528;bing&#x641C;&#x7D22;&#xFF0C;&#x5F53;&#x7136;&#x5982;&#x679C;&#x662F;google&#x641C;&#x7D22;&#x53EF;&#x7528;&#x80AF;&#x5B9A;&#x9996;&#x9009;google&#xFF0C;&#x767E;&#x5EA6;&#x6211;&#x8BD5;&#x4E86;&#x4E00;&#x4E0B;&#x6548;&#x679C;&#x4E0D;&#x7406;&#x60F3;&#x3002;&#x4E0B;&#x9762;&#x653E;&#x4E0A;&#x4F7F;&#x7528;&#x4E09;&#x4E2A;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x7684;&#x7ED3;&#x679C;&#x5BF9;&#x6BD4;&#xFF1A;<br><img src="/2016/05/01/access-by-proxy/baiduresult.png" alt="&#x767E;&#x5EA6;&#x641C;&#x7D22;&#x7ED3;&#x679C;"><br><img src="/2016/05/01/access-by-proxy/bingresult.png" alt="bing&#x641C;&#x7D22;&#x7ED3;&#x679C;"><br><img src="/2016/05/01/access-by-proxy/googleresult.png" alt="google&#x641C;&#x7D22;&#x7ED3;&#x679C;"><br>&#x901A;&#x8FC7;&#x4EE5;&#x4E0A;&#x5BF9;&#x6BD4;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x4F7F;&#x7528;bing&#x548C;google&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x80FD;&#x591F;&#x6BD4;&#x8F83;&#x5FEB;&#x7684;&#x627E;&#x5230;&#x7ED3;&#x679C;&#xFF0C;baidu&#x627E;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x70B9;&#x65F6;&#x95F4;&#x3002;&#x7ECF;&#x8FC7;bing&#x548C;baidu&#x7684;&#x641C;&#x7D22;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x94FE;&#x63A5;&#x5305;&#x542B;&#x540C;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x7F51;&#x7AD9;&#xFF0C;&#x800C;&#x5B83;&#x4E5F;&#x662F;&#x4ECA;&#x5929;&#x6211;&#x91C7;&#x7528;&#x7684;&#x5728;&#x7EBF;&#x4EE3;&#x7406;&#x7F51;&#x7AD9; <a href="https://saodaili.com/" target="_blank" rel="external">The Big Bridge</a>&#xFF0C;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#x6CA1;&#x6709;&#x5C1D;&#x8BD5;&#xFF0C;&#x4F7F;&#x7528;&#x5B83;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x4EE3;&#x7406;&#x8BBF;&#x95EE;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;</p>
-<h3 id="&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;"><a href="#&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;"></a>&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;</h3><p>&#x6253;&#x5F00;<a href="https://saodaili.com/" target="_blank" rel="external">&#x7F51;&#x7AD9;</a>&#x540E;,&#x70B9;&#x51FB;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x94FE;&#x63A5;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="/2016/05/01/access-by-proxy/saodaili.com.png" alt="&#x6253;&#x5F00;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;1&#x94FE;&#x63A5;"><br>&#x7136;&#x540E;&#x5728;&#x4E0B;&#x56FE;&#x7EA2;&#x6846;&#x6307;&#x5B9A;&#x7684;&#x533A;&#x57DF;&#x5199;&#x4E0A;&#x81EA;&#x5DF1;&#x60F3;&#x8BBF;&#x95EE;&#x7684;&#x7F51;&#x7AD9;&#x7684;&#x57DF;&#x540D;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;<br><img src="/2016/05/01/access-by-proxy/dailipage.png" alt="&#x8F93;&#x5165;&#x7F51;&#x7AD9;&#x7F51;&#x5740;"><br>&#x8F93;&#x5165;&#x7684;&#x53EF;&#x4EE5;&#x662F;&#x7F51;&#x7AD9;&#x7684;&#x539F;&#x57DF;&#x540D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x73B0;&#x57DF;&#x540D;&#xFF0C;&#x4F8B;&#x5982;&#x6211;&#x8F93;&#x5165;&#x7684;&#x662F;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">developer.google.com</span><br></pre></td></tr></table></figure></p>
-<p>&#x7136;&#x540E;&#x5C31;&#x4F1A;&#x8DF3;&#x8F6C;&#x5230;&#x6307;&#x5B9A;&#x7F51;&#x7AD9;&#x7684;&#x8BBF;&#x95EE;&#x9875;&#x9762;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;<br><img src="/2016/05/01/access-by-proxy/result.png" alt="developers.google.com"><br>&#x4E0A;&#x56FE;&#x4E2D;&#x7EA2;&#x6846;&#x5904;&#x662F;&#x5F53;&#x524D;&#x7F51;&#x7AD9;&#x7684;&#x7F51;&#x5740;,ps:&#x5C06;&#x8FD9;&#x4E2A;&#x7F51;&#x5740;&#x548C;&#x4EE5;&#x524D;&#x81EA;&#x5DF1;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x5740;&#x505A;&#x4E2A;&#x6BD4;&#x8F83;&#x5C31;&#x77E5;&#x9053;&#x7A76;&#x7ADF;&#x662F;&#x7F51;&#x7AD9;&#x57DF;&#x540D;&#x6362;&#x4E86;&#x8FD8;&#x662F;&#x88AB;&#x5899;&#x4E86;:-)</p>
-<p>&#x4E0D;&#x8FC7;&#x7A0D;&#x663E;&#x4E0D;&#x8DB3;&#x7684;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x7EBF;&#x4EE3;&#x7406;&#x8BBF;&#x95EE;&#x65F6;&#x4E00;&#x4E9B;javascript&#x811A;&#x672C;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x6B63;&#x5E38;&#x52A0;&#x8F7D;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x7F51;&#x7AD9;&#x53EF;&#x80FD;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x3002;&#x597D;&#x4E86;&#xFF0C;&#x8BF4;&#x4E86;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x80FD;&#x770B;&#x5F97;&#x4E0D;&#x8010;&#x70E6;&#x4E86;&#xFF0C;&#x90A3;&#x5C31;&#x8D76;&#x7D27;&#x8BD5;&#x8BD5;&#x5427;&#x3002;</p>
+        <h3 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h3><p>&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5F00;&#x59CB;&#x63A5;&#x89E6;flask&#xFF0C;&#x4E2D;&#x95F4;&#x9047;&#x5230;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x8D70;&#x8FC7;&#x5199;&#x5F2F;&#x8DEF;&#xFF0C;&#x672C;&#x7247;&#x535A;&#x5BA2;&#x7528;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#x81EA;&#x5DF1;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x8E29;&#x7684;&#x5751;&#x3002;</p>
+<h3 id="&#x6B63;&#x6587;"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</h3><h4 id="&#x95EE;&#x9898;&#x4E00;&#xFF1A;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x7BA1;&#x7406;MySQL&#x6570;&#x636E;&#x5E93;&#x65F6;&#xFF0C;&#x521B;&#x5EFA;db&#x5B9E;&#x4F8B;&#x65F6;&#x62A5;&#x9519;&#xFF0C;&#x63D0;&#x793A;Import-MySQLdb&#x51FA;&#x9519;"><a href="#&#x95EE;&#x9898;&#x4E00;&#xFF1A;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x7BA1;&#x7406;MySQL&#x6570;&#x636E;&#x5E93;&#x65F6;&#xFF0C;&#x521B;&#x5EFA;db&#x5B9E;&#x4F8B;&#x65F6;&#x62A5;&#x9519;&#xFF0C;&#x63D0;&#x793A;Import-MySQLdb&#x51FA;&#x9519;" class="headerlink" title="&#x95EE;&#x9898;&#x4E00;&#xFF1A;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x7BA1;&#x7406;MySQL&#x6570;&#x636E;&#x5E93;&#x65F6;&#xFF0C;&#x521B;&#x5EFA;db&#x5B9E;&#x4F8B;&#x65F6;&#x62A5;&#x9519;&#xFF0C;&#x63D0;&#x793A;Import MySQLdb&#x51FA;&#x9519;"></a>&#x95EE;&#x9898;&#x4E00;&#xFF1A;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x7BA1;&#x7406;MySQL&#x6570;&#x636E;&#x5E93;&#x65F6;&#xFF0C;&#x521B;&#x5EFA;db&#x5B9E;&#x4F8B;&#x65F6;&#x62A5;&#x9519;&#xFF0C;&#x63D0;&#x793A;Import MySQLdb&#x51FA;&#x9519;</h4><p>&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x8981;&#x5148;&#x5B89;&#x88C5;&#x597D;MySQL&#x6570;&#x636E;&#x5E93;&#x548C;MySQLdb&#xFF0C;&#x56E0;&#x4E3A;SQLAlchemy&#x4F1A;&#x8C03;&#x7528;MySQLdb&#x6A21;&#x5757;&#x3002;Windows&#x4E0B;&#x5B89;&#x88C5;MySQLdb&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x770B;<a href="http://blog.csdn.net/wklken/article/details/7253245" target="_blank" rel="external">&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;</a>&#xFF0C;&#x5982;&#x679C;&#x662F;linux&#x4E0B;&#x5B89;&#x88C5;&#x5219;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x6211;&#x7684;<a href="../../../04/28/mysqldb-install/">&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;</a>&#x3002;</p>
+<h4 id="&#x95EE;&#x9898;&#x4E8C;&#xFF1A;&#x540C;&#x6837;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db-create-all-&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;&#x65F6;&#x63D0;&#x793A;OperationalError-mysql-exceptions-OperationalError-1045-&#x201C;Access-denied-for-user-&#x2018;ODBC&#x2019;-&#x2019;localhost&#x2019;-using-password-NO-&#x201D;"><a href="#&#x95EE;&#x9898;&#x4E8C;&#xFF1A;&#x540C;&#x6837;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db-create-all-&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;&#x65F6;&#x63D0;&#x793A;OperationalError-mysql-exceptions-OperationalError-1045-&#x201C;Access-denied-for-user-&#x2018;ODBC&#x2019;-&#x2019;localhost&#x2019;-using-password-NO-&#x201D;" class="headerlink" title="&#x95EE;&#x9898;&#x4E8C;&#xFF1A;&#x540C;&#x6837;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db.create_all()&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;&#x65F6;&#x63D0;&#x793A;OperationalError: (_mysql_exceptions.OperationalError) (1045, &#x201C;Access denied for user &#x2018;ODBC&#x2019;@&#x2019;localhost&#x2019; (using password: NO)&#x201D;)"></a>&#x95EE;&#x9898;&#x4E8C;&#xFF1A;&#x540C;&#x6837;&#x5728;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db.create_all()&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;&#x65F6;&#x63D0;&#x793A;OperationalError: (_mysql_exceptions.OperationalError) (1045, &#x201C;Access denied for user &#x2018;ODBC&#x2019;@&#x2019;localhost&#x2019; (using password: NO)&#x201D;)</h4><p>&#x5206;&#x6790;&#xFF0C;&#x6743;&#x9650;&#x4E0D;&#x591F;&#xFF0C;&#x6CA1;&#x6709;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7ED9;&#x6240;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6388;&#x6743;&#x3002;<br>&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#x6570;&#x636E;&#x5E93;&#x540D;&#x4E3A;test,&#x5219;&#x6388;&#x6743;&#x8BED;&#x53E5;&#x4E3A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant select ,insert,update,delete,lock tables on test.* to username@localhost identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0A;&#x9762;&#x7684;username&#x5904;&#x586B;&#x5199;&#x81EA;&#x5DF1;&#x7684;&#x7528;&#x6237;&#x540D;&#xFF0C;password&#x5904;&#x586B;&#x5199;&#x81EA;&#x5DF1;&#x8FDE;&#x63A5;&#x65F6;&#x7684;&#x5BC6;&#x7801;&#x3002;</p>
+<h4 id="&#x95EE;&#x9898;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db-create-all-&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x63D0;&#x793A;&#xFF1A;OperationalError-mysql-exceptions-OperationalError-1049-&#x201C;Unknown-database-&#x2018;flasky&#x2019;&#x201D;"><a href="#&#x95EE;&#x9898;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db-create-all-&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x63D0;&#x793A;&#xFF1A;OperationalError-mysql-exceptions-OperationalError-1049-&#x201C;Unknown-database-&#x2018;flasky&#x2019;&#x201D;" class="headerlink" title="&#x95EE;&#x9898;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db.create_all()&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x63D0;&#x793A;&#xFF1A;OperationalError: (_mysql_exceptions.OperationalError) (1049, &#x201C;Unknown database &#x2018;flasky&#x2019;&#x201D;)"></a>&#x95EE;&#x9898;&#x4E09;&#xFF1A;&#x4F7F;&#x7528;SQLAlchemy&#x65F6;&#xFF0C;&#x6267;&#x884C;db.create_all()&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x63D0;&#x793A;&#xFF1A;OperationalError: (_mysql_exceptions.OperationalError) (1049, &#x201C;Unknown database &#x2018;flasky&#x2019;&#x201D;)</h4><p>&#x5206;&#x6790;&#xFF1A;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#x672A;&#x77E5;&#x6570;&#x636E;&#x5E93;&#x201D;flasky&#x201D;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;MySQL&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x8FD9;&#x4E2A;&#x540D;&#x4E3A;flasky&#x7684;&#x6570;&#x636E;&#x5E93;&#x6839;&#x672C;&#x4E0D;&#x5B58;&#x5728;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x8FDB;&#x884C;&#x521B;&#x5EFA;&#x8868;&#x64CD;&#x4F5C;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x9996;&#x5148;&#x6240;&#x9700;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5DF2;&#x7ECF;&#x5728;MySQL&#x4E2D;&#x521B;&#x5EFA;&#x597D;&#x3002;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x540D;&#x5B57;&#x5728;&#x521B;&#x5EFA;flask&#x5E94;&#x7528;&#x65F6;&#x8BBE;&#x7F6E;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config[<span class="string">&apos;SQLALCHEMY_DATABASE_URI&apos;</span>]=<span class="string">&apos;mysql://root:root@localhost/flasky&apos;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0A;&#x9762;&#x6700;&#x540E;&#x7684;flasky&#x5C31;&#x662F;&#x6240;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x8FD9;&#x4E2A;&#x8981;&#x5728;MySQL&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5EFA;&#x597D;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;<strong>&#x5408;&#x7406;&#x7684;&#x987A;&#x5E8F;&#x662F;&#xFF1A;&#x9996;&#x5148;&#x5728;MySQL&#x4E2D;&#x521B;&#x5EFA;&#x597D;flasky&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x7136;&#x540E;&#x6388;&#x6743;&#xFF0C;&#x518D;&#x4E4B;&#x540E;&#x5728;flask&#x5E94;&#x7528;&#x4E2D;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;</strong><br>&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;&#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x5E93;&#x5E76;&#x6388;&#x6743;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create database flasky;</span><br><span class="line">grant select,insert,update,delete,lock tables on flasky.* to username@localhost identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x63A5;&#x4E0B;&#x6765;&#x5728;flask&#x4EE3;&#x7801;&#x4E2D;&#x5B9A;&#x4E49;ORM&#xFF0C;&#x521B;&#x5EFA;SQLAlchemy&#x5B9E;&#x4F8B;&#x5E76;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask.ext.sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app=Flask(__name__)</span><br><span class="line">app.config[<span class="string">&apos;SQLALCHEMY_DATABASE_URI&apos;</span>]=<span class="string">&apos;mysql://username:password@localhost/flasky&apos;</span> <span class="comment">#&#x4F7F;&#x7528;MySQLdb&#x6570;&#x636E;&#x5E93;</span></span><br><span class="line">app.config[<span class="string">&apos;SQLALCHEMY_COMMIT_ON_TEARDOWN&apos;</span>]=<span class="keyword">True</span> <span class="comment">#&#x8BBE;&#x7F6E;&#x4E3A;&#x81EA;&#x52A8;&#x63D0;&#x4EA4;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x4E0B;&#x9762;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x8868;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Role</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    __tablename__=<span class="string">&apos;roles&apos;</span></span><br><span class="line">    id=db.Column(db.Integer,primary_key=<span class="keyword">True</span>)</span><br><span class="line">    name=db.Column(db.String(<span class="number">64</span>),unique=<span class="keyword">True</span>)</span><br><span class="line">    users=db.relationship(<span class="string">&quot;User&quot;</span>,backref=<span class="string">&quot;role&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&apos;&lt;Role %r&gt;&apos;</span>%self.name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    __tablename__=<span class="string">&quot;users&quot;</span></span><br><span class="line">    id=db.Column(db.Integer,primary_key=<span class="keyword">True</span>)</span><br><span class="line">    username=db.Column(db.String(<span class="number">64</span>),unique=<span class="keyword">True</span>,index=<span class="keyword">True</span>)</span><br><span class="line">    role_id=db.Column(db.Integer,db.ForeignKey(<span class="string">&apos;roles.id&apos;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&apos;&lt;User %r&gt;&apos;</span>%self.username</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x5728;python shell&#x4E0B;&#x6267;&#x884C;db.create_all()&#x65B9;&#x6CD5;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x8868;&#x3002;</p>
+<h4 id="&#x95EE;&#x9898;&#x56DB;&#xFF1A;&#x5728;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x65F6;&#x6B63;&#x6587;&#x91C7;&#x7528;&#x4E2D;&#x6587;&#x4F1A;&#x51FA;&#x73B0;utf8-decode-error&#x7684;&#x9519;&#x8BEF;&#x51FA;&#x73B0;"><a href="#&#x95EE;&#x9898;&#x56DB;&#xFF1A;&#x5728;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x65F6;&#x6B63;&#x6587;&#x91C7;&#x7528;&#x4E2D;&#x6587;&#x4F1A;&#x51FA;&#x73B0;utf8-decode-error&#x7684;&#x9519;&#x8BEF;&#x51FA;&#x73B0;" class="headerlink" title="&#x95EE;&#x9898;&#x56DB;&#xFF1A;&#x5728;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x65F6;&#x6B63;&#x6587;&#x91C7;&#x7528;&#x4E2D;&#x6587;&#x4F1A;&#x51FA;&#x73B0;utf8 decode error&#x7684;&#x9519;&#x8BEF;&#x51FA;&#x73B0;"></a>&#x95EE;&#x9898;&#x56DB;&#xFF1A;&#x5728;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x65F6;&#x6B63;&#x6587;&#x91C7;&#x7528;&#x4E2D;&#x6587;&#x4F1A;&#x51FA;&#x73B0;utf8 decode error&#x7684;&#x9519;&#x8BEF;&#x51FA;&#x73B0;</h4><p>&#x539F;&#x56E0;&#x662F;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x7684;&#x7F16;&#x7801;&#x4E0D;&#x5BF9;&#xFF0C;&#x6700;&#x597D;&#x91C7;&#x7528;utf8&#x65E0;BOM&#x7684;&#x683C;&#x5F0F;&#x3002;&#x5728;notepad++ &#x4E2D;&#x9ED8;&#x8BA4;&#x7F16;&#x7801;&#x662F;ANSI&#xFF0C;&#x9700;&#x8981;&#x6539;&#x8FC7;&#x6765;&#x3002;</p>
 
       
     </div>
@@ -305,13 +309,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/01/access-by-proxy/">通过在线代理获取网站的最新域名</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/29/python-flask-experience/">Python flask使用经验教训总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">wenqiang</a></p>
-        <p><span>发布时间:</span>2016-05-01, 08:59:14</p>
-        <p><span>最后更新:</span>2016-05-01, 09:48:16</p>
+        <p><span>发布时间:</span>2016-05-29, 10:17:10</p>
+        <p><span>最后更新:</span>2016-05-29, 10:51:24</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/01/access-by-proxy/" title="通过在线代理获取网站的最新域名">http://wenqiang-china.github.io/2016/05/01/access-by-proxy/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://wenqiang-china.github.io/2016/05/01/access-by-proxy/　　作者: wenqiang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/29/python-flask-experience/" title="Python flask使用经验教训总结">http://wenqiang-china.github.io/2016/05/29/python-flask-experience/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://wenqiang-china.github.io/2016/05/29/python-flask-experience/　　作者: wenqiang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -323,16 +327,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/05/01/adb-note-chapter4/">
-                    《高级数据库系统》笔记——  第四章 索引结构
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/30/adb-note-chapter3/">
-                    《高级数据库系统》笔记——  第三章 数据元素和表示
+                <a href="/2016/05/20/python-functional-programming/">
+                    浅说Python 中的函数式编程
                 </a>
             </div>
         
@@ -343,7 +341,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#本文写作目的"><span class="toc-number">1.</span> <span class="toc-text">本文写作目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找在线代理"><span class="toc-number">2.</span> <span class="toc-text">寻找在线代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作过程"><span class="toc-number">3.</span> <span class="toc-text">操作过程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题一：在使用SQLAlchemy管理MySQL数据库时，创建db实例时报错，提示Import-MySQLdb出错"><span class="toc-number">2.1.</span> <span class="toc-text">问题一：在使用SQLAlchemy管理MySQL数据库时，创建db实例时报错，提示Import MySQLdb出错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题二：同样在使用SQLAlchemy时，执行db-create-all-创建数据表时提示OperationalError-mysql-exceptions-OperationalError-1045-“Access-denied-for-user-‘ODBC’-’localhost’-using-password-NO-”"><span class="toc-number">2.2.</span> <span class="toc-text">问题二：同样在使用SQLAlchemy时，执行db.create_all()创建数据表时提示OperationalError: (_mysql_exceptions.OperationalError) (1045, “Access denied for user ‘ODBC’@’localhost’ (using password: NO)”)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题三：使用SQLAlchemy时，执行db-create-all-时出错，提示：OperationalError-mysql-exceptions-OperationalError-1049-“Unknown-database-‘flasky’”"><span class="toc-number">2.3.</span> <span class="toc-text">问题三：使用SQLAlchemy时，执行db.create_all()时出错，提示：OperationalError: (_mysql_exceptions.OperationalError) (1049, “Unknown database ‘flasky’”)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题四：在使用模板引擎时正文采用中文会出现utf8-decode-error的错误出现"><span class="toc-number">2.4.</span> <span class="toc-text">问题四：在使用模板引擎时正文采用中文会出现utf8 decode error的错误出现</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -400,7 +398,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"通过在线代理获取网站的最新域名　| 文强的个人空间　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Python flask使用经验教训总结　| 文强的个人空间　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -416,7 +414,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/01/access-by-proxy/" data-title="通过在线代理获取网站的最新域名" data-url="http://wenqiang-china.github.io/2016/05/01/access-by-proxy/"></div>
+    <div class="ds-thread" data-thread-key="2016/05/29/python-flask-experience/" data-title="Python flask使用经验教训总结" data-url="http://wenqiang-china.github.io/2016/05/29/python-flask-experience/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -442,15 +440,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/05/01/adb-note-chapter4/" title="上一篇: 《高级数据库系统》笔记——  第四章 索引结构">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/30/adb-note-chapter3/" title="下一篇: 《高级数据库系统》笔记——  第三章 数据元素和表示">
+            <a href="/2016/05/20/python-functional-programming/" title="下一篇: 浅说Python 中的函数式编程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
