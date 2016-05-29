@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wenqiang-china.github.io/"/>
-  <updated>2016-05-29T02:51:24.247Z</updated>
+  <updated>2016-05-29T03:18:26.456Z</updated>
   <id>http://wenqiang-china.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo deploy时提示权限不够的问题</title>
+    <link href="http://wenqiang-china.github.io/2016/05/29/hexo-deploy-problem/"/>
+    <id>http://wenqiang-china.github.io/2016/05/29/hexo-deploy-problem/</id>
+    <published>2016-05-29T03:07:07.310Z</published>
+    <updated>2016-05-29T03:18:26.456Z</updated>
+    
+    <content type="html">&lt;p&gt;&amp;#x4EE5;&amp;#x524D;&amp;#x6309;&amp;#x7167;&amp;#x7F51;&amp;#x4E0A;&amp;#x7684;&amp;#x6559;&amp;#x7A0B;&amp;#x751F;&amp;#x6210;&amp;#x8FC7;ssh&amp;#x7684;key&amp;#xFF0C;&amp;#x5E76;&amp;#x4E14;&amp;#x4E0A;&amp;#x4F20;&amp;#x5230;&amp;#x4E86;coding.net&amp;#x7684;&amp;#x7F51;&amp;#x7AD9;&amp;#x4E0A;&amp;#xFF0C;&amp;#x539F;&amp;#x4EE5;&amp;#x4E3A;&amp;#x8FD9;&amp;#x6837;&amp;#x5C31;&amp;#x4E00;&amp;#x52B3;&amp;#x6C38;&amp;#x9038;&amp;#x4E86;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x6BCF;&amp;#x6B21;&amp;#x91CD;&amp;#x65B0;&amp;#x6253;&amp;#x5F00;git shell &amp;#x90E8;&amp;#x7F72;&amp;#x535A;&amp;#x5BA2;&amp;#x65F6;&amp;#x603B;&amp;#x662F;&amp;#x63D0;&amp;#x793A;permission denied&amp;#x3002;&amp;#x4E0B;&amp;#x9762;&amp;#x662F;&amp;#x89E3;&amp;#x51B3;&amp;#x529E;&amp;#x6CD5;&amp;#x3002;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;#x6CE8;&amp;#x610F;&lt;/strong&gt;&amp;#xFF1A;&amp;#x524D;&amp;#x63D0;&amp;#x662F;&amp;#x5DF2;&amp;#x7ECF;&amp;#x4F7F;&amp;#x7528;ssh-keygen&amp;#x751F;&amp;#x6210;&amp;#x8FC7;key&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x6CA1;&amp;#x6709;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x91C7;&amp;#x7528;&amp;#x7C7B;&amp;#x4F3C;&amp;#x4E0B;&amp;#x9762;&amp;#x7684;&amp;#x4EE3;&amp;#x7801;&amp;#x751F;&amp;#x6210;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssh-keygen -t rsa -C &amp;quot;wenqiang_china@126.com&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x751F;&amp;#x6210;&amp;#x7684;key&amp;#x4F1A;&amp;#x5728;.ssh&amp;#x6587;&amp;#x4EF6;&amp;#x5939;&amp;#x4E2D;&amp;#x3002;&lt;br&gt;&amp;#x751F;&amp;#x6210;&amp;#x5B8C;&amp;#x4EE5;&amp;#x540E;&amp;#x8981;&amp;#x5C06;.ssh&amp;#x6587;&amp;#x4EF6;&amp;#x5939;&amp;#x4E2D;&amp;#x7684;id_rsa.pub&amp;#x6587;&amp;#x4EF6;&amp;#x590D;&amp;#x5236;&amp;#x540E;&amp;#x63D0;&amp;#x4EA4;&amp;#x5230;github.com&amp;#x4E0A;&amp;#xFF0C;&amp;#x7136;&amp;#x540E;&amp;#x8F93;&amp;#x5165;&amp;#x4EE5;&amp;#x4E0B;&amp;#x4EE3;&amp;#x7801;&amp;#x9A8C;&amp;#x8BC1;&amp;#x662F;&amp;#x5426;&amp;#x63D0;&amp;#x4EA4;&amp;#x6210;&amp;#x529F;&amp;#x3002;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssh -T git@github.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x4E0A;&amp;#x8FF0;&amp;#x8FC7;&amp;#x7A0B;&amp;#x4E0D;&amp;#x8BE6;&amp;#x7EC6;&amp;#x8BF4;&amp;#x4E86;&amp;#xFF0C;&amp;#x7F51;&amp;#x4E0A;&amp;#x6559;&amp;#x7A0B;&amp;#x5F88;&amp;#x591A;&amp;#x3002;&lt;/p&gt;
+&lt;h3 id=&quot;&amp;#x6B63;&amp;#x6587;&quot;&gt;&lt;a href=&quot;#&amp;#x6B63;&amp;#x6587;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x6B63;&amp;#x6587;&quot;&gt;&lt;/a&gt;&amp;#x6B63;&amp;#x6587;&lt;/h3&gt;&lt;p&gt;&amp;#x5F53;&amp;#x4E0B;&amp;#x6B21;&amp;#x6267;&amp;#x884C;hexo d&amp;#x65F6;&amp;#x63D0;&amp;#x793A;&amp;#x5982;&amp;#x4E0B;&amp;#x9519;&amp;#x8BEF;&amp;#x4FE1;&amp;#x606F;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Permission denied (publickey).&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fatal: Could not read from remote repository.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Please make sure you have the correct access rights&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;and the repository exists.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x6B64;&amp;#x65F6;&amp;#x6267;&amp;#x884C;&amp;#x4EE5;&amp;#x4E0B;&amp;#x4EE3;&amp;#x7801;&amp;#x6DFB;&amp;#x52A0;key&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssh -add ~/.ssh/id_rsa&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x4E4B;&amp;#x540E;&amp;#x6267;&amp;#x884C;hexo d&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x6210;&amp;#x529F;&amp;#x90E8;&amp;#x7F72;&amp;#x4E86;&amp;#x3002;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#x4EE5;&amp;#x524D;&amp;#x6309;&amp;#x7167;&amp;#x7F51;&amp;#x4E0A;&amp;#x7684;&amp;#x6559;&amp;#x7A0B;&amp;#x751F;&amp;#x6210;&amp;#x8FC7;ssh&amp;#x7684;key&amp;#xFF0C;&amp;#x5E76;&amp;#x4E14;&amp;#x
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://wenqiang-china.github.io/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://wenqiang-china.github.io/tags/hexo/"/>
+    
+      <category term="git" scheme="http://wenqiang-china.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Python flask使用经验教训总结</title>
@@ -1053,31 +1084,6 @@ Where Dept=&amp;#x2018;Toy&amp;#x2019; and Salary&amp;gt;=50K
 &lt;li&gt;Where&amp;#x6761;&amp;#x4EF6;&amp;#x4E2D;&amp;#x6D89;&amp;#x53CA;&amp;#x4E86;&amp;#x591A;&amp;#x4E2A;&amp;#x5C5E;&amp;#x6027;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0;-&amp;#x67E5;&amp;#x8BE2;&amp;#x6267;&amp;#x884C;&quot;&gt;&lt;a href=&quot;#&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0;-&amp;#x67E5;&amp;#x8BE2;&amp;#x6267;&amp;#x884C;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0; &amp;#x67E5;&amp;#x8BE2;&amp;#x6267;&amp;#x884C;&quot;&gt;&lt;/a&gt;&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0; &lt;a href=&quot;http://wenqiang-china.github.io/2016/05/01/adb-note-chapter6/&quot;&gt;&amp;#x67E5;&amp;#x8BE2;&amp;#x6267;&amp;#x884C;&lt;/a&gt;&lt;/h3&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot;&gt;&lt;a href=&quot;#&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x56DE;&amp;#x5
-    
-    </summary>
-    
-      <category term="数据库" scheme="http://wenqiang-china.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="学习笔记" scheme="http://wenqiang-china.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="高级数据库" scheme="http://wenqiang-china.github.io/tags/%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《高级数据库系统》笔记——  第四章 索引结构</title>
-    <link href="http://wenqiang-china.github.io/2016/05/01/adb-note-chapter4/"/>
-    <id>http://wenqiang-china.github.io/2016/05/01/adb-note-chapter4/</id>
-    <published>2016-05-01T04:00:01.469Z</published>
-    <updated>2016-05-01T04:24:33.597Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot;&gt;&lt;a href=&quot;#&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wenqiang-china.github.io/2016/04/30/adb-note-chapter3/&quot;&gt;&amp;#x56DE;&amp;#x5230;&amp;#x4E0A;&amp;#x4E00;&amp;#x7AE0;&lt;/a&gt;&lt;/h4&gt;&lt;h3 id=&quot;&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&quot;&gt;&lt;a href=&quot;#&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&quot;&gt;&lt;/a&gt;&amp;#x95EE;&amp;#x9898;&amp;#x5F15;&amp;#x5165;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&amp;#x5982;&amp;#x4F55;&amp;#x5FEB;&amp;#x901F;&amp;#x5730;&amp;#x83B7;&amp;#x5F97;&amp;#x6307;&amp;#x5B9A;&amp;#x5173;&amp;#x7CFB;&amp;#x7684;&amp;#x5143;&amp;#x7EC4;&amp;#x5E76;&amp;#x6709;&amp;#x6548;&amp;#x5730;&amp;#x652F;&amp;#x6301;&amp;#x67E5;&amp;#x8BE2;&amp;#x5904;&amp;#x7406;&amp;#xFF1F;&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0;-&amp;#x591A;&amp;#x7EF4;&amp;#x7D22;&amp;#x5F15;&quot;&gt;&lt;a href=&quot;#&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0;-&amp;#x591A;&amp;#x7EF4;&amp;#x7D22;&amp;#x5F15;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0; &amp;#x591A;&amp;#x7EF4;&amp;#x7D22;&amp;#x5F15;&quot;&gt;&lt;/a&gt;&amp;#x4E0B;&amp;#x4E00;&amp;#x7AE0; &lt;a href=&quot;http://wenqiang-china.github.io/2016/05/01/adb-note-chapter5/&quot;&gt;&amp;#x591A;&amp;#x7EF4;&amp;#x7D22;&amp;#x5F15;&lt;/a&gt;&lt;/h3&gt;</content>
     
     <summary type="html">
     
